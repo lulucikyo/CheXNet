@@ -1,0 +1,13 @@
+/images_converted/
+/images_converted/**
+
+*.zip
+
+/.vscode/
+/.vscode/**
+
+/__pycache__
+/__pycache__/**
+
+/.DS_Store
+/.DS_Store/**
