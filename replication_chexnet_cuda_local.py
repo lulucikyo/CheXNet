@@ -51,7 +51,7 @@ LABELS = ["Atelectasis","Cardiomegaly", "Effusion", "Infiltration", "Mass",
 DATA_PATH = './images_converted/'
 #DATA_PATH = '/content/drive/My Drive/DL4H Project/replication/images_converted/'
 BATCH_SIZE = 16
-N_EPOCH = 2
+N_EPOCH = 1
 PRINT_INTERVAL = 50
 """BATCH_SIZE -> 8 is way better than 16 in Colab"""
 
@@ -159,7 +159,7 @@ def eval_model(model, test_loader):
     for i, (x, y) in enumerate(test_loader):
         y = y.cuda()
         y_test = torch.cat((y_test, y), 0)
-        batch_size, channel, hight, width= x.size()
+        _, channel, height, width= x.size()
         with torch.no_grad():
             x_in = torch.autograd.Variable(x.view(-1, channel, height, width).cuda())
         y_hat = model(x_in)
@@ -200,14 +200,14 @@ cudnn.benchmark = True
 model = DenseNet121(N_LABEL).cuda()
 
 # Small sample for debug purpose. Commented out for full training
-"""
+
 train_dataset = XrayDataSet(DATA_PATH, "train_val_sample10k.txt")
 test_dataset = XrayDataSet(DATA_PATH, "test_sample1k.txt")
-"""
 
+"""
 train_dataset = XrayDataSet(DATA_PATH, "labeled_train_val_list.txt")
 test_dataset = XrayDataSet(DATA_PATH, "labeled_test_list.txt")
-
+"""
 train_loader = DataLoader(dataset=train_dataset, batch_size=BATCH_SIZE, shuffle=True, collate_fn=collate_fn)
 test_loader = DataLoader(dataset=test_dataset, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate_fn)
 
