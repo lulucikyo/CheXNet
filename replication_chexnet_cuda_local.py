@@ -51,7 +51,7 @@ LABELS = ["Atelectasis","Cardiomegaly", "Effusion", "Infiltration", "Mass",
 DATA_PATH = './images_converted/'
 #DATA_PATH = '/content/drive/My Drive/DL4H Project/replication/images_converted/'
 BATCH_SIZE = 16
-N_EPOCH = 1
+N_EPOCH = 10
 PRINT_INTERVAL = 50
 """BATCH_SIZE -> 8 is way better than 16 in Colab"""
 
@@ -106,7 +106,7 @@ class DenseNet121(nn.Module):
         x = self.densenet121(x)
         return x
 
-def train_model(model, train_loader, n_epochs = 1):
+def train_model(model, train_loader, val_loader, n_epochs, logfile):
     t1 = time.time()
     criterion = nn.BCELoss()
     """using Adam with standard parameters (B1 = 0.9 and B2 = 0.999) """
@@ -120,14 +120,16 @@ def train_model(model, train_loader, n_epochs = 1):
     model.train()
 
     train_loss_arr = []
-    print("Started training, total epoch : {}".format(n_epochs))
-    print("Training data size: {}".format(len(train_loader)))
+
+    log = open(logfile, "a")
+    log.write("Started training, total epoch : {}\n".format(n_epochs))
+    log.write("Training data size: {}\n".format(len(train_loader)))
     for epoch in range(n_epochs):
         gc.collect()
         torch.cuda.empty_cache()
         train_loss = 0
         batch = 0
-        print("Started epoch {}".format(epoch+1))
+        log.write("Started epoch {}\n".format(epoch+1))
         for x, y in train_loader:
             optimizer.zero_grad()
             y_hat = model(x)
@@ -136,25 +138,35 @@ def train_model(model, train_loader, n_epochs = 1):
             optimizer.step()
             train_loss += loss.item()
             if (batch % PRINT_INTERVAL == 0):
-                print('Trained {} batches \tTraining Loss: {:.6f}'.format(batch, loss.item()))
+                log.write('Trained {} batches \tTraining Loss: {:.6f}\n'.format(batch+1, loss.item()))
             batch += 1
 
         train_loss = train_loss / len(train_loader)
         scheduler.step(train_loss)
         
         train_loss_arr.append(np.mean(train_loss))
-        print('Epoch: {} \tTraining Loss: {:.6f}'.format(epoch+1, train_loss))
+        log.write('Epoch: {} \tTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
+        if (epoch+1)%2==0:
+            model.eval()
+            log.write('AUROCs on validation dataset:\n')
+            log.close()
+            eval_model(model, val_loader, logfile)
+            log = open(logfile, "a")
+            model.train()
 
     t2 = time.time()
-    print("Training time lapse: {} min".format((t2 - t1) // 60))
+    log.write("Training time lapse: {} min\n".format((t2 - t1) // 60))
+    log.close()
 
-def eval_model(model, test_loader):
+def eval_model(model, test_loader, logfile):
     # initialize the y_test and y_pred tensor
+    log = open(logfile, "a")
+
     y_test = torch.FloatTensor()
     y_test = y_test.cuda()
     y_pred = torch.FloatTensor()
     y_pred = y_pred.cuda()
-    print("Evaluating test data...\t test_loader: {}".format(len(test_loader)))
+    log.write("Evaluating test data...\t test_loader: {}\n".format(len(test_loader)))
     t1 = time.time()
     for i, (x, y) in enumerate(test_loader):
         y = y.cuda()
@@ -167,7 +179,7 @@ def eval_model(model, test_loader):
         if (i % PRINT_INTERVAL == 0):
             print("batch: {}".format(i))
     t2 = time.time()
-    print("Evaluating time lapse: {} min".format((t2 - t1) // 60))
+    log.write("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
     
     """Compute AUROC for each class"""
     AUROCs = []
@@ -178,11 +190,11 @@ def eval_model(model, test_loader):
         AUROCs.append(result)
 
     AUROC_avg = np.array(AUROCs).mean()
-    print('The average AUROC is {AUROC_avg:.3f}'.format(AUROC_avg=AUROC_avg))
+    log.write('The average AUROC is {AUROC_avg:.3f}\n'.format(AUROC_avg=AUROC_avg))
     for i in range(N_LABEL):
-        print('The AUROC of {} is {}'.format(LABELS[i], AUROCs[i]))
+        log.write('The AUROC of {} is {}\n'.format(LABELS[i], AUROCs[i]))
 
-
+    log.close()
 
 
 
@@ -200,18 +212,26 @@ cudnn.benchmark = True
 model = DenseNet121(N_LABEL).cuda()
 
 # Small sample for debug purpose. Commented out for full training
-
+"""
 train_dataset = XrayDataSet(DATA_PATH, "train_val_sample10k.txt")
 test_dataset = XrayDataSet(DATA_PATH, "test_sample1k.txt")
 
-"""
+
 train_dataset = XrayDataSet(DATA_PATH, "labeled_train_val_list.txt")
 test_dataset = XrayDataSet(DATA_PATH, "labeled_test_list.txt")
 """
+
+train_dataset = XrayDataSet(DATA_PATH, "final_train.txt")
+val_dataset = XrayDataSet(DATA_PATH, "final_val.txt")
+test_dataset = XrayDataSet(DATA_PATH, "final_test.txt")
+
 train_loader = DataLoader(dataset=train_dataset, batch_size=BATCH_SIZE, shuffle=True, collate_fn=collate_fn)
+val_loader = DataLoader(dataset=val_dataset, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate_fn)
 test_loader = DataLoader(dataset=test_dataset, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate_fn)
 
-train_model(model, train_loader, n_epochs=N_EPOCH)
+logfile = "runlog.txt"
+
+train_model(model, train_loader, val_loader, N_EPOCH, logfile)
 
 """No need to use GPU for calculating AUC"""
 gc.collect()
@@ -219,4 +239,4 @@ torch.cuda.empty_cache()
 # switch to evaluate mode
 model.eval()
 with torch.no_grad():
-    eval_model(model, test_loader)
+    eval_model(model, test_loader, logfile)
