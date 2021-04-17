@@ -6,13 +6,13 @@ from PIL import Image
 
 
 
-DATA_PATH = "./images/"
-NEW_PATH = "./images_converted/"
+DATA_PATH = "../images/"
+NEW_PATH = "../images_converted256/"
 img_list = os.listdir(DATA_PATH)
 converted_list = set(os.listdir(NEW_PATH))
 #test_img = ['00000001_000.png', '00000001_001.png', '00000001_002.png', '00000002_000.png', '00000003_000.png', '00000003_001.png', '00000003_002.png', '00000003_003.png', '00000003_004.png', '00000003_005.png']
 trans = transforms.Compose([
-                transforms.Resize(224)
+                transforms.Resize(256)
                 ])
 
 cnt = len(converted_list)
