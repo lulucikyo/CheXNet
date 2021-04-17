@@ -3,6 +3,7 @@
 /images/
 
 *.zip
+*.xlsx
 
 /.vscode/
 /.vscode/**

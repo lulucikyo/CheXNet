@@ -124,12 +124,16 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
     log = open(logfile, "a")
     log.write("Started training, total epoch : {}\n".format(n_epochs))
     log.write("Training data size: {}\n".format(len(train_loader)))
+    print("Started training, total epoch : {}\n".format(n_epochs))
+    print("Training data size: {}\n".format(len(train_loader)))
+    torch.save(model, "trained.pth")
     for epoch in range(n_epochs):
         gc.collect()
         torch.cuda.empty_cache()
         train_loss = 0
         batch = 0
         log.write("Started epoch {}\n".format(epoch+1))
+        print("Started epoch {}\n".format(epoch+1))
         for x, y in train_loader:
             optimizer.zero_grad()
             y_hat = model(x)
@@ -137,8 +141,9 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
             loss.backward()
             optimizer.step()
             train_loss += loss.item()
-            if (batch % PRINT_INTERVAL == 0):
+            if ((batch+1) % PRINT_INTERVAL == 0):
                 log.write('Trained {} batches \tTraining Loss: {:.6f}\n'.format(batch+1, loss.item()))
+                print('Trained {} batches \tTraining Loss: {:.6f}\n'.format(batch+1, loss.item()))
             batch += 1
 
         train_loss = train_loss / len(train_loader)
@@ -146,16 +151,27 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
         
         train_loss_arr.append(np.mean(train_loss))
         log.write('Epoch: {} \tTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
-        if (epoch+1)%2==0:
-            model.eval()
+        print('Epoch: {} \tTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
+        torch.save(model, "trained.pth")
+
+        if (epoch+1)%1==0:
             log.write('AUROCs on validation dataset:\n')
+            print('AUROCs on validation dataset:\n')
             log.close()
-            eval_model(model, val_loader, logfile)
+
+            gc.collect()
+            torch.cuda.empty_cache()
+            # switch to evaluate mode
+            model.eval()
+            with torch.no_grad():
+                eval_model(model, val_loader, logfile)
+
             log = open(logfile, "a")
             model.train()
 
     t2 = time.time()
     log.write("Training time lapse: {} min\n".format((t2 - t1) // 60))
+    print("Training time lapse: {} min\n".format((t2 - t1) // 60))
     log.close()
 
 def eval_model(model, test_loader, logfile):
@@ -167,6 +183,7 @@ def eval_model(model, test_loader, logfile):
     y_pred = torch.FloatTensor()
     y_pred = y_pred.cuda()
     log.write("Evaluating test data...\t test_loader: {}\n".format(len(test_loader)))
+    print("Evaluating test data...\t test_loader: {}\n".format(len(test_loader)))
     t1 = time.time()
     for i, (x, y) in enumerate(test_loader):
         y = y.cuda()
@@ -177,10 +194,12 @@ def eval_model(model, test_loader, logfile):
         y_hat = model(x_in)
         y_pred = torch.cat((y_pred, y_hat), 0)
         if (i % PRINT_INTERVAL == 0):
+            log.write("batch: {}".format(i))
             print("batch: {}".format(i))
     t2 = time.time()
     log.write("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
-    
+    print("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
+
     """Compute AUROC for each class"""
     AUROCs = []
     y_test_np = y_test.cpu().detach().numpy()
@@ -191,8 +210,10 @@ def eval_model(model, test_loader, logfile):
 
     AUROC_avg = np.array(AUROCs).mean()
     log.write('The average AUROC is {AUROC_avg:.3f}\n'.format(AUROC_avg=AUROC_avg))
+    print('The average AUROC is {AUROC_avg:.3f}\n'.format(AUROC_avg=AUROC_avg))
     for i in range(N_LABEL):
         log.write('The AUROC of {} is {}\n'.format(LABELS[i], AUROCs[i]))
+        print('The AUROC of {} is {}\n'.format(LABELS[i], AUROCs[i]))
 
     log.close()
 
@@ -228,6 +249,8 @@ test_dataset = XrayDataSet(DATA_PATH, "final_test.txt")
 train_loader = DataLoader(dataset=train_dataset, batch_size=BATCH_SIZE, shuffle=True, collate_fn=collate_fn)
 val_loader = DataLoader(dataset=val_dataset, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate_fn)
 test_loader = DataLoader(dataset=test_dataset, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate_fn)
+
+print(len(train_loader), len(val_loader), len(test_loader))
 
 logfile = "runlog.txt"
 
