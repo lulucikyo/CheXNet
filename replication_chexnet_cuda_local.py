@@ -46,8 +46,8 @@ from torch.utils.data import DataLoader
 
 N_LABEL = 14
 LABELS = ["Atelectasis","Cardiomegaly", "Effusion", "Infiltration", "Mass", 
-               "Nodule", "Pneumonia", "Pneumothorax", "Consolidation", "Edema", 
-               "Emphysema", "Fibrosis", "Pleural_Thickening", "Hernia"]
+          "Nodule", "Pneumonia", "Pneumothorax", "Consolidation", "Edema", 
+          "Emphysema", "Fibrosis", "Pleural_Thickening", "Hernia"]
 DATA_PATH = './images_converted/'
 #DATA_PATH = '/content/drive/My Drive/DL4H Project/replication/images_converted/'
 BATCH_SIZE = 16
@@ -56,14 +56,17 @@ PRINT_INTERVAL = 50
 """BATCH_SIZE -> 8 is way better than 16 in Colab"""
 
 
-
+# assue we will take 256 * 256 as input
+# so that we can do crop operations at a later point of time
 def collate_fn(data):
     image_path, label = zip(*data)
     image_tensors = torch.Tensor()
     trans = transforms.Compose([
+                transforms.Resize((224, 224)),
                 transforms.ToTensor(),
                 transforms.Normalize(mean = [0.485, 0.456, 0.406],
-                                     std = [0.229, 0.224, 0.225])
+                                     std = [0.229, 0.224, 0.225]),
+                transforms.RandomHorizontalFlip()
                 ])
     for img in image_path:
         img_pil = Image.open(img).convert("RGB")
@@ -149,9 +152,7 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
         if (epoch+1)%2==0:
             model.eval()
             log.write('AUROCs on validation dataset:\n')
-            log.close()
             eval_model(model, val_loader, logfile)
-            log = open(logfile, "a")
             model.train()
 
     t2 = time.time()
@@ -212,16 +213,16 @@ cudnn.benchmark = True
 model = DenseNet121(N_LABEL).cuda()
 
 # Small sample for debug purpose. Commented out for full training
-"""
-train_dataset = XrayDataSet(DATA_PATH, "train_val_sample10k.txt")
-test_dataset = XrayDataSet(DATA_PATH, "test_sample1k.txt")
+
+train_dataset = XrayDataSet(DATA_PATH, "train_val_sample1k.txt")
+# test_dataset = XrayDataSet(DATA_PATH, "test_sample1k.txt")
 
 
-train_dataset = XrayDataSet(DATA_PATH, "labeled_train_val_list.txt")
-test_dataset = XrayDataSet(DATA_PATH, "labeled_test_list.txt")
-"""
+# train_dataset = XrayDataSet(DATA_PATH, "labeled_train_val_list.txt")
+# test_dataset = XrayDataSet(DATA_PATH, "labeled_test_list.txt")
 
-train_dataset = XrayDataSet(DATA_PATH, "final_train.txt")
+
+# train_dataset = XrayDataSet(DATA_PATH, "final_train.txt")
 val_dataset = XrayDataSet(DATA_PATH, "final_val.txt")
 test_dataset = XrayDataSet(DATA_PATH, "final_test.txt")
 
