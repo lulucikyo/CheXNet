@@ -1,5 +1,7 @@
 /images_converted/
 /images_converted/**
+/images_converted256/
+/images_converted256/**
 /images/
 
 *.zip
