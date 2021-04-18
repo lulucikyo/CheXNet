@@ -53,6 +53,11 @@ DATA_PATH = './images_converted/'
 BATCH_SIZE = 16
 N_EPOCH = 10
 PRINT_INTERVAL = 50
+RANDOM_SEED = 10086
+random.seed(RANDOM_SEED)
+np.random.seed(RANDOM_SEED)
+torch.manual_seed(RANDOM_SEED)
+os.environ["PYTHONHASHSEED"] = str(RANDOM_SEED)
 """BATCH_SIZE -> 8 is way better than 16 in Colab"""
 
 
@@ -155,7 +160,7 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
         train_loss_arr.append(np.mean(train_loss))
         log.write('Epoch: {} \tTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
         print('Epoch: {} \tTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
-        torch.save(model, "trained.pth")
+        torch.save(model.state_dict(), str(epoch)+"trained.pth")
 
         if (epoch+1)%1==0:
             log.write('AUROCs on validation dataset:\n')
@@ -197,7 +202,7 @@ def eval_model(model, test_loader, logfile):
         y_hat = model(x_in)
         y_pred = torch.cat((y_pred, y_hat), 0)
         if (i % PRINT_INTERVAL == 0):
-            log.write("batch: {}".format(i))
+            log.write("batch: {}\n".format(i))
             print("batch: {}".format(i))
     t2 = time.time()
     log.write("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
