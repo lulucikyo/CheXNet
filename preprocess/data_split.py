@@ -1,14 +1,32 @@
 import random
 from sklearn.model_selection import train_test_split
 
-random.seed(24)
-alldata = list(range(112120))
-random.shuffle(alldata)
-n_train = int(112120*0.7)
-n_val = int(112120*0.8)
-train = set(alldata[:n_train])
-val = set(alldata[n_train:n_val])
-test = set(alldata[n_val:])
+random.seed(10086)
+
+f = open("labeled_all.txt", "r")
+patient = {}
+for line in f:
+    img = line.split(" ")[0]
+    pid = int(img.split("_")[0])
+    if pid in patient.keys():
+        patient[pid] += 1
+    else:
+        patient[pid] = 1
+f.close()
+allpid = list(patient.keys())
+random.shuffle(allpid)
+
+group = {k: 0 for k in patient.keys()}
+
+tot = 0
+curgroup = 1
+for pid in allpid:
+    group[pid] = curgroup
+    tot += patient[pid]
+    if tot>112120*0.7 and tot<=112120*0.8:
+        curgroup = 2
+    elif tot>112120*0.8:
+        curgroup = 3
 
 f = open("labeled_all.txt", "r")
 f_train = open("final_train.txt", "w")
@@ -18,9 +36,11 @@ cnt = 0
 
 for line in f:
     cnt += 1
-    if cnt in train:
+    img = line.split(" ")[0]
+    pid = int(img.split("_")[0])
+    if group[pid]==1:
         f_train.write(line)
-    elif cnt in val:
+    elif group[pid]==2:
         f_val.write(line)
     else:
         f_test.write(line)
