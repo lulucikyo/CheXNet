@@ -20,13 +20,26 @@ group = {k: 0 for k in patient.keys()}
 
 tot = 0
 curgroup = 1
-for pid in allpid:
+p1, p2, p3 = 0,0,0
+for i, pid in enumerate(allpid):
+    if curgroup==1:
+        p1 += 1
+    elif curgroup==2:
+        p2 += 1
+    elif curgroup==3:
+        p3 +=1
+
     group[pid] = curgroup
     tot += patient[pid]
     if tot>112120*0.7 and tot<=112120*0.8:
         curgroup = 2
     elif tot>112120*0.8:
         curgroup = 3
+
+print("total patient", len(allpid))
+print("train", p1)
+print("val", p2)
+print("test", p3)
 
 f = open("labeled_all.txt", "r")
 f_train = open("final_train.txt", "w")
