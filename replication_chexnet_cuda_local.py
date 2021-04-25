@@ -134,7 +134,6 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
     log.write("Training data size: {}\n".format(len(train_loader)))
     print("Started training, total epoch : {}\n".format(n_epochs))
     print("Training data size: {}\n".format(len(train_loader)))
-    torch.save(model, "trained.pth")
     for epoch in range(n_epochs):
         gc.collect()
         torch.cuda.empty_cache()
@@ -239,6 +238,8 @@ cudnn.benchmark = True
 
 # initialize and load the model
 model = DenseNet121(N_LABEL).cuda()
+# load trained model
+# model.load_state_dict(torch.load("8trained.pth"))
 
 # Small sample for debug purpose. Commented out for full training
 
