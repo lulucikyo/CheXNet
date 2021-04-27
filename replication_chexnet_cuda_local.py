@@ -50,8 +50,8 @@ LABELS = ["Atelectasis","Cardiomegaly", "Effusion", "Infiltration", "Mass",
           "Emphysema", "Fibrosis", "Pleural_Thickening", "Hernia"]
 DATA_PATH = './images_converted256/'
 #DATA_PATH = '/content/drive/My Drive/DL4H Project/replication/images_converted/'
-BATCH_SIZE = 64
-N_EPOCH = 20
+BATCH_SIZE = 16
+N_EPOCH = 15
 PRINT_INTERVAL = 500
 RANDOM_SEED = 10086
 random.seed(RANDOM_SEED)
@@ -69,7 +69,7 @@ def collate_fn_train(data):
     trans = transforms.Compose([
 #                transforms.Resize((224, 224)),
                 transforms.RandomCrop(224),
-#                transforms.RandomHorizontalFlip(),
+                transforms.RandomHorizontalFlip(),
 #                transforms.RandomCrop(224, padding=(14, 14)),
                 transforms.ToTensor(),
                 transforms.Normalize(mean = [0.485, 0.456, 0.406],
@@ -177,8 +177,8 @@ class MobileNet_V3_large(nn.Module):
     def __init__(self, out_feature):
         super(MobileNet_V3_large, self).__init__()
         self.mobilenet_v3_large = torchvision.models.mobilenet_v3_large(pretrained=True)
-        last_channel = self.mobilenet_v3_large.classifier[3].last_channel
-        self.mobilenet_v3_large.classifier[3] = nn.Linear(last_channel, out_feature)
+        in_features = self.mobilenet_v3_large.classifier[3].in_features
+        self.mobilenet_v3_large.classifier[3] = nn.Linear(in_features, out_feature)
         self.sigmoid = nn.Sigmoid()
     
     def forward(self, x):
@@ -192,9 +192,9 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
     """using Adam with standard parameters (B1 = 0.9 and B2 = 0.999) """
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
     """factor (float) – Factor by which the learning rate will be reduced. new_lr = lr * factor. Default: 0.1."""
-    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1,
-                                               patience=1, verbose=True, threshold=0.001,
-                                               threshold_mode='rel', cooldown=0, min_lr=0, eps=1e-08)
+#    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1,
+#                                               patience=1, verbose=True, threshold=0.001,
+#                                               threshold_mode='rel', cooldown=0, min_lr=0, eps=1e-08)
     
     # prep model for training
     model.train()
@@ -227,12 +227,12 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
             batch += 1
 
         train_loss = train_loss / len(train_loader)
-        scheduler.step(train_loss)
+#        scheduler.step(train_loss)
         
         train_loss_arr.append(np.mean(train_loss))
-        log.write('Epoch: {} \tTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
-        print('Epoch: {} \tTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
-        torch.save(model.state_dict(), str(epoch)+"trained.pth")
+        log.write('Epoch: {} \nTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
+        print('Epoch: {} \nTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
+        torch.save(model.state_dict(), str(epoch+1)+"trained.pth")
 
         if (epoch+1)%1==0:
             log.write('AUROCs on validation dataset:\n')
@@ -284,8 +284,8 @@ def eval_model(model, test_loader, logfile):
             print("batch: {}".format(i))
         
     test_loss = test_loss / len(test_loader)
-    log.write('Test Loss: {:.6f}\n'.format(test_loss))
-    print('Test Loss: {:.6f}\n'.format(test_loss))
+    log.write('Testing Loss: {:.6f}\n'.format(test_loss))
+    print('Testing Loss: {:.6f}\n'.format(test_loss))
     t2 = time.time()
     
     log.write("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
@@ -321,7 +321,7 @@ print(torch.cuda.get_device_name(0))
 cudnn.benchmark = True
 
 # initialize and load the model
-model = MobileNet_V2(N_LABEL).cuda()
+model = MobileNet_V3_large(N_LABEL).cuda()
 
 # Small sample for debug purpose. Commented out for full training
 
@@ -347,7 +347,7 @@ logfile = "runlog.txt"
 
 #Trained_model_path = 'C:/Users/Zhexuan/Downloads/CheXNet-LipingXie/CheXNet-LipingXie/14trained.pth'
 #model.load_state_dict(torch.load(Trained_model_path))
-#N_EPOCH = 5
+#N_EPOCH = 1
 
 train_model(model, train_loader, val_loader, N_EPOCH, logfile)
 
@@ -357,4 +357,4 @@ torch.cuda.empty_cache()
 # switch to evaluate mode
 model.eval()
 with torch.no_grad():
-    eval_model(model, test_loader, logfile)
+    eval_model(model, val_loader, logfile)
