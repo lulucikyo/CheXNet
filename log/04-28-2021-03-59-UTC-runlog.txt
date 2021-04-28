@@ -1,0 +1,3 @@
+Started training, total epoch : 16
+Training data size: 9813
+Started epoch 1
