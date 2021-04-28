@@ -19,7 +19,7 @@ N_LABEL = 14
 LABELS = ["Atelectasis","Cardiomegaly", "Effusion", "Infiltration", "Mass", 
           "Nodule", "Pneumonia", "Pneumothorax", "Consolidation", "Edema", 
           "Emphysema", "Fibrosis", "Pleural_Thickening", "Hernia"]
-BATCH_SIZE = 16
+BATCH_SIZE = 8
 N_EPOCH = 16
 PRINT_INTERVAL = 50
 RANDOM_SEED = 10086
@@ -115,11 +115,11 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
         print("Started epoch {}\n".format(epoch+1))
         for x, y in train_loader:
             optimizer.zero_grad()
-            _, ncrops, channel, height, width = x.size()
+            batch, ncrops, channel, height, width = x.size()
             with torch.no_grad():
                 x_in = torch.autograd.Variable(x.view(-1, channel, height, width).cuda())
             y_hat = model(x_in)
-            y_hat = y_hat.view(-1, ncrops, -1).mean(1)
+            y_hat = y_hat.view(batch, ncrops, -1).mean(1)
             loss = criterion(y_hat, y)
             loss.backward()
             optimizer.step()
@@ -166,11 +166,11 @@ def eval_model(model, test_loader, logfile):
     for i, (x, y) in enumerate(test_loader):
         y = y.cuda()
         y_test = torch.cat((y_test, y), 0)
-        _, ncrops, channel, height, width = x.size()
+        batch, ncrops, channel, height, width = x.size()
         with torch.no_grad():
             x_in = torch.autograd.Variable(x.view(-1, channel, height, width).cuda())
         y_hat = model(x_in)
-        y_hat = y_hat.view(-1, ncrops, -1).mean(1)
+        y_hat = y_hat.view(batch, ncrops, -1).mean(1)
         y_pred = torch.cat((y_pred, y_hat), 0)
         if (i % PRINT_INTERVAL == 0):
             log.write("batch: {}\n".format(i))
