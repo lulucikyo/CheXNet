@@ -1,0 +1,13 @@
+Started training, total epoch : 16
+Training data size: 9813
+Started epoch 1
+Trained 100 batches 	Training Loss: 0.229865
+Trained 200 batches 	Training Loss: 0.157647
+Trained 300 batches 	Training Loss: 0.085219
+Trained 400 batches 	Training Loss: 0.238474
+Trained 500 batches 	Training Loss: 0.183945
+Trained 600 batches 	Training Loss: 0.202963
+Trained 700 batches 	Training Loss: 0.145529
+Trained 800 batches 	Training Loss: 0.139857
+Trained 900 batches 	Training Loss: 0.249318
+Trained 1000 batches 	Training Loss: 0.188206

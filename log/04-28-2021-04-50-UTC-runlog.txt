@@ -1,0 +1,33 @@
+Started training, total epoch : 16
+Training data size: 9813
+Started epoch 1
+Trained 100 batches 	Training Loss: 0.244689
+Trained 200 batches 	Training Loss: 0.144606
+Trained 300 batches 	Training Loss: 0.091596
+Trained 400 batches 	Training Loss: 0.257750
+Trained 500 batches 	Training Loss: 0.200244
+Trained 600 batches 	Training Loss: 0.203458
+Trained 700 batches 	Training Loss: 0.159336
+Trained 800 batches 	Training Loss: 0.156190
+Trained 900 batches 	Training Loss: 0.250897
+Trained 1000 batches 	Training Loss: 0.177093
+Trained 1100 batches 	Training Loss: 0.283582
+Trained 1200 batches 	Training Loss: 0.214689
+Trained 1300 batches 	Training Loss: 0.111696
+Trained 1400 batches 	Training Loss: 0.204947
+Trained 1500 batches 	Training Loss: 0.266121
+Trained 1600 batches 	Training Loss: 0.150272
+Trained 1700 batches 	Training Loss: 0.218642
+Trained 1800 batches 	Training Loss: 0.162450
+Trained 1900 batches 	Training Loss: 0.153977
+Trained 2000 batches 	Training Loss: 0.124706
+Trained 2100 batches 	Training Loss: 0.130739
+Trained 2200 batches 	Training Loss: 0.146297
+Trained 2300 batches 	Training Loss: 0.148975
+Trained 2400 batches 	Training Loss: 0.130199
+Trained 2500 batches 	Training Loss: 0.293612
+Trained 2600 batches 	Training Loss: 0.144062
+Trained 2700 batches 	Training Loss: 0.179297
+Trained 2800 batches 	Training Loss: 0.114329
+Trained 2900 batches 	Training Loss: 0.240236
+Trained 3000 batches 	Training Loss: 0.168157
