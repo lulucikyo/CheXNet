@@ -8,6 +8,7 @@
 *.xlsx
 *.pth
 runlog*.txt
+test.py
 
 /.vscode/
 /.vscode/**
