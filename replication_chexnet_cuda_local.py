@@ -124,7 +124,6 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
             batch += 1
 
         train_loss = train_loss / len(train_loader)
-        scheduler.step(train_loss)
         
         train_loss_arr.append(np.mean(train_loss))
         log.write('Epoch: {} \tTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
@@ -139,11 +138,14 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
             gc.collect()
             torch.cuda.empty_cache()
             model.eval()
+            log.write('AUROCs on validation dataset:\n')
+            val_loss = 0           
             with torch.no_grad():
-                eval_model(model, val_loader, logfile)
-
+                val_loss = eval_model(model, val_loader, logfile)
             log = open(logfile, "a")
+            log.write('Epoch: {} \tLearning Rate for first group: {:.10f}\n'.format(epoch+1, optimizer.param_groups[0]['lr']))
             model.train()
+            scheduler.step(val_loss)
 
     t2 = time.time()
     log.write("Training time lapse: {} min\n".format((t2 - t1) // 60))
@@ -158,6 +160,8 @@ def eval_model(model, test_loader, logfile):
     y_test = y_test.cuda()
     y_pred = torch.FloatTensor()
     y_pred = y_pred.cuda()
+    criterion = nn.BCELoss()
+    val_loss = 0    
     log.write("Evaluating test data...\t test_loader: {}\n".format(len(test_loader)))
     print("Evaluating test data...\t test_loader: {}\n".format(len(test_loader)))
     t1 = time.time()
@@ -169,11 +173,15 @@ def eval_model(model, test_loader, logfile):
             x_in = torch.autograd.Variable(x.view(-1, channel, height, width).cuda())
         y_hat = model(x_in)
         y_pred = torch.cat((y_pred, y_hat), 0)
+        loss = criterion(y_hat, y)
+        val_loss = val_loss + loss.item()
         if (i % PRINT_INTERVAL == 0):
             log.write("batch: {}\n".format(i))
             print("batch: {}".format(i))
     t2 = time.time()
+    val_loss = val_loss / len(test_loader)    
     log.write("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
+    log.write('The total val loss is {val_loss:.7f}\n'.format(val_loss=val_loss))
     print("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
 
     """Compute AUROC for each class"""
@@ -192,7 +200,7 @@ def eval_model(model, test_loader, logfile):
         print('The AUROC of {} is {}\n'.format(LABELS[i], AUROCs[i]))
 
     log.close()
-
+    return val_loss
 
 
 """Now, let's run"""
