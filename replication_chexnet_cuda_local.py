@@ -160,6 +160,8 @@ def eval_model(model, test_loader, logfile):
     y_test = y_test.cuda()
     y_pred = torch.FloatTensor()
     y_pred = y_pred.cuda()
+    criterion = nn.BCELoss()
+    val_loss = 0
     log.write("Evaluating test data...\t test_loader: {}\n".format(len(test_loader)))
     print("Evaluating test data...\t test_loader: {}\n".format(len(test_loader)))
     t1 = time.time()
@@ -172,12 +174,16 @@ def eval_model(model, test_loader, logfile):
         y_hat = model(x_in)
         y_hat = y_hat.view(batches, ncrops, -1).mean(1)
         y_pred = torch.cat((y_pred, y_hat), 0)
+        loss = criterion(y_hat, y)
+        val_loss = val_loss + loss.item()
         if (i % PRINT_INTERVAL == 0):
             log.write("batch: {}\n".format(i))
             print("batch: {}".format(i))
     t2 = time.time()
+    val_loss = val_loss / len(test_loader)
     log.write("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
     print("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
+    log.write('The total val loss is {val_loss:.7f}\n'.format(val_loss=val_loss))
 
     """Compute AUROC for each class"""
     AUROCs = []
@@ -195,6 +201,7 @@ def eval_model(model, test_loader, logfile):
         print('The AUROC of {} is {}\n'.format(LABELS[i], AUROCs[i]))
 
     log.close()
+    return val_loss
 
 
 
