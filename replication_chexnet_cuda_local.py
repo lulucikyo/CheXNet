@@ -21,7 +21,7 @@ LABELS = ["Atelectasis","Cardiomegaly", "Effusion", "Infiltration", "Mass",
           "Emphysema", "Fibrosis", "Pleural_Thickening", "Hernia"]
 BATCH_SIZE = 8
 N_EPOCH = 16
-PRINT_INTERVAL = 50
+PRINT_INTERVAL = 10
 RANDOM_SEED = 10086
 random.seed(RANDOM_SEED)
 np.random.seed(RANDOM_SEED)
