@@ -42,7 +42,7 @@ def collate_fn(data):
                 transforms.Normalize(mean = [0.485, 0.456, 0.406],
                                      std = [0.229, 0.224, 0.225]),
                 transforms.TenCrop((224, 224)),
-                transforms.Lambda(lambda crops: torch.stack([ToTensor()(crop) for crop in crops]))
+                transforms.Lambda(lambda crops: torch.stack([transforms.ToTensor()(crop) for crop in crops]))
                 ])
     for img in image_path:
         img_pil = Image.open(img).convert("RGB")
