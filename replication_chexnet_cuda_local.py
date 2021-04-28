@@ -42,7 +42,7 @@ def collate_fn(data):
                 transforms.Normalize(mean = [0.485, 0.456, 0.406],
                                      std = [0.229, 0.224, 0.225]),
                 transforms.TenCrop((224, 224)),
-                Lambda(lambda crops: torch.stack([ToTensor()(crop) for crop in crops]))
+                transforms.Lambda(lambda crops: torch.stack([ToTensor()(crop) for crop in crops]))
                 ])
     for img in image_path:
         img_pil = Image.open(img).convert("RGB")
@@ -126,27 +126,22 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
             batch += 1
 
         train_loss = train_loss / len(train_loader)
-        scheduler.step(train_loss)
         
         train_loss_arr.append(np.mean(train_loss))
         log.write('Epoch: {} \tTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
         print('Epoch: {} \tTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
         torch.save(model.state_dict(), MODEL_PATH + str(epoch)+"trained.pth")
 
-        if (epoch+1)%1==0:
-            log.write('AUROCs on validation dataset:\n')
-            print('AUROCs on validation dataset:\n')
-            log.close()
-
-            gc.collect()
-            torch.cuda.empty_cache()
-            # switch to evaluate mode
-            model.eval()
-            with torch.no_grad():
-                eval_model(model, val_loader, logfile)
-
-            log = open(logfile, "a+")
-            model.train()
+        model.eval()
+        log.write('AUROCs on validation dataset:\n')
+        log.close()
+        val_loss = 0
+        with torch.no_grad():
+            val_loss = eval_model(model, val_loader, logfile)
+        log = open(logfile, "a+")
+        log.write('Epoch: {} \tLearning Rate for first group: {:.10f}\n'.format(epoch+1, optimizer.param_groups[0]['lr']))
+        model.train()
+        scheduler.step(val_loss)
 
     t2 = time.time()
     log.write("Training time lapse: {} min\n".format((t2 - t1) // 60))
