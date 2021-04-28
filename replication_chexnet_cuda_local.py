@@ -115,7 +115,11 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
         print("Started epoch {}\n".format(epoch+1))
         for x, y in train_loader:
             optimizer.zero_grad()
-            y_hat = model(x)
+            _, ncrops, channel, height, width = x.size()
+            with torch.no_grad():
+                x_in = torch.autograd.Variable(x.view(-1, channel, height, width).cuda())
+            y_hat = model(x_in)
+            y_hat = y_hat.view(-1, ncrops, -1).mean(1)
             loss = criterion(y_hat, y)
             loss.backward()
             optimizer.step()
@@ -166,7 +170,7 @@ def eval_model(model, test_loader, logfile):
         with torch.no_grad():
             x_in = torch.autograd.Variable(x.view(-1, channel, height, width).cuda())
         y_hat = model(x_in)
-        y_hat_avg = y_hat.view(-1, ncrops, -1).mean(1)
+        y_hat = y_hat.view(-1, ncrops, -1).mean(1)
         y_pred = torch.cat((y_pred, y_hat), 0)
         if (i % PRINT_INTERVAL == 0):
             log.write("batch: {}\n".format(i))
