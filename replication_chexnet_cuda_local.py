@@ -92,7 +92,7 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
     """factor (float) – Factor by which the learning rate will be reduced. new_lr = lr * factor. Default: 0.1."""
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1,
-                                               patience=1, verbose=False, threshold=0.0001,
+                                               patience=1, verbose=True, threshold=0.0001,
                                                threshold_mode='rel', cooldown=0, min_lr=0, eps=1e-08)
     
     # prep model for training
