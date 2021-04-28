@@ -190,11 +190,11 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
     t1 = time.time()
     criterion = nn.BCELoss()
     """using Adam with standard parameters (B1 = 0.9 and B2 = 0.999) """
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+    optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
     """factor (float) – Factor by which the learning rate will be reduced. new_lr = lr * factor. Default: 0.1."""
-#    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1,
-#                                               patience=1, verbose=True, threshold=0.001,
-#                                               threshold_mode='rel', cooldown=0, min_lr=0, eps=1e-08)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1,
+                                               patience=1, verbose=True, threshold=1e-4,
+                                               threshold_mode='rel', cooldown=0, min_lr=0, eps=1e-08)
     
     # prep model for training
     model.train()
@@ -227,7 +227,6 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
             batch += 1
 
         train_loss = train_loss / len(train_loader)
-#        scheduler.step(train_loss)
         
         train_loss_arr.append(np.mean(train_loss))
         log.write('Epoch: {} \nTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
@@ -244,10 +243,11 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
             # switch to evaluate mode
             model.eval()
             with torch.no_grad():
-                eval_model(model, val_loader, logfile)
-
+                val_loss = eval_model(model, val_loader, logfile)
+                
             log = open(logfile, "a")
             model.train()
+            scheduler.step(val_loss)
 
     t2 = time.time()
     log.write("Training time lapse: {} min\n".format((t2 - t1) // 60))
@@ -303,11 +303,12 @@ def eval_model(model, test_loader, logfile):
     AUROC_avg = np.array(AUROCs).mean()
     log.write('The average AUROC is {AUROC_avg:.3f}\n'.format(AUROC_avg=AUROC_avg))
     print('The average AUROC is {AUROC_avg:.3f}\n'.format(AUROC_avg=AUROC_avg))
-#    for i in range(N_LABEL):
-#        log.write('The AUROC of {} is {}\n'.format(LABELS[i], AUROCs[i]))
+    for i in range(N_LABEL):
+        log.write('The AUROC of {} is {}\n'.format(LABELS[i], AUROCs[i]))
 
     log.close()
-
+    
+    return test_loss
 
 
 """Now, let's run"""
@@ -345,7 +346,7 @@ print(len(train_loader), len(val_loader), len(test_loader))
 
 logfile = "runlog.txt"
 
-#Trained_model_path = 'C:/Users/Zhexuan/Downloads/CheXNet-LipingXie/CheXNet-LipingXie/14trained.pth'
+#Trained_model_path = 'C:/Users/Zhexuan/Downloads/CheXNet-LipingXie/CheXNet-LipingXie/15trained.pth'
 #model.load_state_dict(torch.load(Trained_model_path))
 #N_EPOCH = 1
 
@@ -357,4 +358,4 @@ torch.cuda.empty_cache()
 # switch to evaluate mode
 model.eval()
 with torch.no_grad():
-    eval_model(model, val_loader, logfile)
+    eval_model(model, test_loader, logfile)
