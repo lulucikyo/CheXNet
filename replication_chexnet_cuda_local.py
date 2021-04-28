@@ -21,7 +21,7 @@ LABELS = ["Atelectasis","Cardiomegaly", "Effusion", "Infiltration", "Mass",
           "Emphysema", "Fibrosis", "Pleural_Thickening", "Hernia"]
 BATCH_SIZE = 8
 N_EPOCH = 16
-PRINT_INTERVAL = 10
+PRINT_INTERVAL = 100
 RANDOM_SEED = 10086
 random.seed(RANDOM_SEED)
 np.random.seed(RANDOM_SEED)
@@ -41,7 +41,7 @@ def collate_fn(data):
                 transforms.ToTensor(),
                 transforms.Normalize(mean = [0.485, 0.456, 0.406],
                                      std = [0.229, 0.224, 0.225]),
-                transforms.TenCrop(224),
+                transforms.FiveCrop(224),
                 transforms.Lambda(lambda crops: torch.stack([(crop) for crop in crops]))
                 ])
     for img in image_path:
