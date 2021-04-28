@@ -1,0 +1,695 @@
+Started training, total epoch : 15
+Training data size: 1227
+Started epoch 1
+Trained 1 batches 	Training Loss: 0.678309
+Trained 51 batches 	Training Loss: 0.197139
+Trained 101 batches 	Training Loss: 0.162151
+Trained 151 batches 	Training Loss: 0.167644
+Trained 201 batches 	Training Loss: 0.187280
+Trained 251 batches 	Training Loss: 0.135024
+Trained 301 batches 	Training Loss: 0.145011
+Trained 351 batches 	Training Loss: 0.159315
+Trained 401 batches 	Training Loss: 0.169794
+Trained 451 batches 	Training Loss: 0.149367
+Trained 501 batches 	Training Loss: 0.148670
+Trained 551 batches 	Training Loss: 0.205984
+Trained 601 batches 	Training Loss: 0.166034
+Trained 651 batches 	Training Loss: 0.218975
+Trained 701 batches 	Training Loss: 0.164685
+Trained 751 batches 	Training Loss: 0.180504
+Trained 801 batches 	Training Loss: 0.174581
+Trained 851 batches 	Training Loss: 0.170791
+Trained 901 batches 	Training Loss: 0.140512
+Trained 951 batches 	Training Loss: 0.160560
+Trained 1001 batches 	Training Loss: 0.194782
+Trained 1051 batches 	Training Loss: 0.122501
+Trained 1101 batches 	Training Loss: 0.166430
+Trained 1151 batches 	Training Loss: 0.147634
+Trained 1201 batches 	Training Loss: 0.177113
+Epoch: 1 	Training Loss: 0.160602
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 176
+Evaluating time lapse: 1.0 min
+The average AUROC is 0.782
+The AUROC of Atelectasis is 0.7678882720884265
+The AUROC of Cardiomegaly is 0.8680971881617467
+The AUROC of Effusion is 0.8677616076848843
+The AUROC of Infiltration is 0.6862071703228305
+The AUROC of Mass is 0.7873192757522949
+The AUROC of Nodule is 0.7316370915903481
+The AUROC of Pneumonia is 0.7164849896184544
+The AUROC of Pneumothorax is 0.8409757230202355
+The AUROC of Consolidation is 0.742912654285605
+The AUROC of Edema is 0.8731170959412036
+The AUROC of Emphysema is 0.818350012955046
+The AUROC of Fibrosis is 0.7198274452186829
+The AUROC of Pleural_Thickening is 0.7519314416919235
+The AUROC of Hernia is 0.768632516908379
+Started epoch 2
+Trained 1 batches 	Training Loss: 0.148402
+Trained 51 batches 	Training Loss: 0.191139
+Trained 101 batches 	Training Loss: 0.151101
+Trained 151 batches 	Training Loss: 0.140040
+Trained 201 batches 	Training Loss: 0.172581
+Trained 251 batches 	Training Loss: 0.151264
+Trained 301 batches 	Training Loss: 0.154104
+Trained 351 batches 	Training Loss: 0.132214
+Trained 401 batches 	Training Loss: 0.132422
+Trained 451 batches 	Training Loss: 0.163588
+Trained 501 batches 	Training Loss: 0.128127
+Trained 551 batches 	Training Loss: 0.196364
+Trained 601 batches 	Training Loss: 0.117462
+Trained 651 batches 	Training Loss: 0.153084
+Trained 701 batches 	Training Loss: 0.120385
+Trained 751 batches 	Training Loss: 0.188728
+Trained 801 batches 	Training Loss: 0.134071
+Trained 851 batches 	Training Loss: 0.116676
+Trained 901 batches 	Training Loss: 0.161763
+Trained 951 batches 	Training Loss: 0.147454
+Trained 1001 batches 	Training Loss: 0.107750
+Trained 1051 batches 	Training Loss: 0.149875
+Trained 1101 batches 	Training Loss: 0.147375
+Trained 1151 batches 	Training Loss: 0.126273
+Trained 1201 batches 	Training Loss: 0.195921
+Epoch: 2 	Training Loss: 0.150602
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 176
+Evaluating time lapse: 1.0 min
+The average AUROC is 0.801
+The AUROC of Atelectasis is 0.7857931589854397
+The AUROC of Cardiomegaly is 0.8978524441698668
+The AUROC of Effusion is 0.8783550420982124
+The AUROC of Infiltration is 0.7029747987496197
+The AUROC of Mass is 0.7983307422572289
+The AUROC of Nodule is 0.7300873162125354
+The AUROC of Pneumonia is 0.7348122273653732
+The AUROC of Pneumothorax is 0.8530264293378683
+The AUROC of Consolidation is 0.7588116147286228
+The AUROC of Edema is 0.9003248526782758
+The AUROC of Emphysema is 0.8563738090190675
+The AUROC of Fibrosis is 0.7733998600472408
+The AUROC of Pleural_Thickening is 0.7650497304462869
+The AUROC of Hernia is 0.7833132384856524
+Started epoch 3
+Trained 1 batches 	Training Loss: 0.151524
+Trained 51 batches 	Training Loss: 0.115542
+Trained 101 batches 	Training Loss: 0.151863
+Trained 151 batches 	Training Loss: 0.183051
+Trained 201 batches 	Training Loss: 0.111341
+Trained 251 batches 	Training Loss: 0.146103
+Trained 301 batches 	Training Loss: 0.128452
+Trained 351 batches 	Training Loss: 0.148221
+Trained 401 batches 	Training Loss: 0.153789
+Trained 451 batches 	Training Loss: 0.191392
+Trained 501 batches 	Training Loss: 0.160242
+Trained 551 batches 	Training Loss: 0.136385
+Trained 601 batches 	Training Loss: 0.142613
+Trained 651 batches 	Training Loss: 0.130942
+Trained 701 batches 	Training Loss: 0.151727
+Trained 751 batches 	Training Loss: 0.177363
+Trained 801 batches 	Training Loss: 0.143223
+Trained 851 batches 	Training Loss: 0.129874
+Trained 901 batches 	Training Loss: 0.152110
+Trained 951 batches 	Training Loss: 0.177740
+Trained 1001 batches 	Training Loss: 0.156880
+Trained 1051 batches 	Training Loss: 0.160460
+Trained 1101 batches 	Training Loss: 0.137502
+Trained 1151 batches 	Training Loss: 0.138117
+Trained 1201 batches 	Training Loss: 0.146675
+Epoch: 3 	Training Loss: 0.147230
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 176
+Evaluating time lapse: 1.0 min
+The average AUROC is 0.813
+The AUROC of Atelectasis is 0.7976421750128316
+The AUROC of Cardiomegaly is 0.9033409585279815
+The AUROC of Effusion is 0.8840933892059556
+The AUROC of Infiltration is 0.702897535201527
+The AUROC of Mass is 0.8156499286240193
+The AUROC of Nodule is 0.7685784344151011
+The AUROC of Pneumonia is 0.7453908080461741
+The AUROC of Pneumothorax is 0.8648795830929171
+The AUROC of Consolidation is 0.7604692097519966
+The AUROC of Edema is 0.899975170495928
+The AUROC of Emphysema is 0.8747037269311851
+The AUROC of Fibrosis is 0.7903464769171785
+The AUROC of Pleural_Thickening is 0.7751991039567923
+The AUROC of Hernia is 0.7978871703009635
+Started epoch 4
+Trained 1 batches 	Training Loss: 0.135062
+Trained 51 batches 	Training Loss: 0.129212
+Trained 101 batches 	Training Loss: 0.122775
+Trained 151 batches 	Training Loss: 0.138332
+Trained 201 batches 	Training Loss: 0.140376
+Trained 251 batches 	Training Loss: 0.122346
+Trained 301 batches 	Training Loss: 0.121683
+Trained 351 batches 	Training Loss: 0.105858
+Trained 401 batches 	Training Loss: 0.143692
+Trained 451 batches 	Training Loss: 0.152642
+Trained 501 batches 	Training Loss: 0.115595
+Trained 551 batches 	Training Loss: 0.148232
+Trained 601 batches 	Training Loss: 0.111096
+Trained 651 batches 	Training Loss: 0.149806
+Trained 701 batches 	Training Loss: 0.130259
+Trained 751 batches 	Training Loss: 0.132415
+Trained 801 batches 	Training Loss: 0.138562
+Trained 851 batches 	Training Loss: 0.150056
+Trained 901 batches 	Training Loss: 0.143660
+Trained 951 batches 	Training Loss: 0.148224
+Trained 1001 batches 	Training Loss: 0.150337
+Trained 1051 batches 	Training Loss: 0.134018
+Trained 1101 batches 	Training Loss: 0.171470
+Trained 1151 batches 	Training Loss: 0.162308
+Trained 1201 batches 	Training Loss: 0.118343
+Epoch: 4 	Training Loss: 0.144723
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 176
+Evaluating time lapse: 1.0 min
+The average AUROC is 0.815
+The AUROC of Atelectasis is 0.8017383626985491
+The AUROC of Cardiomegaly is 0.8984713523124441
+The AUROC of Effusion is 0.8775804645103673
+The AUROC of Infiltration is 0.7072023015851062
+The AUROC of Mass is 0.8138737227804586
+The AUROC of Nodule is 0.7543908875519285
+The AUROC of Pneumonia is 0.7381665857096598
+The AUROC of Pneumothorax is 0.8729814525190562
+The AUROC of Consolidation is 0.7631017377431313
+The AUROC of Edema is 0.8997020459511355
+The AUROC of Emphysema is 0.8877691852453803
+The AUROC of Fibrosis is 0.7831708147556323
+The AUROC of Pleural_Thickening is 0.7733960872426042
+The AUROC of Hernia is 0.8340326340326342
+Started epoch 5
+Trained 1 batches 	Training Loss: 0.140690
+Trained 51 batches 	Training Loss: 0.140484
+Trained 101 batches 	Training Loss: 0.106357
+Trained 151 batches 	Training Loss: 0.137220
+Trained 201 batches 	Training Loss: 0.198274
+Trained 251 batches 	Training Loss: 0.182804
+Trained 301 batches 	Training Loss: 0.148829
+Trained 351 batches 	Training Loss: 0.140345
+Trained 401 batches 	Training Loss: 0.133181
+Trained 451 batches 	Training Loss: 0.111486
+Trained 501 batches 	Training Loss: 0.143120
+Trained 551 batches 	Training Loss: 0.158160
+Trained 601 batches 	Training Loss: 0.147165
+Trained 651 batches 	Training Loss: 0.155115
+Trained 701 batches 	Training Loss: 0.144358
+Trained 751 batches 	Training Loss: 0.145725
+Trained 801 batches 	Training Loss: 0.136603
+Trained 851 batches 	Training Loss: 0.163215
+Trained 901 batches 	Training Loss: 0.129413
+Trained 951 batches 	Training Loss: 0.145250
+Trained 1001 batches 	Training Loss: 0.162906
+Trained 1051 batches 	Training Loss: 0.139984
+Trained 1101 batches 	Training Loss: 0.141037
+Trained 1151 batches 	Training Loss: 0.146830
+Trained 1201 batches 	Training Loss: 0.139138
+Epoch: 5 	Training Loss: 0.142209
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 176
+Evaluating time lapse: 1.0 min
+The average AUROC is 0.816
+The AUROC of Atelectasis is 0.797274704707967
+The AUROC of Cardiomegaly is 0.9098679453247309
+The AUROC of Effusion is 0.8876910841835087
+The AUROC of Infiltration is 0.7015447176962019
+The AUROC of Mass is 0.8161068706333525
+The AUROC of Nodule is 0.7670565539952927
+The AUROC of Pneumonia is 0.7411673524201383
+The AUROC of Pneumothorax is 0.8554179383420895
+The AUROC of Consolidation is 0.764484775242972
+The AUROC of Edema is 0.8986389293517845
+The AUROC of Emphysema is 0.8644217632995324
+The AUROC of Fibrosis is 0.7893598367754028
+The AUROC of Pleural_Thickening is 0.7723848536461957
+The AUROC of Hernia is 0.8557373660821936
+Started epoch 6
+Trained 1 batches 	Training Loss: 0.141892
+Trained 51 batches 	Training Loss: 0.149680
+Trained 101 batches 	Training Loss: 0.124834
+Trained 151 batches 	Training Loss: 0.145480
+Trained 201 batches 	Training Loss: 0.160739
+Trained 251 batches 	Training Loss: 0.141135
+Trained 301 batches 	Training Loss: 0.129583
+Trained 351 batches 	Training Loss: 0.151848
+Trained 401 batches 	Training Loss: 0.119441
+Trained 451 batches 	Training Loss: 0.151299
+Trained 501 batches 	Training Loss: 0.141092
+Trained 551 batches 	Training Loss: 0.102427
+Trained 601 batches 	Training Loss: 0.155139
+Trained 651 batches 	Training Loss: 0.195356
+Trained 701 batches 	Training Loss: 0.121312
+Trained 751 batches 	Training Loss: 0.161486
+Trained 801 batches 	Training Loss: 0.126646
+Trained 851 batches 	Training Loss: 0.130133
+Trained 901 batches 	Training Loss: 0.152633
+Trained 951 batches 	Training Loss: 0.137552
+Trained 1001 batches 	Training Loss: 0.162648
+Trained 1051 batches 	Training Loss: 0.136889
+Trained 1101 batches 	Training Loss: 0.111982
+Trained 1151 batches 	Training Loss: 0.144470
+Trained 1201 batches 	Training Loss: 0.131842
+Epoch: 6 	Training Loss: 0.139659
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 176
+Evaluating time lapse: 1.0 min
+The average AUROC is 0.815
+The AUROC of Atelectasis is 0.7928571101398902
+The AUROC of Cardiomegaly is 0.9002098375726386
+The AUROC of Effusion is 0.8868019197449196
+The AUROC of Infiltration is 0.709061218844228
+The AUROC of Mass is 0.8165004979103655
+The AUROC of Nodule is 0.7663191568445737
+The AUROC of Pneumonia is 0.7180755566984779
+The AUROC of Pneumothorax is 0.8650069878880825
+The AUROC of Consolidation is 0.7555831008699861
+The AUROC of Edema is 0.9077774283254981
+The AUROC of Emphysema is 0.8635226389428682
+The AUROC of Fibrosis is 0.8019657732389949
+The AUROC of Pleural_Thickening is 0.7647746633262902
+The AUROC of Hernia is 0.8672476948339017
+Started epoch 7
+Trained 1 batches 	Training Loss: 0.125525
+Trained 51 batches 	Training Loss: 0.140096
+Trained 101 batches 	Training Loss: 0.146266
+Trained 151 batches 	Training Loss: 0.134030
+Trained 201 batches 	Training Loss: 0.110964
+Trained 251 batches 	Training Loss: 0.126551
+Trained 301 batches 	Training Loss: 0.128741
+Trained 351 batches 	Training Loss: 0.138434
+Trained 401 batches 	Training Loss: 0.103754
+Trained 451 batches 	Training Loss: 0.148405
+Trained 501 batches 	Training Loss: 0.149684
+Trained 551 batches 	Training Loss: 0.148268
+Trained 601 batches 	Training Loss: 0.130056
+Trained 651 batches 	Training Loss: 0.117076
+Trained 701 batches 	Training Loss: 0.107542
+Trained 751 batches 	Training Loss: 0.152953
+Trained 801 batches 	Training Loss: 0.139222
+Trained 851 batches 	Training Loss: 0.134194
+Trained 901 batches 	Training Loss: 0.131237
+Trained 951 batches 	Training Loss: 0.123327
+Trained 1001 batches 	Training Loss: 0.138241
+Trained 1051 batches 	Training Loss: 0.134124
+Trained 1101 batches 	Training Loss: 0.183735
+Trained 1151 batches 	Training Loss: 0.125560
+Trained 1201 batches 	Training Loss: 0.134560
+Epoch: 7 	Training Loss: 0.137197
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 176
+Evaluating time lapse: 1.0 min
+The average AUROC is 0.825
+The AUROC of Atelectasis is 0.8012907783361563
+The AUROC of Cardiomegaly is 0.903203135998321
+The AUROC of Effusion is 0.8865046951085623
+The AUROC of Infiltration is 0.7131017732164098
+The AUROC of Mass is 0.8309061306537987
+The AUROC of Nodule is 0.776268524998805
+The AUROC of Pneumonia is 0.733629421681239
+The AUROC of Pneumothorax is 0.8745544390962373
+The AUROC of Consolidation is 0.7655762384245991
+The AUROC of Edema is 0.9137617526319275
+The AUROC of Emphysema is 0.8949618120576146
+The AUROC of Fibrosis is 0.8112498424861188
+The AUROC of Pleural_Thickening is 0.7813648299662946
+The AUROC of Hernia is 0.8684074546143512
+Started epoch 8
+Trained 1 batches 	Training Loss: 0.107441
+Trained 51 batches 	Training Loss: 0.130185
+Trained 101 batches 	Training Loss: 0.143371
+Trained 151 batches 	Training Loss: 0.131411
+Trained 201 batches 	Training Loss: 0.158187
+Trained 251 batches 	Training Loss: 0.117526
+Trained 301 batches 	Training Loss: 0.125198
+Trained 351 batches 	Training Loss: 0.120864
+Trained 401 batches 	Training Loss: 0.109070
+Trained 451 batches 	Training Loss: 0.111323
+Trained 501 batches 	Training Loss: 0.171122
+Trained 551 batches 	Training Loss: 0.153089
+Trained 601 batches 	Training Loss: 0.149483
+Trained 651 batches 	Training Loss: 0.163827
+Trained 701 batches 	Training Loss: 0.132139
+Trained 751 batches 	Training Loss: 0.123095
+Trained 801 batches 	Training Loss: 0.138850
+Trained 851 batches 	Training Loss: 0.102340
+Trained 901 batches 	Training Loss: 0.164820
+Trained 951 batches 	Training Loss: 0.095876
+Trained 1001 batches 	Training Loss: 0.161408
+Trained 1051 batches 	Training Loss: 0.130450
+Trained 1101 batches 	Training Loss: 0.179161
+Trained 1151 batches 	Training Loss: 0.143660
+Trained 1201 batches 	Training Loss: 0.160040
+Epoch: 8 	Training Loss: 0.134369
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 176
+Evaluating time lapse: 1.0 min
+The average AUROC is 0.821
+The AUROC of Atelectasis is 0.7914090074991771
+The AUROC of Cardiomegaly is 0.8982448504071306
+The AUROC of Effusion is 0.8802366283049818
+The AUROC of Infiltration is 0.6998181692439625
+The AUROC of Mass is 0.8257871552367988
+The AUROC of Nodule is 0.7725458679434138
+The AUROC of Pneumonia is 0.735358687163076
+The AUROC of Pneumothorax is 0.871821127779971
+The AUROC of Consolidation is 0.7641479223190288
+The AUROC of Edema is 0.9025040554856651
+The AUROC of Emphysema is 0.8690511680151691
+The AUROC of Fibrosis is 0.8005206671617742
+The AUROC of Pleural_Thickening is 0.7824091198744922
+The AUROC of Hernia is 0.8978286081734357
+Started epoch 9
+Trained 1 batches 	Training Loss: 0.165318
+Trained 51 batches 	Training Loss: 0.118866
+Trained 101 batches 	Training Loss: 0.129466
+Trained 151 batches 	Training Loss: 0.145470
+Trained 201 batches 	Training Loss: 0.142458
+Trained 251 batches 	Training Loss: 0.106831
+Trained 301 batches 	Training Loss: 0.145141
+Trained 351 batches 	Training Loss: 0.129211
+Trained 401 batches 	Training Loss: 0.115294
+Trained 451 batches 	Training Loss: 0.115548
+Trained 501 batches 	Training Loss: 0.128660
+Trained 551 batches 	Training Loss: 0.127223
+Trained 601 batches 	Training Loss: 0.102915
+Trained 651 batches 	Training Loss: 0.101595
+Trained 701 batches 	Training Loss: 0.165873
+Trained 751 batches 	Training Loss: 0.153558
+Trained 801 batches 	Training Loss: 0.146253
+Trained 851 batches 	Training Loss: 0.178422
+Trained 901 batches 	Training Loss: 0.114857
+Trained 951 batches 	Training Loss: 0.135634
+Trained 1001 batches 	Training Loss: 0.157083
+Trained 1051 batches 	Training Loss: 0.102659
+Trained 1101 batches 	Training Loss: 0.128437
+Trained 1151 batches 	Training Loss: 0.134674
+Trained 1201 batches 	Training Loss: 0.129488
+Epoch: 9 	Training Loss: 0.131176
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 176
+Evaluating time lapse: 1.0 min
+The average AUROC is 0.818
+The AUROC of Atelectasis is 0.8004346295649565
+The AUROC of Cardiomegaly is 0.9013205467526905
+The AUROC of Effusion is 0.8820897246409702
+The AUROC of Infiltration is 0.7055996569752967
+The AUROC of Mass is 0.8329845091610211
+The AUROC of Nodule is 0.7609091045290425
+The AUROC of Pneumonia is 0.7283267377183458
+The AUROC of Pneumothorax is 0.8523625167026025
+The AUROC of Consolidation is 0.7563229831416307
+The AUROC of Edema is 0.8892659984771237
+The AUROC of Emphysema is 0.8807863418483317
+The AUROC of Fibrosis is 0.7881978535214741
+The AUROC of Pleural_Thickening is 0.7780039440764416
+The AUROC of Hernia is 0.8967193725814415
+Started epoch 10
+Trained 1 batches 	Training Loss: 0.112445
+Trained 51 batches 	Training Loss: 0.112446
+Trained 101 batches 	Training Loss: 0.129290
+Trained 151 batches 	Training Loss: 0.113431
+Trained 201 batches 	Training Loss: 0.142524
+Trained 251 batches 	Training Loss: 0.114010
+Trained 301 batches 	Training Loss: 0.168174
+Trained 351 batches 	Training Loss: 0.137957
+Trained 401 batches 	Training Loss: 0.132559
+Trained 451 batches 	Training Loss: 0.166304
+Trained 501 batches 	Training Loss: 0.131887
+Trained 551 batches 	Training Loss: 0.101570
+Trained 601 batches 	Training Loss: 0.115870
+Trained 651 batches 	Training Loss: 0.130192
+Trained 701 batches 	Training Loss: 0.142230
+Trained 751 batches 	Training Loss: 0.115714
+Trained 801 batches 	Training Loss: 0.147521
+Trained 851 batches 	Training Loss: 0.110824
+Trained 901 batches 	Training Loss: 0.146395
+Trained 951 batches 	Training Loss: 0.118961
+Trained 1001 batches 	Training Loss: 0.117807
+Trained 1051 batches 	Training Loss: 0.124057
+Trained 1101 batches 	Training Loss: 0.116440
+Trained 1151 batches 	Training Loss: 0.122732
+Trained 1201 batches 	Training Loss: 0.128792
+Epoch: 10 	Training Loss: 0.127316
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 176
+Evaluating time lapse: 1.0 min
+The average AUROC is 0.814
+The AUROC of Atelectasis is 0.7889572753546084
+The AUROC of Cardiomegaly is 0.8938186410698576
+The AUROC of Effusion is 0.88314060230982
+The AUROC of Infiltration is 0.6992685828100362
+The AUROC of Mass is 0.7953186162859065
+The AUROC of Nodule is 0.7655765516837925
+The AUROC of Pneumonia is 0.714561963064556
+The AUROC of Pneumothorax is 0.8636706215139645
+The AUROC of Consolidation is 0.7478111028315947
+The AUROC of Edema is 0.8979919138581739
+The AUROC of Emphysema is 0.8925388136122202
+The AUROC of Fibrosis is 0.7946893021933976
+The AUROC of Pleural_Thickening is 0.7733205644280787
+The AUROC of Hernia is 0.8888261164123233
+Started epoch 11
+Trained 1 batches 	Training Loss: 0.115759
+Trained 51 batches 	Training Loss: 0.149689
+Trained 101 batches 	Training Loss: 0.120344
+Trained 151 batches 	Training Loss: 0.104718
+Trained 201 batches 	Training Loss: 0.109830
+Trained 251 batches 	Training Loss: 0.098420
+Trained 301 batches 	Training Loss: 0.138456
+Trained 351 batches 	Training Loss: 0.138830
+Trained 401 batches 	Training Loss: 0.129874
+Trained 451 batches 	Training Loss: 0.124944
+Trained 501 batches 	Training Loss: 0.141531
+Trained 551 batches 	Training Loss: 0.132856
+Trained 601 batches 	Training Loss: 0.154548
+Trained 651 batches 	Training Loss: 0.134097
+Trained 701 batches 	Training Loss: 0.133859
+Trained 751 batches 	Training Loss: 0.127065
+Trained 801 batches 	Training Loss: 0.109587
+Trained 851 batches 	Training Loss: 0.101864
+Trained 901 batches 	Training Loss: 0.124855
+Trained 951 batches 	Training Loss: 0.153030
+Trained 1001 batches 	Training Loss: 0.154693
+Trained 1051 batches 	Training Loss: 0.137398
+Trained 1101 batches 	Training Loss: 0.116185
+Trained 1151 batches 	Training Loss: 0.128870
+Trained 1201 batches 	Training Loss: 0.113067
+Epoch: 11 	Training Loss: 0.122689
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 176
+Evaluating time lapse: 1.0 min
+The average AUROC is 0.813
+The AUROC of Atelectasis is 0.8004914094309715
+The AUROC of Cardiomegaly is 0.8925146847503619
+The AUROC of Effusion is 0.8797643681024158
+The AUROC of Infiltration is 0.6870131123959169
+The AUROC of Mass is 0.79997146285006
+The AUROC of Nodule is 0.7553202676489116
+The AUROC of Pneumonia is 0.748172514619883
+The AUROC of Pneumothorax is 0.8616653601941551
+The AUROC of Consolidation is 0.7546134421134421
+The AUROC of Edema is 0.898980335032775
+The AUROC of Emphysema is 0.8754834219576253
+The AUROC of Fibrosis is 0.7872659075614706
+The AUROC of Pleural_Thickening is 0.7783067591953852
+The AUROC of Hernia is 0.8613225854605165
+Started epoch 12
+Trained 1 batches 	Training Loss: 0.093160
+Trained 51 batches 	Training Loss: 0.102080
+Trained 101 batches 	Training Loss: 0.104671
+Trained 151 batches 	Training Loss: 0.147089
+Trained 201 batches 	Training Loss: 0.121353
+Trained 251 batches 	Training Loss: 0.109222
+Trained 301 batches 	Training Loss: 0.111802
+Trained 351 batches 	Training Loss: 0.107937
+Trained 401 batches 	Training Loss: 0.108345
+Trained 451 batches 	Training Loss: 0.119216
+Trained 501 batches 	Training Loss: 0.091977
+Trained 551 batches 	Training Loss: 0.102944
+Trained 601 batches 	Training Loss: 0.133600
+Trained 651 batches 	Training Loss: 0.102164
+Trained 701 batches 	Training Loss: 0.114389
+Trained 751 batches 	Training Loss: 0.117104
+Trained 801 batches 	Training Loss: 0.107141
+Trained 851 batches 	Training Loss: 0.108669
+Trained 901 batches 	Training Loss: 0.106426
+Trained 951 batches 	Training Loss: 0.125431
+Trained 1001 batches 	Training Loss: 0.113252
+Trained 1051 batches 	Training Loss: 0.111009
+Trained 1101 batches 	Training Loss: 0.129631
+Trained 1151 batches 	Training Loss: 0.104104
+Trained 1201 batches 	Training Loss: 0.135835
+Epoch: 12 	Training Loss: 0.117066
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 176
+Evaluating time lapse: 1.0 min
+The average AUROC is 0.812
+The AUROC of Atelectasis is 0.7971304648352437
+The AUROC of Cardiomegaly is 0.8912768684652076
+The AUROC of Effusion is 0.8774897176292146
+The AUROC of Infiltration is 0.7017628150156298
+The AUROC of Mass is 0.8139248711524505
+The AUROC of Nodule is 0.7609887228746504
+The AUROC of Pneumonia is 0.7247872497476047
+The AUROC of Pneumothorax is 0.8556090850769839
+The AUROC of Consolidation is 0.7548435171385992
+The AUROC of Edema is 0.890484506389459
+The AUROC of Emphysema is 0.8551773074703505
+The AUROC of Fibrosis is 0.7875082778571678
+The AUROC of Pleural_Thickening is 0.7723081243969334
+The AUROC of Hernia is 0.884108994453822
+Started epoch 13
+Trained 1 batches 	Training Loss: 0.125489
+Trained 51 batches 	Training Loss: 0.085233
+Trained 101 batches 	Training Loss: 0.104111
+Trained 151 batches 	Training Loss: 0.110730
+Trained 201 batches 	Training Loss: 0.123788
+Trained 251 batches 	Training Loss: 0.098350
+Trained 301 batches 	Training Loss: 0.143037
+Trained 351 batches 	Training Loss: 0.098205
+Trained 401 batches 	Training Loss: 0.102336
+Trained 451 batches 	Training Loss: 0.112550
+Trained 501 batches 	Training Loss: 0.110462
+Trained 551 batches 	Training Loss: 0.127881
+Trained 601 batches 	Training Loss: 0.101370
+Trained 651 batches 	Training Loss: 0.124715
+Trained 701 batches 	Training Loss: 0.106237
+Trained 751 batches 	Training Loss: 0.087475
+Trained 801 batches 	Training Loss: 0.136047
+Trained 851 batches 	Training Loss: 0.122881
+Trained 901 batches 	Training Loss: 0.120842
+Trained 951 batches 	Training Loss: 0.111907
+Trained 1001 batches 	Training Loss: 0.116614
+Trained 1051 batches 	Training Loss: 0.114131
+Trained 1101 batches 	Training Loss: 0.119969
+Trained 1151 batches 	Training Loss: 0.084998
+Trained 1201 batches 	Training Loss: 0.088960
+Epoch: 13 	Training Loss: 0.110774
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 176
+Evaluating time lapse: 1.0 min
+The average AUROC is 0.798
+The AUROC of Atelectasis is 0.7885942558307175
+The AUROC of Cardiomegaly is 0.8700614363324575
+The AUROC of Effusion is 0.8699632620902044
+The AUROC of Infiltration is 0.6898680461423553
+The AUROC of Mass is 0.813610035542325
+The AUROC of Nodule is 0.7481980641897942
+The AUROC of Pneumonia is 0.7072151146732194
+The AUROC of Pneumothorax is 0.8364946488404345
+The AUROC of Consolidation is 0.7380591858050874
+The AUROC of Edema is 0.8782270078792294
+The AUROC of Emphysema is 0.836443280453191
+The AUROC of Fibrosis is 0.7622679854041605
+The AUROC of Pleural_Thickening is 0.7486161590351225
+The AUROC of Hernia is 0.8886079437803576
+Started epoch 14
+Trained 1 batches 	Training Loss: 0.102369
+Trained 51 batches 	Training Loss: 0.107927
+Trained 101 batches 	Training Loss: 0.085997
+Trained 151 batches 	Training Loss: 0.089283
+Trained 201 batches 	Training Loss: 0.079847
+Trained 251 batches 	Training Loss: 0.068256
+Trained 301 batches 	Training Loss: 0.114361
+Trained 351 batches 	Training Loss: 0.105107
+Trained 401 batches 	Training Loss: 0.111762
+Trained 451 batches 	Training Loss: 0.099447
+Trained 501 batches 	Training Loss: 0.103423
+Trained 551 batches 	Training Loss: 0.117799
+Trained 601 batches 	Training Loss: 0.132695
+Trained 651 batches 	Training Loss: 0.082717
+Trained 701 batches 	Training Loss: 0.137011
+Trained 751 batches 	Training Loss: 0.105884
+Trained 801 batches 	Training Loss: 0.106617
+Trained 851 batches 	Training Loss: 0.096454
+Trained 901 batches 	Training Loss: 0.091927
+Trained 951 batches 	Training Loss: 0.094995
+Trained 1001 batches 	Training Loss: 0.098503
+Trained 1051 batches 	Training Loss: 0.078640
+Trained 1101 batches 	Training Loss: 0.096472
+Trained 1151 batches 	Training Loss: 0.110290
+Trained 1201 batches 	Training Loss: 0.108995
+Epoch: 14 	Training Loss: 0.103172
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 176
+Evaluating time lapse: 1.0 min
+The average AUROC is 0.794
+The AUROC of Atelectasis is 0.7686308611275963
+The AUROC of Cardiomegaly is 0.8807742744087211
+The AUROC of Effusion is 0.8596694510717837
+The AUROC of Infiltration is 0.6809331378461367
+The AUROC of Mass is 0.8002104863101135
+The AUROC of Nodule is 0.7566772753118206
+The AUROC of Pneumonia is 0.7034526972969883
+The AUROC of Pneumothorax is 0.8389851713788252
+The AUROC of Consolidation is 0.739304297705937
+The AUROC of Edema is 0.8804372475667087
+The AUROC of Emphysema is 0.8104102627518873
+The AUROC of Fibrosis is 0.7752433757034504
+The AUROC of Pleural_Thickening is 0.746161546919574
+The AUROC of Hernia is 0.8793459414149069
+Started epoch 15
+Trained 1 batches 	Training Loss: 0.116303
+Trained 51 batches 	Training Loss: 0.079299
+Trained 101 batches 	Training Loss: 0.096160
+Trained 151 batches 	Training Loss: 0.080449
+Trained 201 batches 	Training Loss: 0.087986
+Trained 251 batches 	Training Loss: 0.108953
+Trained 301 batches 	Training Loss: 0.079926
+Trained 351 batches 	Training Loss: 0.103548
+Trained 401 batches 	Training Loss: 0.095854
+Trained 451 batches 	Training Loss: 0.072705
+Trained 501 batches 	Training Loss: 0.078937
+Trained 551 batches 	Training Loss: 0.095666
+Trained 601 batches 	Training Loss: 0.105726
+Trained 651 batches 	Training Loss: 0.078945
+Trained 701 batches 	Training Loss: 0.088701
+Trained 751 batches 	Training Loss: 0.103849
+Trained 801 batches 	Training Loss: 0.088569
+Trained 851 batches 	Training Loss: 0.118247
+Trained 901 batches 	Training Loss: 0.081977
+Trained 951 batches 	Training Loss: 0.118814
+Trained 1001 batches 	Training Loss: 0.103390
+Trained 1051 batches 	Training Loss: 0.084756
+Trained 1101 batches 	Training Loss: 0.094569
+Trained 1151 batches 	Training Loss: 0.090746
+Trained 1201 batches 	Training Loss: 0.091070
+Epoch: 15 	Training Loss: 0.094783
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 176
+Evaluating time lapse: 1.0 min
+The average AUROC is 0.791
+The AUROC of Atelectasis is 0.775268358326413
+The AUROC of Cardiomegaly is 0.8644410114030593
+The AUROC of Effusion is 0.8655317955445827
+The AUROC of Infiltration is 0.6788811032117071
+The AUROC of Mass is 0.7978310110758572
+The AUROC of Nodule is 0.7316851765051684
+The AUROC of Pneumonia is 0.7124127331085586
+The AUROC of Pneumothorax is 0.8350156934869973
+The AUROC of Consolidation is 0.7307552988905448
+The AUROC of Edema is 0.8686477852082369
+The AUROC of Emphysema is 0.8165876482469469
+The AUROC of Fibrosis is 0.7613151269628912
+The AUROC of Pleural_Thickening is 0.7365356454413777
+The AUROC of Hernia is 0.8946226187605498
+Training time lapse: 228.0 min
+Evaluating test data...	 test_loader: 351
+Evaluating time lapse: 2.0 min
+The average AUROC is 0.793
+The AUROC of Atelectasis is 0.7849250734331483
+The AUROC of Cardiomegaly is 0.8572297618473094
+The AUROC of Effusion is 0.8531544214372789
+The AUROC of Infiltration is 0.6792954783694334
+The AUROC of Mass is 0.809904943674873
+The AUROC of Nodule is 0.7211459440679766
+The AUROC of Pneumonia is 0.696228619256365
+The AUROC of Pneumothorax is 0.8310959924580894
+The AUROC of Consolidation is 0.7740152552772083
+The AUROC of Edema is 0.8564730606584006
+The AUROC of Emphysema is 0.8551104404098958
+The AUROC of Fibrosis is 0.7470988796694626
+The AUROC of Pleural_Thickening is 0.7341260288640757
+The AUROC of Hernia is 0.9055549460818971
