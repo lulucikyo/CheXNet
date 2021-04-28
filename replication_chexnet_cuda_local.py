@@ -28,7 +28,7 @@ np.random.seed(RANDOM_SEED)
 torch.manual_seed(RANDOM_SEED)
 os.environ["PYTHONHASHSEED"] = str(RANDOM_SEED)
 TIME_STAMP = time.strftime("%m-%d-%Y-%H-%M-%Z", time.localtime())
-DATA_PATH = './images_converted/'
+DATA_PATH = './images_converted256/'
 MODEL_PATH = './saved_model/' + time.strftime("%m-%d-%Y", time.localtime()) + "/b" + str(BATCH_SIZE) + "e" + str(N_EPOCH) + "/"
 LOG_PATH = './log/'
 
