@@ -248,6 +248,8 @@ try:
         print(MODEL_PATH + "\nalready exists, go on.\n")
 except FileExistsError:
     print(MODEL_PATH + "\nalready exists, go on.\n")
+gc.collect()
+torch.cuda.empty_cache()
 train_model(model, train_loader, val_loader, N_EPOCH, logfile)
 
 """No need to use GPU for calculating AUC"""
