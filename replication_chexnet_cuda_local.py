@@ -20,10 +20,13 @@ N_LABEL = 14
 LABELS = ["Atelectasis","Cardiomegaly", "Effusion", "Infiltration", "Mass", 
           "Nodule", "Pneumonia", "Pneumothorax", "Consolidation", "Edema", 
           "Emphysema", "Fibrosis", "Pleural_Thickening", "Hernia"]
-DATA_PATH = './images_converted/'
+
+DATA_PATH = './images_converted256/'
+#DATA_PATH = '/content/drive/My Drive/DL4H Project/replication/images_converted/'
+
 BATCH_SIZE = 16
-N_EPOCH = 10
-PRINT_INTERVAL = 50
+N_EPOCH = 15
+PRINT_INTERVAL = 500
 RANDOM_SEED = 10086
 random.seed(RANDOM_SEED)
 np.random.seed(RANDOM_SEED)
@@ -31,17 +34,37 @@ torch.manual_seed(RANDOM_SEED)
 os.environ["PYTHONHASHSEED"] = str(RANDOM_SEED)
 
 
-# assue we will take 256 * 256 as input
+# assume we will take 256 * 256 as input
 # so that we can do crop operations at a later point of time
+def collate_fn_train(data):
+    image_path, label = zip(*data)
+    image_tensors = torch.Tensor()
+    trans = transforms.Compose([
+#                transforms.Resize((224, 224)),
+                transforms.RandomCrop(224),
+                transforms.RandomHorizontalFlip(),
+#                transforms.RandomCrop(224, padding=(14, 14)),
+                transforms.ToTensor(),
+                transforms.Normalize(mean = [0.485, 0.456, 0.406],
+                                     std = [0.229, 0.224, 0.225])
+                ])
+    for img in image_path:
+        img_pil = Image.open(img).convert("RGB")
+        img_tensor = trans(img_pil).unsqueeze(0)
+        image_tensors = torch.cat((image_tensors, img_tensor))
+    label_tensors = torch.FloatTensor(label)
+
+    return image_tensors.cuda(), label_tensors.cuda()
+
 def collate_fn(data):
     image_path, label = zip(*data)
     image_tensors = torch.Tensor()
     trans = transforms.Compose([
-                transforms.Resize((224, 224)),
+#                transforms.Resize((224, 224)),
+                transforms.CenterCrop(224),
                 transforms.ToTensor(),
                 transforms.Normalize(mean = [0.485, 0.456, 0.406],
-                                     std = [0.229, 0.224, 0.225]),
-                transforms.RandomHorizontalFlip()
+                                     std = [0.229, 0.224, 0.225])
                 ])
     for img in image_path:
         img_pil = Image.open(img).convert("RGB")
@@ -52,15 +75,16 @@ def collate_fn(data):
     return image_tensors.cuda(), label_tensors.cuda()
 
 class XrayDataSet(Dataset):
-    def __init__(self, data_path, image_list):
+    def __init__(self, data_path, image_list, train_sampling=False):
         self.image_path = []
         self.y=[]
         f = open(image_list, "r")
-        for line in f:
-            l = line.strip("\n").split(" ")
-            self.image_path.append(data_path+l[0])
-            label = [int(x) for x in l[1:]]
-            self.y.append(label)
+        for idx, line in enumerate(f):
+            if (not train_sampling) or idx % 10 == 0:
+                l = line.strip("\n").split(" ")
+                self.image_path.append(data_path+l[0])
+                label = [int(x) for x in l[1:]]
+                self.y.append(label)
         f.close()
     def __len__(self):
         return(len(self.image_path))
@@ -84,14 +108,65 @@ class DenseNet121(nn.Module):
         x = self.densenet121(x)
         return x
 
+class ResNet18(nn.Module):
+    """
+    The last layer of WideResNet50_2 was replaced by a Linear with 14 output features, followed by a sigmoid function
+    """
+    def __init__(self, out_feature):
+        super(ResNet18, self).__init__()
+        self.resnet18 = torchvision.models.resnet18(pretrained=True)
+        in_features = self.resnet18.fc.in_features
+        self.resnet18.fc = nn.Sequential(
+            nn.Linear(in_features, out_feature),
+            nn.Sigmoid()
+        )
+
+    def forward(self, x):
+        x = self.resnet18(x)
+        return x
+    
+class MobileNet_V2(nn.Module):
+    """
+    The last layer of WideResNet50_2 was replaced by a Linear with 14 output features, followed by a sigmoid function
+    """
+    def __init__(self, out_feature):
+        super(MobileNet_V2, self).__init__()
+        self.mobilenet_v2 = torchvision.models.mobilenet_v2(pretrained=True)
+        in_features = self.mobilenet_v2.classifier[1].in_features
+        self.mobilenet_v2.classifier = nn.Sequential(
+            nn.Dropout(0.2),
+            nn.Linear(in_features, out_feature),
+            nn.Sigmoid()
+        )
+
+    def forward(self, x):
+        x = self.mobilenet_v2(x)
+        return x
+
+class MobileNet_V3_large(nn.Module):
+    """
+    The last layer of WideResNet50_2 was replaced by a Linear with 14 output features, followed by a sigmoid function
+    """
+    def __init__(self, out_feature):
+        super(MobileNet_V3_large, self).__init__()
+        self.mobilenet_v3_large = torchvision.models.mobilenet_v3_large(pretrained=True)
+        in_features = self.mobilenet_v3_large.classifier[3].in_features
+        self.mobilenet_v3_large.classifier[3] = nn.Linear(in_features, out_feature)
+        self.sigmoid = nn.Sigmoid()
+    
+    def forward(self, x):
+        x = self.mobilenet_v3_large(x)
+        x = self.sigmoid(x)
+        return x
+
 def train_model(model, train_loader, val_loader, n_epochs, logfile):
     t1 = time.time()
     criterion = nn.BCELoss()
     """using Adam with standard parameters (B1 = 0.9 and B2 = 0.999) """
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+    optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
     """factor (float) – Factor by which the learning rate will be reduced. new_lr = lr * factor. Default: 0.1."""
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1,
-                                               patience=1, verbose=False, threshold=0.0001,
+                                               patience=1, verbose=True, threshold=1e-4,
                                                threshold_mode='rel', cooldown=0, min_lr=0, eps=1e-08)
     
     # prep model for training
@@ -100,7 +175,7 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
     train_loss_arr = []
 
     log = open(logfile, "a")
-    log.write("Started training, total epoch : {}\n".format(n_epochs))
+    log.write("\n\n\nStarted training, total epoch : {}\n".format(n_epochs))
     log.write("Training data size: {}\n".format(len(train_loader)))
     print("Started training, total epoch : {}\n".format(n_epochs))
     print("Training data size: {}\n".format(len(train_loader)))
@@ -109,8 +184,8 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
         torch.cuda.empty_cache()
         train_loss = 0
         batch = 0
-        log.write("Started epoch {}\n".format(epoch+1))
-        print("Started epoch {}\n".format(epoch+1))
+        log.write("\nStarted epoch {}\n".format(epoch+1))
+        print("\nStarted epoch {}\n".format(epoch+1))
         for x, y in train_loader:
             optimizer.zero_grad()
             y_hat = model(x)
@@ -126,9 +201,9 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
         train_loss = train_loss / len(train_loader)
         
         train_loss_arr.append(np.mean(train_loss))
-        log.write('Epoch: {} \tTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
-        print('Epoch: {} \tTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
-        torch.save(model.state_dict(), str(epoch)+"trained.pth")
+        log.write('Epoch: {} \nTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
+        print('Epoch: {} \nTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
+        torch.save(model.state_dict(), str(epoch+1)+"trained.pth")
 
         if (epoch+1)%1==0:
             log.write('AUROCs on validation dataset:\n')
@@ -142,6 +217,7 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
             val_loss = 0           
             with torch.no_grad():
                 val_loss = eval_model(model, val_loader, logfile)
+
             log = open(logfile, "a")
             log.write('Epoch: {} \tLearning Rate for first group: {:.10f}\n'.format(epoch+1, optimizer.param_groups[0]['lr']))
             model.train()
@@ -155,7 +231,9 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
 def eval_model(model, test_loader, logfile):
     # initialize the y_test and y_pred tensor
     log = open(logfile, "a")
-
+    
+    criterion = nn.BCELoss()
+    test_loss = 0
     y_test = torch.FloatTensor()
     y_test = y_test.cuda()
     y_pred = torch.FloatTensor()
@@ -173,17 +251,21 @@ def eval_model(model, test_loader, logfile):
             x_in = torch.autograd.Variable(x.view(-1, channel, height, width).cuda())
         y_hat = model(x_in)
         y_pred = torch.cat((y_pred, y_hat), 0)
-        loss = criterion(y_hat, y)
-        val_loss = val_loss + loss.item()
+        loss = criterion(y_pred, y_test)
+        test_loss += loss.item()
         if (i % PRINT_INTERVAL == 0):
             log.write("batch: {}\n".format(i))
             print("batch: {}".format(i))
+        
+    test_loss = test_loss / len(test_loader)
+    log.write('Testing Loss: {:.6f}\n'.format(test_loss))
+    print('Testing Loss: {:.6f}\n'.format(test_loss))
     t2 = time.time()
-    val_loss = val_loss / len(test_loader)    
     log.write("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
     log.write('The total val loss is {val_loss:.7f}\n'.format(val_loss=val_loss))
     print("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
-
+    
+    
     """Compute AUROC for each class"""
     AUROCs = []
     y_test_np = y_test.cpu().detach().numpy()
@@ -197,10 +279,10 @@ def eval_model(model, test_loader, logfile):
     print('The average AUROC is {AUROC_avg:.3f}\n'.format(AUROC_avg=AUROC_avg))
     for i in range(N_LABEL):
         log.write('The AUROC of {} is {}\n'.format(LABELS[i], AUROCs[i]))
-        print('The AUROC of {} is {}\n'.format(LABELS[i], AUROCs[i]))
 
     log.close()
-    return val_loss
+    return test_loss
+
 
 
 """Now, let's run"""
@@ -214,21 +296,38 @@ print(torch.cuda.get_device_name(0))
 cudnn.benchmark = True
 
 # initialize and load the model
+
+#model = MobileNet_V3_large(N_LABEL).cuda()
+
+# Small sample for debug purpose. Commented out for full training
+
+# train_dataset = XrayDataSet(DATA_PATH, "train_val_sample1k.txt")
+# test_dataset = XrayDataSet(DATA_PATH, "test_sample1k.txt")
+
+
+# train_dataset = XrayDataSet(DATA_PATH, "labeled_train_val_list.txt")
+# test_dataset = XrayDataSet(DATA_PATH, "labeled_test_list.txt")
+
 model = DenseNet121(N_LABEL).cuda()
 # load trained model if needed
 # model.load_state_dict(torch.load("8trained.pth"))
 
-train_dataset = XrayDataSet(DATA_PATH, "final_train.txt")
+
+train_dataset = XrayDataSet(DATA_PATH, "final_train.txt", train_sampling=False)
 val_dataset = XrayDataSet(DATA_PATH, "final_val.txt")
 test_dataset = XrayDataSet(DATA_PATH, "final_test.txt")
 
-train_loader = DataLoader(dataset=train_dataset, batch_size=BATCH_SIZE, shuffle=True, collate_fn=collate_fn)
+train_loader = DataLoader(dataset=train_dataset, batch_size=BATCH_SIZE, shuffle=True, collate_fn=collate_fn_train)
 val_loader = DataLoader(dataset=val_dataset, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate_fn)
 test_loader = DataLoader(dataset=test_dataset, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate_fn)
 
 print(len(train_loader), len(val_loader), len(test_loader))
 
 logfile = "runlog.txt"
+
+#Trained_model_path = 'C:/Users/Zhexuan/Downloads/CheXNet-LipingXie/CheXNet-LipingXie/15trained.pth'
+#model.load_state_dict(torch.load(Trained_model_path))
+#N_EPOCH = 1
 
 train_model(model, train_loader, val_loader, N_EPOCH, logfile)
 
