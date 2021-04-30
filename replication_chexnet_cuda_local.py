@@ -22,7 +22,6 @@ LABELS = ["Atelectasis","Cardiomegaly", "Effusion", "Infiltration", "Mass",
           "Emphysema", "Fibrosis", "Pleural_Thickening", "Hernia"]
 
 DATA_PATH = './images_converted256/'
-#DATA_PATH = '/content/drive/My Drive/DL4H Project/replication/images_converted/'
 
 BATCH_SIZE = 16
 N_EPOCH = 15
@@ -39,11 +38,10 @@ os.environ["PYTHONHASHSEED"] = str(RANDOM_SEED)
 def collate_fn_train(data):
     image_path, label = zip(*data)
     image_tensors = torch.Tensor()
+    # add agumentation when needed
     trans = transforms.Compose([
-#                transforms.Resize((224, 224)),
-                transforms.RandomCrop(224),
+                transforms.Resize((224, 224)),
                 transforms.RandomHorizontalFlip(),
-#                transforms.RandomCrop(224, padding=(14, 14)),
                 transforms.ToTensor(),
                 transforms.Normalize(mean = [0.485, 0.456, 0.406],
                                      std = [0.229, 0.224, 0.225])
@@ -60,8 +58,7 @@ def collate_fn(data):
     image_path, label = zip(*data)
     image_tensors = torch.Tensor()
     trans = transforms.Compose([
-#                transforms.Resize((224, 224)),
-                transforms.CenterCrop(224),
+                transforms.Resize((224, 224)),
                 transforms.ToTensor(),
                 transforms.Normalize(mean = [0.485, 0.456, 0.406],
                                      std = [0.229, 0.224, 0.225])
@@ -212,16 +209,17 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
 
             gc.collect()
             torch.cuda.empty_cache()
+
             model.eval()
             log.write('AUROCs on validation dataset:\n')
-            val_loss = 0           
+            test_loss = 0           
             with torch.no_grad():
-                val_loss = eval_model(model, val_loader, logfile)
+                test_loss = eval_model(model, val_loader, logfile)
 
             log = open(logfile, "a")
             log.write('Epoch: {} \tLearning Rate for first group: {:.10f}\n'.format(epoch+1, optimizer.param_groups[0]['lr']))
             model.train()
-            scheduler.step(val_loss)
+            scheduler.step(test_loss)
 
     t2 = time.time()
     log.write("Training time lapse: {} min\n".format((t2 - t1) // 60))
@@ -238,8 +236,6 @@ def eval_model(model, test_loader, logfile):
     y_test = y_test.cuda()
     y_pred = torch.FloatTensor()
     y_pred = y_pred.cuda()
-    criterion = nn.BCELoss()
-    val_loss = 0    
     log.write("Evaluating test data...\t test_loader: {}\n".format(len(test_loader)))
     print("Evaluating test data...\t test_loader: {}\n".format(len(test_loader)))
     t1 = time.time()
@@ -262,7 +258,7 @@ def eval_model(model, test_loader, logfile):
     print('Testing Loss: {:.6f}\n'.format(test_loss))
     t2 = time.time()
     log.write("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
-    log.write('The total val loss is {val_loss:.7f}\n'.format(val_loss=val_loss))
+    log.write('The total val loss is {test_loss:.7f}\n'.format(test_loss=test_loss))
     print("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
     
     
