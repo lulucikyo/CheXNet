@@ -202,24 +202,23 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
         print('Epoch: {} \nTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
         torch.save(model.state_dict(), str(epoch+1)+"trained.pth")
 
-        if (epoch+1)%1==0:
-            log.write('AUROCs on validation dataset:\n')
-            print('AUROCs on validation dataset:\n')
-            log.close()
+        log.write('AUROCs on validation dataset:\n')
+        print('AUROCs on validation dataset:\n')
+        log.close()
 
-            gc.collect()
-            torch.cuda.empty_cache()
+        gc.collect()
+        torch.cuda.empty_cache()
 
-            model.eval()
-            log.write('AUROCs on validation dataset:\n')
-            test_loss = 0           
-            with torch.no_grad():
-                test_loss = eval_model(model, val_loader, logfile)
+        model.eval()
+        log.write('AUROCs on validation dataset:\n')
+        val_loss = 0       
+        with torch.no_grad():
+            val_loss = eval_model(model, val_loader, logfile)
 
-            log = open(logfile, "a")
-            log.write('Epoch: {} \tLearning Rate for first group: {:.10f}\n'.format(epoch+1, optimizer.param_groups[0]['lr']))
-            model.train()
-            scheduler.step(test_loss)
+        log = open(logfile, "a")
+        log.write('Epoch: {} \tLearning Rate for first group: {:.10f}\n'.format(epoch+1, optimizer.param_groups[0]['lr']))
+        model.train()
+        scheduler.step(val_loss)
 
     t2 = time.time()
     log.write("Training time lapse: {} min\n".format((t2 - t1) // 60))
@@ -275,6 +274,7 @@ def eval_model(model, test_loader, logfile):
     print('The average AUROC is {AUROC_avg:.3f}\n'.format(AUROC_avg=AUROC_avg))
     for i in range(N_LABEL):
         log.write('The AUROC of {} is {}\n'.format(LABELS[i], AUROCs[i]))
+        print('The AUROC of {} is {}\n'.format(LABELS[i], AUROCs[i]))
 
     log.close()
     return test_loss
