@@ -34,7 +34,7 @@ LOG_PATH = './log/'
 
 # assume we will take 256 * 256 as input
 # so that we can do crop operations at a later point of time
-def collate_fn(data):
+def collate_fn_train(data):
     image_path, label = zip(*data)
     image_tensors = torch.Tensor()
     trans = transforms.Compose([
@@ -51,6 +51,24 @@ def collate_fn(data):
     label_tensors = torch.FloatTensor(label)
 
     return image_tensors.cuda(), label_tensors.cuda()
+
+def collate_fn(data):
+    image_path, label = zip(*data)
+    image_tensors = torch.Tensor()
+    trans = transforms.Compose([
+                transforms.Resize((224, 224)),
+                transforms.ToTensor(),
+                transforms.Normalize(mean = [0.485, 0.456, 0.406],
+                                     std = [0.229, 0.224, 0.225])
+                ])
+    for img in image_path:
+        img_pil = Image.open(img).convert("RGB")
+        img_tensor = trans(img_pil).unsqueeze(0)
+        image_tensors = torch.cat((image_tensors, img_tensor))
+    label_tensors = torch.FloatTensor(label)
+
+    return image_tensors.cuda(), label_tensors.cuda()
+
 
 class XrayDataSet(Dataset):
     def __init__(self, data_path, image_list):
@@ -134,18 +152,25 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
         train_loss_arr.append(np.mean(train_loss))
         log.write('Epoch: {} \tTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
         print('Epoch: {} \tTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
-        torch.save(model.state_dict(), MODEL_PATH + str(epoch)+"trained.pth")
+        torch.save(model.state_dict(), MODEL_PATH + str(epoch) + "trained.pth")
+
+        log.write('AUROCs on validation dataset:\n')
+        print('AUROCs on validation dataset:\n')
+        log.close()
+
+        gc.collect()
+        torch.cuda.empty_cache()
 
         model.eval()
-        log.write('AUROCs on validation dataset:\n')
-        log.close()
-        val_loss = 0
+
+        test_loss = 0           
         with torch.no_grad():
-            val_loss = eval_model(model, val_loader, logfile)
+            test_loss = eval_model(model, val_loader, logfile)
+
         log = open(logfile, "a+")
         log.write('Epoch: {} \tLearning Rate for first group: {:.10f}\n'.format(epoch+1, optimizer.param_groups[0]['lr']))
         model.train()
-        scheduler.step(val_loss)
+        scheduler.step(test_loss)
 
     t2 = time.time()
     log.write("Training time lapse: {} min\n".format((t2 - t1) // 60))
@@ -161,29 +186,25 @@ def eval_model(model, test_loader, logfile):
     y_pred = torch.FloatTensor()
     y_pred = y_pred.cuda()
     criterion = nn.BCELoss()
-    val_loss = 0
+    test_loss = 0
     log.write("Evaluating test data...\t test_loader: {}\n".format(len(test_loader)))
     print("Evaluating test data...\t test_loader: {}\n".format(len(test_loader)))
     t1 = time.time()
     for i, (x, y) in enumerate(test_loader):
         y = y.cuda()
         y_test = torch.cat((y_test, y), 0)
-        batches, ncrops, channel, height, width = x.size()
-        with torch.no_grad():
-            x_in = torch.autograd.Variable(x.view(-1, channel, height, width).cuda())
-        y_hat = model(x_in)
-        y_hat = y_hat.view(batches, ncrops, -1).mean(1)
+        y_hat = model(x.cuda())
         y_pred = torch.cat((y_pred, y_hat), 0)
         loss = criterion(y_hat, y)
-        val_loss = val_loss + loss.item()
+        test_loss += loss.item()
         if (i % PRINT_INTERVAL == 0):
             log.write("batch: {}\n".format(i))
             print("batch: {}".format(i))
     t2 = time.time()
-    val_loss = val_loss / len(test_loader)
+    test_loss = test_loss / len(test_loader)
     log.write("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
     print("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
-    log.write('The total val loss is {val_loss:.7f}\n'.format(val_loss=val_loss))
+    log.write('The total val loss is {test_loss:.7f}\n'.format(test_loss=test_loss))
 
     """Compute AUROC for each class"""
     AUROCs = []
@@ -201,7 +222,7 @@ def eval_model(model, test_loader, logfile):
         print('The AUROC of {} is {}\n'.format(LABELS[i], AUROCs[i]))
 
     log.close()
-    return val_loss
+    return test_loss
 
 
 
@@ -232,7 +253,7 @@ train_dataset = XrayDataSet(DATA_PATH, "final_train.txt")
 val_dataset = XrayDataSet(DATA_PATH, "final_val.txt")
 test_dataset = XrayDataSet(DATA_PATH, "final_test.txt")
 
-train_loader = DataLoader(dataset=train_dataset, batch_size=BATCH_SIZE, shuffle=True, collate_fn=collate_fn)
+train_loader = DataLoader(dataset=train_dataset, batch_size=BATCH_SIZE, shuffle=True, collate_fn=collate_fn_train)
 val_loader = DataLoader(dataset=val_dataset, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate_fn)
 test_loader = DataLoader(dataset=test_dataset, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate_fn)
 
