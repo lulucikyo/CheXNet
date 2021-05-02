@@ -3,7 +3,13 @@
 
 This project took [ChestX-ray 14](https://openaccess.thecvf.com/content_cvpr_2017/papers/Wang_ChestX-ray8_Hospital-Scale_Chest_CVPR_2017_paper.pdf) image dataset and predicted probabilities for 14 types of chest diesease.
 
-# Dataset
+## Prerequisite
+- Python 3.7+
+- PyTorch 1.8.1
+- Numpy
+- sklearn
+
+## Dataset
 
 The ChestX-ray 14 dataset contains 112,120 chest X-ray images of 30,805 unique patients with 14 disease labels. As per the original work, we roughly split the dataset into training set (70%), validation set (10%) and test set (20%), with no patient overlaps between dataset partitions. 
 
