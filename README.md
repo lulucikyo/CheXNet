@@ -8,7 +8,6 @@ This project took [ChestX-ray 14](https://openaccess.thecvf.com/content_cvpr_201
 The ChestX-ray 14 dataset contains 112,120 chest X-ray images of 30,805 unique patients with 14 disease labels. As per the original work, we roughly split the dataset into training set (70%), validation set (10%) and test set (20%), with no patient overlaps between dataset partitions. 
 
 ## Directory Structure
----
 /preprocess:
   - data_label.py - convert labels into multihot label vector
   - data_resize.py - resize original images
@@ -25,7 +24,6 @@ final_val.txt - validation set: filename, label vector
 ***replication_chexnet_cuda_local\*.py - the main program***
 
 ## Data File:
----
 ### Original Files
 - train_val_list.txt - original train & validation image list
 - test_list.txt - original test image list 
@@ -37,11 +35,9 @@ final_val.txt - validation set: filename, label vector
 - train_val_sample10k.txt - contains 10k images from labeled_train_val_list.txt
 
 ## Experiment designs
----
 [placeholder]
 
 ## Result comparison
----
 [placeholder]
 
 ## Contributor
