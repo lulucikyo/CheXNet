@@ -156,7 +156,7 @@ class MobileNet_V3_large(nn.Module):
         x = self.sigmoid(x)
         return x
 
-def train_model(model, train_loader, val_loader, n_epochs, logfile):
+def train_model(model, train_loader, val_loader, n_epochs, logger):
     t1 = time.time()
     criterion = nn.BCELoss()
     """using Adam with standard parameters (B1 = 0.9 and B2 = 0.999) """
@@ -171,9 +171,8 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
 
     train_loss_arr = []
 
-    log = open(logfile, "a")
-    log.write("\n\n\nStarted training, total epoch : {}\n".format(n_epochs))
-    log.write("Training data size: {}\n".format(len(train_loader)))
+    logger.write("\n\n\nStarted training, total epoch : {}\n".format(n_epochs))
+    logger.write("Training data size: {}\n".format(len(train_loader)))
     print("Started training, total epoch : {}\n".format(n_epochs))
     print("Training data size: {}\n".format(len(train_loader)))
     for epoch in range(n_epochs):
@@ -181,7 +180,7 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
         torch.cuda.empty_cache()
         train_loss = 0
         batch = 0
-        log.write("\nStarted epoch {}\n".format(epoch+1))
+        logger.write("\nStarted epoch {}\n".format(epoch+1))
         print("\nStarted epoch {}\n".format(epoch+1))
         for x, y in train_loader:
             optimizer.zero_grad()
@@ -191,43 +190,37 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
             optimizer.step()
             train_loss += loss.item()
             if ((batch+1) % PRINT_INTERVAL == 0):
-                log.write('Trained {} batches \tTraining Loss: {:.6f}\n'.format(batch+1, loss.item()))
+                logger.write('Trained {} batches \tTraining Loss: {:.6f}\n'.format(batch+1, loss.item()))
                 print('Trained {} batches \tTraining Loss: {:.6f}\n'.format(batch+1, loss.item()))
             batch += 1
 
         train_loss = train_loss / len(train_loader)
         
         train_loss_arr.append(np.mean(train_loss))
-        log.write('Epoch: {} \nTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
+        logger.write('Epoch: {} \nTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
         print('Epoch: {} \nTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
         torch.save(model.state_dict(), str(epoch+1)+"trained.pth")
-
-        log.write('AUROCs on validation dataset:\n')
-        print('AUROCs on validation dataset:\n')
-        log.close()
 
         gc.collect()
         torch.cuda.empty_cache()
 
         model.eval()
-        log.write('AUROCs on validation dataset:\n')
+        logger.write('AUROCs on validation dataset:\n')
+        print('AUROCs on validation dataset:\n')
         val_loss = 0       
         with torch.no_grad():
-            val_loss = eval_model(model, val_loader, logfile)
+            val_loss = eval_model(model, val_loader, logger)
 
-        log = open(logfile, "a")
-        log.write('Epoch: {} \tLearning Rate for first group: {:.10f}\n'.format(epoch+1, optimizer.param_groups[0]['lr']))
+        logger.write('Epoch: {} \tLearning Rate for first group: {:.10f}\n'.format(epoch+1, optimizer.param_groups[0]['lr']))
         model.train()
         scheduler.step(val_loss)
 
     t2 = time.time()
-    log.write("Training time lapse: {} min\n".format((t2 - t1) // 60))
+    logger.write("Training time lapse: {} min\n".format((t2 - t1) // 60))
     print("Training time lapse: {} min\n".format((t2 - t1) // 60))
-    log.close()
 
-def eval_model(model, test_loader, logfile):
+def eval_model(model, test_loader, logger):
     # initialize the y_test and y_pred tensor
-    log = open(logfile, "a")
     
     criterion = nn.BCELoss()
     test_loss = 0
@@ -235,7 +228,7 @@ def eval_model(model, test_loader, logfile):
     y_test = y_test.cuda()
     y_pred = torch.FloatTensor()
     y_pred = y_pred.cuda()
-    log.write("Evaluating test data...\t test_loader: {}\n".format(len(test_loader)))
+    logger.write("Evaluating test data...\t test_loader: {}\n".format(len(test_loader)))
     print("Evaluating test data...\t test_loader: {}\n".format(len(test_loader)))
     t1 = time.time()
     for i, (x, y) in enumerate(test_loader):
@@ -249,15 +242,15 @@ def eval_model(model, test_loader, logfile):
         loss = criterion(y_pred, y_test)
         test_loss += loss.item()
         if (i % PRINT_INTERVAL == 0):
-            log.write("batch: {}\n".format(i))
+            logger.write("batch: {}\n".format(i))
             print("batch: {}".format(i))
         
     test_loss = test_loss / len(test_loader)
-    log.write('Testing Loss: {:.6f}\n'.format(test_loss))
+    logger.write('Testing Loss: {:.6f}\n'.format(test_loss))
     print('Testing Loss: {:.6f}\n'.format(test_loss))
     t2 = time.time()
-    log.write("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
-    log.write('The total val loss is {test_loss:.7f}\n'.format(test_loss=test_loss))
+    logger.write("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
+    logger.write('The total val loss is {test_loss:.7f}\n'.format(test_loss=test_loss))
     print("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
     
     
@@ -270,13 +263,12 @@ def eval_model(model, test_loader, logfile):
         AUROCs.append(result)
 
     AUROC_avg = np.array(AUROCs).mean()
-    log.write('The average AUROC is {AUROC_avg:.3f}\n'.format(AUROC_avg=AUROC_avg))
+    logger.write('The average AUROC is {AUROC_avg:.3f}\n'.format(AUROC_avg=AUROC_avg))
     print('The average AUROC is {AUROC_avg:.3f}\n'.format(AUROC_avg=AUROC_avg))
     for i in range(N_LABEL):
-        log.write('The AUROC of {} is {}\n'.format(LABELS[i], AUROCs[i]))
+        logger.write('The AUROC of {} is {}\n'.format(LABELS[i], AUROCs[i]))
         print('The AUROC of {} is {}\n'.format(LABELS[i], AUROCs[i]))
 
-    log.close()
     return test_loss
 
 
@@ -320,12 +312,12 @@ test_loader = DataLoader(dataset=test_dataset, batch_size=BATCH_SIZE, shuffle=Fa
 print(len(train_loader), len(val_loader), len(test_loader))
 
 logfile = "runlog.txt"
-
+logger = open(logfile, "a")
 #Trained_model_path = 'C:/Users/Zhexuan/Downloads/CheXNet-LipingXie/CheXNet-LipingXie/15trained.pth'
 #model.load_state_dict(torch.load(Trained_model_path))
 #N_EPOCH = 1
 
-train_model(model, train_loader, val_loader, N_EPOCH, logfile)
+train_model(model, train_loader, val_loader, N_EPOCH, logger)
 
 """No need to use GPU for calculating AUC"""
 gc.collect()
@@ -333,4 +325,6 @@ torch.cuda.empty_cache()
 # switch to evaluate mode
 model.eval()
 with torch.no_grad():
-    eval_model(model, test_loader, logfile)
+    eval_model(model, test_loader, logger)
+
+logger.close()
