@@ -24,7 +24,7 @@ LABELS = ["Atelectasis","Cardiomegaly", "Effusion", "Infiltration", "Mass",
 DATA_PATH = './images_converted256/'
 
 BATCH_SIZE = 16
-N_EPOCH = 15
+N_EPOCH = 20
 PRINT_INTERVAL = 500
 RANDOM_SEED = 10086
 random.seed(RANDOM_SEED)
@@ -170,12 +170,14 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
     model.train()
 
     train_loss_arr = []
+    val_loss_arr = []
 
     log = open(logfile, "a")
     log.write("\n\n\nStarted training, total epoch : {}\n".format(n_epochs))
     log.write("Training data size: {}\n".format(len(train_loader)))
     print("Started training, total epoch : {}\n".format(n_epochs))
     print("Training data size: {}\n".format(len(train_loader)))
+
     for epoch in range(n_epochs):
         gc.collect()
         torch.cuda.empty_cache()
@@ -205,15 +207,13 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
         log.write('AUROCs on validation dataset:\n')
         print('AUROCs on validation dataset:\n')
         log.close()
-
         gc.collect()
         torch.cuda.empty_cache()
-
         model.eval()
-        log.write('AUROCs on validation dataset:\n')
         val_loss = 0       
         with torch.no_grad():
             val_loss = eval_model(model, val_loader, logfile)
+        val_loss_arr.append(np.mean(train_loss))
 
         log = open(logfile, "a")
         log.write('Epoch: {} \tLearning Rate for first group: {:.10f}\n'.format(epoch+1, optimizer.param_groups[0]['lr']))
@@ -221,6 +221,9 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
         scheduler.step(val_loss)
 
     t2 = time.time()
+
+    print("Train loss list:", train_loss_arr)
+    print("Val loss list:", val_loss_arr)
     log.write("Training time lapse: {} min\n".format((t2 - t1) // 60))
     print("Training time lapse: {} min\n".format((t2 - t1) // 60))
     log.close()
@@ -292,21 +295,9 @@ print(torch.cuda.get_device_name(0))
 cudnn.benchmark = True
 
 # initialize and load the model
-
-#model = MobileNet_V3_large(N_LABEL).cuda()
-
-# Small sample for debug purpose. Commented out for full training
-
-# train_dataset = XrayDataSet(DATA_PATH, "train_val_sample1k.txt")
-# test_dataset = XrayDataSet(DATA_PATH, "test_sample1k.txt")
-
-
-# train_dataset = XrayDataSet(DATA_PATH, "labeled_train_val_list.txt")
-# test_dataset = XrayDataSet(DATA_PATH, "labeled_test_list.txt")
-
 model = DenseNet121(N_LABEL).cuda()
 # load trained model if needed
-# model.load_state_dict(torch.load("8trained.pth"))
+# model.load_state_dict(torch.load("11trained.pth"))
 
 
 train_dataset = XrayDataSet(DATA_PATH, "final_train.txt", train_sampling=False)
@@ -317,13 +308,8 @@ train_loader = DataLoader(dataset=train_dataset, batch_size=BATCH_SIZE, shuffle=
 val_loader = DataLoader(dataset=val_dataset, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate_fn)
 test_loader = DataLoader(dataset=test_dataset, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate_fn)
 
-print(len(train_loader), len(val_loader), len(test_loader))
-
+print("Batch size for train/val/test:", len(train_loader), len(val_loader), len(test_loader))
 logfile = "runlog.txt"
-
-#Trained_model_path = 'C:/Users/Zhexuan/Downloads/CheXNet-LipingXie/CheXNet-LipingXie/15trained.pth'
-#model.load_state_dict(torch.load(Trained_model_path))
-#N_EPOCH = 1
 
 train_model(model, train_loader, val_loader, N_EPOCH, logfile)
 
