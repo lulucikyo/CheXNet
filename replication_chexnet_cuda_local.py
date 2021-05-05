@@ -42,6 +42,7 @@ def collate_fn_train(data):
     trans = transforms.Compose([
                 transforms.Resize((224, 224)),
                 transforms.RandomHorizontalFlip(),
+                #transforms.RandomCrop(224, padding=(14, 14)),
                 transforms.ToTensor(),
                 transforms.Normalize(mean = [0.485, 0.456, 0.406],
                                      std = [0.229, 0.224, 0.225])
@@ -160,7 +161,7 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
     t1 = time.time()
     criterion = nn.BCELoss()
     """using Adam with standard parameters (B1 = 0.9 and B2 = 0.999) """
-    optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.0001)
     """factor (float) – Factor by which the learning rate will be reduced. new_lr = lr * factor. Default: 0.1."""
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1,
                                                patience=1, verbose=True, threshold=1e-4,
@@ -171,6 +172,7 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
 
     train_loss_arr = []
     val_loss_arr = []
+    lr_arr = []
 
     log = open(logfile, "a")
     log.write("\n\n\nStarted training, total epoch : {}\n".format(n_epochs))
@@ -185,6 +187,7 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
         batch = 0
         log.write("\nStarted epoch {}\n".format(epoch+1))
         print("\nStarted epoch {}\n".format(epoch+1))
+
         for x, y in train_loader:
             optimizer.zero_grad()
             y_hat = model(x)
@@ -196,12 +199,8 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
                 log.write('Trained {} batches \tTraining Loss: {:.6f}\n'.format(batch+1, loss.item()))
                 print('Trained {} batches \tTraining Loss: {:.6f}\n'.format(batch+1, loss.item()))
             batch += 1
-
         train_loss = train_loss / len(train_loader)
-        
         train_loss_arr.append(np.mean(train_loss))
-        log.write('Epoch: {} \nTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
-        print('Epoch: {} \nTraining Loss: {:.6f}\n'.format(epoch+1, train_loss))
         torch.save(model.state_dict(), str(epoch+1)+"trained.pth")
 
         log.write('AUROCs on validation dataset:\n')
@@ -212,23 +211,26 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
         model.eval()
         val_loss = 0       
         with torch.no_grad():
-            val_loss = eval_model(model, val_loader, logfile)
-        val_loss_arr.append(np.mean(train_loss))
+            val_loss = eval_model(model, val_loader, logfile, "validation")
+        val_loss_arr.append(np.mean(val_loss))
+        lr_arr.append(optimizer.param_groups[0]['lr'])
 
         log = open(logfile, "a")
+        log.write('Epoch {} Statistics:\nTraining Loss: {:.6f}\nValidation Loss: {:.6f}\n'.format(epoch+1, train_loss, val_loss))
+        print('Epoch {} Statistics:\nTraining Loss: {:.6f}\nValidation Loss: {:.6f}\n'.format(epoch+1, train_loss, val_loss))
         log.write('Epoch: {} \tLearning Rate for first group: {:.10f}\n'.format(epoch+1, optimizer.param_groups[0]['lr']))
         model.train()
         scheduler.step(val_loss)
 
     t2 = time.time()
-
-    print("Train loss list:", train_loss_arr)
-    print("Val loss list:", val_loss_arr)
-    log.write("Training time lapse: {} min\n".format((t2 - t1) // 60))
+    log.write("\nTrain, Val Loss & Learning Rate by Epoch:\n")
+    for i in range(n_epochs):
+        log.write("Epoch {}: {:.6f} {:.6f} {:.10f}\n".format(i+1, train_loss_arr[i], val_loss_arr[i], lr_arr[i]))
+    log.write("Training time lapse: {} min\n\n\n".format((t2 - t1) // 60))
     print("Training time lapse: {} min\n".format((t2 - t1) // 60))
     log.close()
 
-def eval_model(model, test_loader, logfile):
+def eval_model(model, test_loader, logfile, setstr):
     # initialize the y_test and y_pred tensor
     log = open(logfile, "a")
     
@@ -238,8 +240,8 @@ def eval_model(model, test_loader, logfile):
     y_test = y_test.cuda()
     y_pred = torch.FloatTensor()
     y_pred = y_pred.cuda()
-    log.write("Evaluating test data...\t test_loader: {}\n".format(len(test_loader)))
-    print("Evaluating test data...\t test_loader: {}\n".format(len(test_loader)))
+    log.write("Evaluating {} data...\t {}_loader: {}\n".format(setstr, setstr, len(test_loader)))
+    print("Evaluating {} data...\t {}_loader: {}\n".format(setstr, setstr, len(test_loader)))
     t1 = time.time()
     for i, (x, y) in enumerate(test_loader):
         y = y.cuda()
@@ -254,16 +256,14 @@ def eval_model(model, test_loader, logfile):
         if (i % PRINT_INTERVAL == 0):
             log.write("batch: {}\n".format(i))
             print("batch: {}".format(i))
-        
-    test_loss = test_loss / len(test_loader)
-    log.write('Testing Loss: {:.6f}\n'.format(test_loss))
-    print('Testing Loss: {:.6f}\n'.format(test_loss))
     t2 = time.time()
+    test_loss = test_loss / len(test_loader)
+
     log.write("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
-    log.write('The total val loss is {test_loss:.7f}\n'.format(test_loss=test_loss))
     print("Evaluating time lapse: {} min\n".format((t2 - t1) // 60))
-    
-    
+    log.write('Loss on {} dataset: {:.6f}\n'.format(setstr, test_loss))
+    print('Loss on {} dataset: {:.6f}\n'.format(setstr, test_loss))
+
     """Compute AUROC for each class"""
     AUROCs = []
     y_test_np = y_test.cpu().detach().numpy()
@@ -273,8 +273,8 @@ def eval_model(model, test_loader, logfile):
         AUROCs.append(result)
 
     AUROC_avg = np.array(AUROCs).mean()
-    log.write('The average AUROC is {AUROC_avg:.3f}\n'.format(AUROC_avg=AUROC_avg))
-    print('The average AUROC is {AUROC_avg:.3f}\n'.format(AUROC_avg=AUROC_avg))
+    log.write('The average AUROC is {AUROC_avg:.6f}\n'.format(AUROC_avg=AUROC_avg))
+    print('The average AUROC is {AUROC_avg:.6f}\n'.format(AUROC_avg=AUROC_avg))
     for i in range(N_LABEL):
         log.write('The AUROC of {} is {}\n'.format(LABELS[i], AUROCs[i]))
         print('The AUROC of {} is {}\n'.format(LABELS[i], AUROCs[i]))
@@ -297,7 +297,7 @@ cudnn.benchmark = True
 # initialize and load the model
 model = DenseNet121(N_LABEL).cuda()
 # load trained model if needed
-# model.load_state_dict(torch.load("11trained.pth"))
+model.load_state_dict(torch.load("20trained.pth"))
 
 
 train_dataset = XrayDataSet(DATA_PATH, "final_train.txt", train_sampling=False)
@@ -319,4 +319,4 @@ torch.cuda.empty_cache()
 # switch to evaluate mode
 model.eval()
 with torch.no_grad():
-    eval_model(model, test_loader, logfile)
+    eval_model(model, test_loader, logfile, "test (last epoch)")
