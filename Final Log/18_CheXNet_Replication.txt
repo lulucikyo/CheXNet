@@ -1,0 +1,1721 @@
+
+
+
+Started training, total epoch : 20
+Training data size: 4907
+
+Started epoch 1
+Trained 100 batches 	Training Loss: 0.177205
+Trained 200 batches 	Training Loss: 0.187490
+Trained 300 batches 	Training Loss: 0.209990
+Trained 400 batches 	Training Loss: 0.178445
+Trained 500 batches 	Training Loss: 0.182974
+Trained 600 batches 	Training Loss: 0.176239
+Trained 700 batches 	Training Loss: 0.240289
+Trained 800 batches 	Training Loss: 0.184198
+Trained 900 batches 	Training Loss: 0.217971
+Trained 1000 batches 	Training Loss: 0.140069
+Trained 1100 batches 	Training Loss: 0.153461
+Trained 1200 batches 	Training Loss: 0.126778
+Trained 1300 batches 	Training Loss: 0.163926
+Trained 1400 batches 	Training Loss: 0.096183
+Trained 1500 batches 	Training Loss: 0.142620
+Trained 1600 batches 	Training Loss: 0.131396
+Trained 1700 batches 	Training Loss: 0.145552
+Trained 1800 batches 	Training Loss: 0.189493
+Trained 1900 batches 	Training Loss: 0.129776
+Trained 2000 batches 	Training Loss: 0.124974
+Trained 2100 batches 	Training Loss: 0.120557
+Trained 2200 batches 	Training Loss: 0.125163
+Trained 2300 batches 	Training Loss: 0.139451
+Trained 2400 batches 	Training Loss: 0.129411
+Trained 2500 batches 	Training Loss: 0.180262
+Trained 2600 batches 	Training Loss: 0.187055
+Trained 2700 batches 	Training Loss: 0.160818
+Trained 2800 batches 	Training Loss: 0.120406
+Trained 2900 batches 	Training Loss: 0.164934
+Trained 3000 batches 	Training Loss: 0.119284
+Trained 3100 batches 	Training Loss: 0.134188
+Trained 3200 batches 	Training Loss: 0.143259
+Trained 3300 batches 	Training Loss: 0.197610
+Trained 3400 batches 	Training Loss: 0.098413
+Trained 3500 batches 	Training Loss: 0.227967
+Trained 3600 batches 	Training Loss: 0.200814
+Trained 3700 batches 	Training Loss: 0.228652
+Trained 3800 batches 	Training Loss: 0.169902
+Trained 3900 batches 	Training Loss: 0.160614
+Trained 4000 batches 	Training Loss: 0.108740
+Trained 4100 batches 	Training Loss: 0.311774
+Trained 4200 batches 	Training Loss: 0.149108
+Trained 4300 batches 	Training Loss: 0.234407
+Trained 4400 batches 	Training Loss: 0.175785
+Trained 4500 batches 	Training Loss: 0.110308
+Trained 4600 batches 	Training Loss: 0.170466
+Trained 4700 batches 	Training Loss: 0.143864
+Trained 4800 batches 	Training Loss: 0.213149
+Trained 4900 batches 	Training Loss: 0.168524
+Epoch: 1 
+Training Loss: 0.171723
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.152013
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1520126
+The average AUROC is 0.743
+The AUROC of Atelectasis is 0.7381367890061042
+The AUROC of Cardiomegaly is 0.8131771270764367
+The AUROC of Effusion is 0.8412523733870656
+The AUROC of Infiltration is 0.6778064123488893
+The AUROC of Mass is 0.7094485278538475
+The AUROC of Nodule is 0.6747040530446525
+The AUROC of Pneumonia is 0.6800162390231823
+The AUROC of Pneumothorax is 0.7957735139745108
+The AUROC of Consolidation is 0.7269736894480746
+The AUROC of Edema is 0.8610089882804741
+The AUROC of Emphysema is 0.7033279746552192
+The AUROC of Fibrosis is 0.689729022502366
+The AUROC of Pleural_Thickening is 0.7092780622148742
+The AUROC of Hernia is 0.7800039041418353
+Epoch: 1 	Learning Rate for first group: 0.0010000000
+
+Started epoch 2
+Trained 100 batches 	Training Loss: 0.271734
+Trained 200 batches 	Training Loss: 0.186795
+Trained 300 batches 	Training Loss: 0.150743
+Trained 400 batches 	Training Loss: 0.199969
+Trained 500 batches 	Training Loss: 0.187728
+Trained 600 batches 	Training Loss: 0.207100
+Trained 700 batches 	Training Loss: 0.116013
+Trained 800 batches 	Training Loss: 0.155190
+Trained 900 batches 	Training Loss: 0.172250
+Trained 1000 batches 	Training Loss: 0.269836
+Trained 1100 batches 	Training Loss: 0.079187
+Trained 1200 batches 	Training Loss: 0.171003
+Trained 1300 batches 	Training Loss: 0.216994
+Trained 1400 batches 	Training Loss: 0.139379
+Trained 1500 batches 	Training Loss: 0.109882
+Trained 1600 batches 	Training Loss: 0.135015
+Trained 1700 batches 	Training Loss: 0.178109
+Trained 1800 batches 	Training Loss: 0.201045
+Trained 1900 batches 	Training Loss: 0.135310
+Trained 2000 batches 	Training Loss: 0.239450
+Trained 2100 batches 	Training Loss: 0.130217
+Trained 2200 batches 	Training Loss: 0.222642
+Trained 2300 batches 	Training Loss: 0.143489
+Trained 2400 batches 	Training Loss: 0.159144
+Trained 2500 batches 	Training Loss: 0.093102
+Trained 2600 batches 	Training Loss: 0.224620
+Trained 2700 batches 	Training Loss: 0.188133
+Trained 2800 batches 	Training Loss: 0.137058
+Trained 2900 batches 	Training Loss: 0.221294
+Trained 3000 batches 	Training Loss: 0.170937
+Trained 3100 batches 	Training Loss: 0.179994
+Trained 3200 batches 	Training Loss: 0.145688
+Trained 3300 batches 	Training Loss: 0.173269
+Trained 3400 batches 	Training Loss: 0.169900
+Trained 3500 batches 	Training Loss: 0.165842
+Trained 3600 batches 	Training Loss: 0.115566
+Trained 3700 batches 	Training Loss: 0.115177
+Trained 3800 batches 	Training Loss: 0.174267
+Trained 3900 batches 	Training Loss: 0.143918
+Trained 4000 batches 	Training Loss: 0.139254
+Trained 4100 batches 	Training Loss: 0.183252
+Trained 4200 batches 	Training Loss: 0.128963
+Trained 4300 batches 	Training Loss: 0.138977
+Trained 4400 batches 	Training Loss: 0.121908
+Trained 4500 batches 	Training Loss: 0.172912
+Trained 4600 batches 	Training Loss: 0.145165
+Trained 4700 batches 	Training Loss: 0.198536
+Trained 4800 batches 	Training Loss: 0.121598
+Trained 4900 batches 	Training Loss: 0.292175
+Epoch: 2 
+Training Loss: 0.162973
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.149742
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1497416
+The average AUROC is 0.762
+The AUROC of Atelectasis is 0.7555264223853368
+The AUROC of Cardiomegaly is 0.8580054752124517
+The AUROC of Effusion is 0.8581001463242716
+The AUROC of Infiltration is 0.6737563694708014
+The AUROC of Mass is 0.7450644303958388
+The AUROC of Nodule is 0.657295244944128
+The AUROC of Pneumonia is 0.7006465845667371
+The AUROC of Pneumothorax is 0.8285617034630063
+The AUROC of Consolidation is 0.7432344806832512
+The AUROC of Edema is 0.8683481758591008
+The AUROC of Emphysema is 0.7559755149630781
+The AUROC of Fibrosis is 0.7128319521265044
+The AUROC of Pleural_Thickening is 0.729249503491784
+The AUROC of Hernia is 0.7756473411645826
+Epoch: 2 	Learning Rate for first group: 0.0010000000
+
+Started epoch 3
+Trained 100 batches 	Training Loss: 0.116979
+Trained 200 batches 	Training Loss: 0.114954
+Trained 300 batches 	Training Loss: 0.119987
+Trained 400 batches 	Training Loss: 0.112693
+Trained 500 batches 	Training Loss: 0.148890
+Trained 600 batches 	Training Loss: 0.101055
+Trained 700 batches 	Training Loss: 0.130915
+Trained 800 batches 	Training Loss: 0.139415
+Trained 900 batches 	Training Loss: 0.165403
+Trained 1000 batches 	Training Loss: 0.279065
+Trained 1100 batches 	Training Loss: 0.106354
+Trained 1200 batches 	Training Loss: 0.124225
+Trained 1300 batches 	Training Loss: 0.133762
+Trained 1400 batches 	Training Loss: 0.139391
+Trained 1500 batches 	Training Loss: 0.187195
+Trained 1600 batches 	Training Loss: 0.246705
+Trained 1700 batches 	Training Loss: 0.161425
+Trained 1800 batches 	Training Loss: 0.165928
+Trained 1900 batches 	Training Loss: 0.095609
+Trained 2000 batches 	Training Loss: 0.171587
+Trained 2100 batches 	Training Loss: 0.179324
+Trained 2200 batches 	Training Loss: 0.146834
+Trained 2300 batches 	Training Loss: 0.109669
+Trained 2400 batches 	Training Loss: 0.105442
+Trained 2500 batches 	Training Loss: 0.109927
+Trained 2600 batches 	Training Loss: 0.191808
+Trained 2700 batches 	Training Loss: 0.171523
+Trained 2800 batches 	Training Loss: 0.077211
+Trained 2900 batches 	Training Loss: 0.154781
+Trained 3000 batches 	Training Loss: 0.137451
+Trained 3100 batches 	Training Loss: 0.202695
+Trained 3200 batches 	Training Loss: 0.177106
+Trained 3300 batches 	Training Loss: 0.143354
+Trained 3400 batches 	Training Loss: 0.191038
+Trained 3500 batches 	Training Loss: 0.112452
+Trained 3600 batches 	Training Loss: 0.121170
+Trained 3700 batches 	Training Loss: 0.082842
+Trained 3800 batches 	Training Loss: 0.110626
+Trained 3900 batches 	Training Loss: 0.137714
+Trained 4000 batches 	Training Loss: 0.152254
+Trained 4100 batches 	Training Loss: 0.144473
+Trained 4200 batches 	Training Loss: 0.117207
+Trained 4300 batches 	Training Loss: 0.120282
+Trained 4400 batches 	Training Loss: 0.141210
+Trained 4500 batches 	Training Loss: 0.134463
+Trained 4600 batches 	Training Loss: 0.118053
+Trained 4700 batches 	Training Loss: 0.192586
+Trained 4800 batches 	Training Loss: 0.157835
+Trained 4900 batches 	Training Loss: 0.134200
+Epoch: 3 
+Training Loss: 0.158441
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.146046
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1460462
+The average AUROC is 0.777
+The AUROC of Atelectasis is 0.7512190602664264
+The AUROC of Cardiomegaly is 0.8820534744025136
+The AUROC of Effusion is 0.8671167475786378
+The AUROC of Infiltration is 0.6845085064593763
+The AUROC of Mass is 0.7657428564429071
+The AUROC of Nodule is 0.6896635268786827
+The AUROC of Pneumonia is 0.7089491423319428
+The AUROC of Pneumothorax is 0.8347933875408707
+The AUROC of Consolidation is 0.7448879956564383
+The AUROC of Edema is 0.8852467225054625
+The AUROC of Emphysema is 0.7904893032540721
+The AUROC of Fibrosis is 0.7251746058131336
+The AUROC of Pleural_Thickening is 0.7556997405924027
+The AUROC of Hernia is 0.7981030463789084
+Epoch: 3 	Learning Rate for first group: 0.0010000000
+
+Started epoch 4
+Trained 100 batches 	Training Loss: 0.154670
+Trained 200 batches 	Training Loss: 0.184350
+Trained 300 batches 	Training Loss: 0.147218
+Trained 400 batches 	Training Loss: 0.123928
+Trained 500 batches 	Training Loss: 0.148623
+Trained 600 batches 	Training Loss: 0.075794
+Trained 700 batches 	Training Loss: 0.160170
+Trained 800 batches 	Training Loss: 0.162172
+Trained 900 batches 	Training Loss: 0.131837
+Trained 1000 batches 	Training Loss: 0.123841
+Trained 1100 batches 	Training Loss: 0.188393
+Trained 1200 batches 	Training Loss: 0.113738
+Trained 1300 batches 	Training Loss: 0.197900
+Trained 1400 batches 	Training Loss: 0.157263
+Trained 1500 batches 	Training Loss: 0.160693
+Trained 1600 batches 	Training Loss: 0.135101
+Trained 1700 batches 	Training Loss: 0.206234
+Trained 1800 batches 	Training Loss: 0.120913
+Trained 1900 batches 	Training Loss: 0.154002
+Trained 2000 batches 	Training Loss: 0.097036
+Trained 2100 batches 	Training Loss: 0.148219
+Trained 2200 batches 	Training Loss: 0.175121
+Trained 2300 batches 	Training Loss: 0.108887
+Trained 2400 batches 	Training Loss: 0.109734
+Trained 2500 batches 	Training Loss: 0.179242
+Trained 2600 batches 	Training Loss: 0.167875
+Trained 2700 batches 	Training Loss: 0.149613
+Trained 2800 batches 	Training Loss: 0.164511
+Trained 2900 batches 	Training Loss: 0.166244
+Trained 3000 batches 	Training Loss: 0.161375
+Trained 3100 batches 	Training Loss: 0.159136
+Trained 3200 batches 	Training Loss: 0.152348
+Trained 3300 batches 	Training Loss: 0.253362
+Trained 3400 batches 	Training Loss: 0.202119
+Trained 3500 batches 	Training Loss: 0.106689
+Trained 3600 batches 	Training Loss: 0.185595
+Trained 3700 batches 	Training Loss: 0.090837
+Trained 3800 batches 	Training Loss: 0.162080
+Trained 3900 batches 	Training Loss: 0.162454
+Trained 4000 batches 	Training Loss: 0.081346
+Trained 4100 batches 	Training Loss: 0.192699
+Trained 4200 batches 	Training Loss: 0.133765
+Trained 4300 batches 	Training Loss: 0.205720
+Trained 4400 batches 	Training Loss: 0.129453
+Trained 4500 batches 	Training Loss: 0.168770
+Trained 4600 batches 	Training Loss: 0.178551
+Trained 4700 batches 	Training Loss: 0.163940
+Trained 4800 batches 	Training Loss: 0.145028
+Trained 4900 batches 	Training Loss: 0.182855
+Epoch: 4 
+Training Loss: 0.155571
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.143805
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1438046
+The average AUROC is 0.787
+The AUROC of Atelectasis is 0.7699976397897399
+The AUROC of Cardiomegaly is 0.8880675988100706
+The AUROC of Effusion is 0.8679266422731374
+The AUROC of Infiltration is 0.684269302055382
+The AUROC of Mass is 0.7922637839069013
+The AUROC of Nodule is 0.7026672145778622
+The AUROC of Pneumonia is 0.7301958921462179
+The AUROC of Pneumothorax is 0.8330589108384707
+The AUROC of Consolidation is 0.7468645311883017
+The AUROC of Edema is 0.8901642057869298
+The AUROC of Emphysema is 0.79948753960122
+The AUROC of Fibrosis is 0.7264642088245309
+The AUROC of Pleural_Thickening is 0.7551119655886206
+The AUROC of Hernia is 0.8288470150539116
+Epoch: 4 	Learning Rate for first group: 0.0010000000
+
+Started epoch 5
+Trained 100 batches 	Training Loss: 0.201505
+Trained 200 batches 	Training Loss: 0.157470
+Trained 300 batches 	Training Loss: 0.122180
+Trained 400 batches 	Training Loss: 0.099713
+Trained 500 batches 	Training Loss: 0.180280
+Trained 600 batches 	Training Loss: 0.129496
+Trained 700 batches 	Training Loss: 0.085256
+Trained 800 batches 	Training Loss: 0.166709
+Trained 900 batches 	Training Loss: 0.234794
+Trained 1000 batches 	Training Loss: 0.104566
+Trained 1100 batches 	Training Loss: 0.202736
+Trained 1200 batches 	Training Loss: 0.170686
+Trained 1300 batches 	Training Loss: 0.140076
+Trained 1400 batches 	Training Loss: 0.168714
+Trained 1500 batches 	Training Loss: 0.132555
+Trained 1600 batches 	Training Loss: 0.135915
+Trained 1700 batches 	Training Loss: 0.102429
+Trained 1800 batches 	Training Loss: 0.111150
+Trained 1900 batches 	Training Loss: 0.165248
+Trained 2000 batches 	Training Loss: 0.197404
+Trained 2100 batches 	Training Loss: 0.216430
+Trained 2200 batches 	Training Loss: 0.114063
+Trained 2300 batches 	Training Loss: 0.135120
+Trained 2400 batches 	Training Loss: 0.169935
+Trained 2500 batches 	Training Loss: 0.100851
+Trained 2600 batches 	Training Loss: 0.117197
+Trained 2700 batches 	Training Loss: 0.209189
+Trained 2800 batches 	Training Loss: 0.190947
+Trained 2900 batches 	Training Loss: 0.179844
+Trained 3000 batches 	Training Loss: 0.132102
+Trained 3100 batches 	Training Loss: 0.142780
+Trained 3200 batches 	Training Loss: 0.145699
+Trained 3300 batches 	Training Loss: 0.181868
+Trained 3400 batches 	Training Loss: 0.134997
+Trained 3500 batches 	Training Loss: 0.195565
+Trained 3600 batches 	Training Loss: 0.148499
+Trained 3700 batches 	Training Loss: 0.136088
+Trained 3800 batches 	Training Loss: 0.138479
+Trained 3900 batches 	Training Loss: 0.134901
+Trained 4000 batches 	Training Loss: 0.169306
+Trained 4100 batches 	Training Loss: 0.216595
+Trained 4200 batches 	Training Loss: 0.152211
+Trained 4300 batches 	Training Loss: 0.116612
+Trained 4400 batches 	Training Loss: 0.109634
+Trained 4500 batches 	Training Loss: 0.263142
+Trained 4600 batches 	Training Loss: 0.174059
+Trained 4700 batches 	Training Loss: 0.191569
+Trained 4800 batches 	Training Loss: 0.136011
+Trained 4900 batches 	Training Loss: 0.149036
+Epoch: 5 
+Training Loss: 0.153835
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.143503
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1435026
+The average AUROC is 0.787
+The AUROC of Atelectasis is 0.7710685495457913
+The AUROC of Cardiomegaly is 0.8742666862253957
+The AUROC of Effusion is 0.8733120028342254
+The AUROC of Infiltration is 0.6880976513873136
+The AUROC of Mass is 0.7895847017040187
+The AUROC of Nodule is 0.7089102631329248
+The AUROC of Pneumonia is 0.7243238304093568
+The AUROC of Pneumothorax is 0.8473804435300192
+The AUROC of Consolidation is 0.7485944724674233
+The AUROC of Edema is 0.8915414156127922
+The AUROC of Emphysema is 0.8116060282184456
+The AUROC of Fibrosis is 0.7333315459417721
+The AUROC of Pleural_Thickening is 0.7550799950680948
+The AUROC of Hernia is 0.7988034953552194
+Epoch: 5 	Learning Rate for first group: 0.0010000000
+
+Started epoch 6
+Trained 100 batches 	Training Loss: 0.111105
+Trained 200 batches 	Training Loss: 0.199480
+Trained 300 batches 	Training Loss: 0.101450
+Trained 400 batches 	Training Loss: 0.145010
+Trained 500 batches 	Training Loss: 0.130728
+Trained 600 batches 	Training Loss: 0.114231
+Trained 700 batches 	Training Loss: 0.161159
+Trained 800 batches 	Training Loss: 0.169280
+Trained 900 batches 	Training Loss: 0.197222
+Trained 1000 batches 	Training Loss: 0.168477
+Trained 1100 batches 	Training Loss: 0.167905
+Trained 1200 batches 	Training Loss: 0.141520
+Trained 1300 batches 	Training Loss: 0.146117
+Trained 1400 batches 	Training Loss: 0.227259
+Trained 1500 batches 	Training Loss: 0.133226
+Trained 1600 batches 	Training Loss: 0.064046
+Trained 1700 batches 	Training Loss: 0.159966
+Trained 1800 batches 	Training Loss: 0.152820
+Trained 1900 batches 	Training Loss: 0.119793
+Trained 2000 batches 	Training Loss: 0.176312
+Trained 2100 batches 	Training Loss: 0.163910
+Trained 2200 batches 	Training Loss: 0.126010
+Trained 2300 batches 	Training Loss: 0.155729
+Trained 2400 batches 	Training Loss: 0.100605
+Trained 2500 batches 	Training Loss: 0.158364
+Trained 2600 batches 	Training Loss: 0.093709
+Trained 2700 batches 	Training Loss: 0.121049
+Trained 2800 batches 	Training Loss: 0.084625
+Trained 2900 batches 	Training Loss: 0.185295
+Trained 3000 batches 	Training Loss: 0.132236
+Trained 3100 batches 	Training Loss: 0.141448
+Trained 3200 batches 	Training Loss: 0.169209
+Trained 3300 batches 	Training Loss: 0.119870
+Trained 3400 batches 	Training Loss: 0.139280
+Trained 3500 batches 	Training Loss: 0.107952
+Trained 3600 batches 	Training Loss: 0.258173
+Trained 3700 batches 	Training Loss: 0.146981
+Trained 3800 batches 	Training Loss: 0.120291
+Trained 3900 batches 	Training Loss: 0.152542
+Trained 4000 batches 	Training Loss: 0.169239
+Trained 4100 batches 	Training Loss: 0.139806
+Trained 4200 batches 	Training Loss: 0.178290
+Trained 4300 batches 	Training Loss: 0.172279
+Trained 4400 batches 	Training Loss: 0.193439
+Trained 4500 batches 	Training Loss: 0.166811
+Trained 4600 batches 	Training Loss: 0.176503
+Trained 4700 batches 	Training Loss: 0.122436
+Trained 4800 batches 	Training Loss: 0.147966
+Trained 4900 batches 	Training Loss: 0.142680
+Epoch: 6 
+Training Loss: 0.151932
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.143632
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1436324
+The average AUROC is 0.786
+The AUROC of Atelectasis is 0.7699382672357789
+The AUROC of Cardiomegaly is 0.8823257939852474
+The AUROC of Effusion is 0.8708106143220647
+The AUROC of Infiltration is 0.6918275747600211
+The AUROC of Mass is 0.7906848882879828
+The AUROC of Nodule is 0.7035736936990926
+The AUROC of Pneumonia is 0.7192333609539593
+The AUROC of Pneumothorax is 0.8364486217822183
+The AUROC of Consolidation is 0.7501584253633433
+The AUROC of Edema is 0.8878563033834339
+The AUROC of Emphysema is 0.8015787490136498
+The AUROC of Fibrosis is 0.7402836054190138
+The AUROC of Pleural_Thickening is 0.7565677703855501
+The AUROC of Hernia is 0.7969984038949555
+Epoch: 6 	Learning Rate for first group: 0.0010000000
+
+Started epoch 7
+Trained 100 batches 	Training Loss: 0.209310
+Trained 200 batches 	Training Loss: 0.134631
+Trained 300 batches 	Training Loss: 0.216567
+Trained 400 batches 	Training Loss: 0.185414
+Trained 500 batches 	Training Loss: 0.159059
+Trained 600 batches 	Training Loss: 0.124937
+Trained 700 batches 	Training Loss: 0.121326
+Trained 800 batches 	Training Loss: 0.176931
+Trained 900 batches 	Training Loss: 0.153315
+Trained 1000 batches 	Training Loss: 0.105724
+Trained 1100 batches 	Training Loss: 0.133009
+Trained 1200 batches 	Training Loss: 0.199470
+Trained 1300 batches 	Training Loss: 0.078472
+Trained 1400 batches 	Training Loss: 0.094183
+Trained 1500 batches 	Training Loss: 0.140053
+Trained 1600 batches 	Training Loss: 0.190483
+Trained 1700 batches 	Training Loss: 0.120668
+Trained 1800 batches 	Training Loss: 0.185594
+Trained 1900 batches 	Training Loss: 0.169027
+Trained 2000 batches 	Training Loss: 0.229239
+Trained 2100 batches 	Training Loss: 0.207713
+Trained 2200 batches 	Training Loss: 0.221408
+Trained 2300 batches 	Training Loss: 0.157861
+Trained 2400 batches 	Training Loss: 0.113876
+Trained 2500 batches 	Training Loss: 0.103724
+Trained 2600 batches 	Training Loss: 0.136576
+Trained 2700 batches 	Training Loss: 0.159384
+Trained 2800 batches 	Training Loss: 0.198800
+Trained 2900 batches 	Training Loss: 0.181227
+Trained 3000 batches 	Training Loss: 0.273213
+Trained 3100 batches 	Training Loss: 0.118455
+Trained 3200 batches 	Training Loss: 0.123262
+Trained 3300 batches 	Training Loss: 0.197091
+Trained 3400 batches 	Training Loss: 0.124396
+Trained 3500 batches 	Training Loss: 0.129408
+Trained 3600 batches 	Training Loss: 0.181343
+Trained 3700 batches 	Training Loss: 0.170118
+Trained 3800 batches 	Training Loss: 0.194764
+Trained 3900 batches 	Training Loss: 0.117443
+Trained 4000 batches 	Training Loss: 0.200191
+Trained 4100 batches 	Training Loss: 0.149681
+Trained 4200 batches 	Training Loss: 0.113373
+Trained 4300 batches 	Training Loss: 0.130339
+Trained 4400 batches 	Training Loss: 0.105777
+Trained 4500 batches 	Training Loss: 0.134755
+Trained 4600 batches 	Training Loss: 0.197091
+Trained 4700 batches 	Training Loss: 0.131857
+Trained 4800 batches 	Training Loss: 0.183937
+Trained 4900 batches 	Training Loss: 0.135320
+Epoch: 7 
+Training Loss: 0.150520
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.145174
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1451744
+The average AUROC is 0.794
+The AUROC of Atelectasis is 0.7711640900965975
+The AUROC of Cardiomegaly is 0.8995240504009232
+The AUROC of Effusion is 0.8759978374269071
+The AUROC of Infiltration is 0.688355224210905
+The AUROC of Mass is 0.7931042559418185
+The AUROC of Nodule is 0.719555364357378
+The AUROC of Pneumonia is 0.7183065222774634
+The AUROC of Pneumothorax is 0.8272020863069027
+The AUROC of Consolidation is 0.7464033860037957
+The AUROC of Edema is 0.8971203982652453
+The AUROC of Emphysema is 0.8270254772756717
+The AUROC of Fibrosis is 0.7250014075708544
+The AUROC of Pleural_Thickening is 0.7569678241442819
+The AUROC of Hernia is 0.8661820937683007
+Epoch: 7 	Learning Rate for first group: 0.0010000000
+
+Started epoch 8
+Trained 100 batches 	Training Loss: 0.168539
+Trained 200 batches 	Training Loss: 0.088556
+Trained 300 batches 	Training Loss: 0.150048
+Trained 400 batches 	Training Loss: 0.133492
+Trained 500 batches 	Training Loss: 0.141758
+Trained 600 batches 	Training Loss: 0.166649
+Trained 700 batches 	Training Loss: 0.150844
+Trained 800 batches 	Training Loss: 0.088093
+Trained 900 batches 	Training Loss: 0.173818
+Trained 1000 batches 	Training Loss: 0.083899
+Trained 1100 batches 	Training Loss: 0.160351
+Trained 1200 batches 	Training Loss: 0.188033
+Trained 1300 batches 	Training Loss: 0.126660
+Trained 1400 batches 	Training Loss: 0.148009
+Trained 1500 batches 	Training Loss: 0.078123
+Trained 1600 batches 	Training Loss: 0.251494
+Trained 1700 batches 	Training Loss: 0.067278
+Trained 1800 batches 	Training Loss: 0.133146
+Trained 1900 batches 	Training Loss: 0.234828
+Trained 2000 batches 	Training Loss: 0.086607
+Trained 2100 batches 	Training Loss: 0.085839
+Trained 2200 batches 	Training Loss: 0.185259
+Trained 2300 batches 	Training Loss: 0.210125
+Trained 2400 batches 	Training Loss: 0.109652
+Trained 2500 batches 	Training Loss: 0.116060
+Trained 2600 batches 	Training Loss: 0.148815
+Trained 2700 batches 	Training Loss: 0.198826
+Trained 2800 batches 	Training Loss: 0.182869
+Trained 2900 batches 	Training Loss: 0.111620
+Trained 3000 batches 	Training Loss: 0.155128
+Trained 3100 batches 	Training Loss: 0.177688
+Trained 3200 batches 	Training Loss: 0.138115
+Trained 3300 batches 	Training Loss: 0.155628
+Trained 3400 batches 	Training Loss: 0.163212
+Trained 3500 batches 	Training Loss: 0.095644
+Trained 3600 batches 	Training Loss: 0.128279
+Trained 3700 batches 	Training Loss: 0.167693
+Trained 3800 batches 	Training Loss: 0.103811
+Trained 3900 batches 	Training Loss: 0.077672
+Trained 4000 batches 	Training Loss: 0.165482
+Trained 4100 batches 	Training Loss: 0.115189
+Trained 4200 batches 	Training Loss: 0.118649
+Trained 4300 batches 	Training Loss: 0.181188
+Trained 4400 batches 	Training Loss: 0.236302
+Trained 4500 batches 	Training Loss: 0.182352
+Trained 4600 batches 	Training Loss: 0.142716
+Trained 4700 batches 	Training Loss: 0.110964
+Trained 4800 batches 	Training Loss: 0.182900
+Trained 4900 batches 	Training Loss: 0.186568
+Epoch: 8 
+Training Loss: 0.145354
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.139348
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1393482
+The average AUROC is 0.807
+The AUROC of Atelectasis is 0.7810208414948989
+The AUROC of Cardiomegaly is 0.9070544073834448
+The AUROC of Effusion is 0.8850802753774816
+The AUROC of Infiltration is 0.6976821765470691
+The AUROC of Mass is 0.8096040751844653
+The AUROC of Nodule is 0.7314829202239873
+The AUROC of Pneumonia is 0.738389812751205
+The AUROC of Pneumothorax is 0.8570058718505471
+The AUROC of Consolidation is 0.7626589030277555
+The AUROC of Edema is 0.9030171985698204
+The AUROC of Emphysema is 0.8426994267392149
+The AUROC of Fibrosis is 0.7536654485593178
+The AUROC of Pleural_Thickening is 0.7707018771883217
+The AUROC of Hernia is 0.8635249807663601
+Epoch: 8 	Learning Rate for first group: 0.0001000000
+
+Started epoch 9
+Trained 100 batches 	Training Loss: 0.157094
+Trained 200 batches 	Training Loss: 0.144389
+Trained 300 batches 	Training Loss: 0.081364
+Trained 400 batches 	Training Loss: 0.162230
+Trained 500 batches 	Training Loss: 0.162604
+Trained 600 batches 	Training Loss: 0.143980
+Trained 700 batches 	Training Loss: 0.107268
+Trained 800 batches 	Training Loss: 0.116390
+Trained 900 batches 	Training Loss: 0.099026
+Trained 1000 batches 	Training Loss: 0.165976
+Trained 1100 batches 	Training Loss: 0.125004
+Trained 1200 batches 	Training Loss: 0.240187
+Trained 1300 batches 	Training Loss: 0.124400
+Trained 1400 batches 	Training Loss: 0.067596
+Trained 1500 batches 	Training Loss: 0.090587
+Trained 1600 batches 	Training Loss: 0.121114
+Trained 1700 batches 	Training Loss: 0.146077
+Trained 1800 batches 	Training Loss: 0.100533
+Trained 1900 batches 	Training Loss: 0.144005
+Trained 2000 batches 	Training Loss: 0.101006
+Trained 2100 batches 	Training Loss: 0.105225
+Trained 2200 batches 	Training Loss: 0.157129
+Trained 2300 batches 	Training Loss: 0.107780
+Trained 2400 batches 	Training Loss: 0.077457
+Trained 2500 batches 	Training Loss: 0.125952
+Trained 2600 batches 	Training Loss: 0.093572
+Trained 2700 batches 	Training Loss: 0.110503
+Trained 2800 batches 	Training Loss: 0.211487
+Trained 2900 batches 	Training Loss: 0.144201
+Trained 3000 batches 	Training Loss: 0.139797
+Trained 3100 batches 	Training Loss: 0.160008
+Trained 3200 batches 	Training Loss: 0.109788
+Trained 3300 batches 	Training Loss: 0.116254
+Trained 3400 batches 	Training Loss: 0.143670
+Trained 3500 batches 	Training Loss: 0.131106
+Trained 3600 batches 	Training Loss: 0.117252
+Trained 3700 batches 	Training Loss: 0.160573
+Trained 3800 batches 	Training Loss: 0.202909
+Trained 3900 batches 	Training Loss: 0.121785
+Trained 4000 batches 	Training Loss: 0.140025
+Trained 4100 batches 	Training Loss: 0.142070
+Trained 4200 batches 	Training Loss: 0.266630
+Trained 4300 batches 	Training Loss: 0.157208
+Trained 4400 batches 	Training Loss: 0.085805
+Trained 4500 batches 	Training Loss: 0.103901
+Trained 4600 batches 	Training Loss: 0.170486
+Trained 4700 batches 	Training Loss: 0.111815
+Trained 4800 batches 	Training Loss: 0.224891
+Trained 4900 batches 	Training Loss: 0.166416
+Epoch: 9 
+Training Loss: 0.143728
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.139161
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1391612
+The average AUROC is 0.809
+The AUROC of Atelectasis is 0.7832302005279923
+The AUROC of Cardiomegaly is 0.9087263831118997
+The AUROC of Effusion is 0.8852031656232069
+The AUROC of Infiltration is 0.7009184763063985
+The AUROC of Mass is 0.8144282439654853
+The AUROC of Nodule is 0.7339432412514348
+The AUROC of Pneumonia is 0.7375296445511172
+The AUROC of Pneumothorax is 0.859555944861166
+The AUROC of Consolidation is 0.76183970856102
+The AUROC of Edema is 0.906227860358869
+The AUROC of Emphysema is 0.8475025468442685
+The AUROC of Fibrosis is 0.7545469900772958
+The AUROC of Pleural_Thickening is 0.7672735515966802
+The AUROC of Hernia is 0.8657204864101418
+Epoch: 9 	Learning Rate for first group: 0.0001000000
+
+Started epoch 10
+Trained 100 batches 	Training Loss: 0.097110
+Trained 200 batches 	Training Loss: 0.153636
+Trained 300 batches 	Training Loss: 0.181660
+Trained 400 batches 	Training Loss: 0.154348
+Trained 500 batches 	Training Loss: 0.185782
+Trained 600 batches 	Training Loss: 0.157911
+Trained 700 batches 	Training Loss: 0.096703
+Trained 800 batches 	Training Loss: 0.165222
+Trained 900 batches 	Training Loss: 0.123382
+Trained 1000 batches 	Training Loss: 0.106131
+Trained 1100 batches 	Training Loss: 0.109892
+Trained 1200 batches 	Training Loss: 0.101458
+Trained 1300 batches 	Training Loss: 0.213579
+Trained 1400 batches 	Training Loss: 0.113114
+Trained 1500 batches 	Training Loss: 0.122490
+Trained 1600 batches 	Training Loss: 0.120822
+Trained 1700 batches 	Training Loss: 0.234885
+Trained 1800 batches 	Training Loss: 0.078548
+Trained 1900 batches 	Training Loss: 0.105746
+Trained 2000 batches 	Training Loss: 0.131039
+Trained 2100 batches 	Training Loss: 0.189937
+Trained 2200 batches 	Training Loss: 0.221901
+Trained 2300 batches 	Training Loss: 0.104562
+Trained 2400 batches 	Training Loss: 0.081388
+Trained 2500 batches 	Training Loss: 0.101698
+Trained 2600 batches 	Training Loss: 0.158583
+Trained 2700 batches 	Training Loss: 0.145152
+Trained 2800 batches 	Training Loss: 0.126890
+Trained 2900 batches 	Training Loss: 0.213033
+Trained 3000 batches 	Training Loss: 0.159535
+Trained 3100 batches 	Training Loss: 0.093745
+Trained 3200 batches 	Training Loss: 0.174262
+Trained 3300 batches 	Training Loss: 0.148585
+Trained 3400 batches 	Training Loss: 0.145623
+Trained 3500 batches 	Training Loss: 0.119224
+Trained 3600 batches 	Training Loss: 0.215786
+Trained 3700 batches 	Training Loss: 0.098290
+Trained 3800 batches 	Training Loss: 0.111399
+Trained 3900 batches 	Training Loss: 0.164703
+Trained 4000 batches 	Training Loss: 0.197855
+Trained 4100 batches 	Training Loss: 0.182665
+Trained 4200 batches 	Training Loss: 0.156357
+Trained 4300 batches 	Training Loss: 0.129952
+Trained 4400 batches 	Training Loss: 0.175316
+Trained 4500 batches 	Training Loss: 0.118738
+Trained 4600 batches 	Training Loss: 0.135484
+Trained 4700 batches 	Training Loss: 0.218088
+Trained 4800 batches 	Training Loss: 0.102762
+Trained 4900 batches 	Training Loss: 0.225634
+Epoch: 10 
+Training Loss: 0.142802
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.139586
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1395863
+The average AUROC is 0.809
+The AUROC of Atelectasis is 0.7854204168817518
+The AUROC of Cardiomegaly is 0.9048159921430075
+The AUROC of Effusion is 0.8853341747440246
+The AUROC of Infiltration is 0.7023249882431051
+The AUROC of Mass is 0.8128642459306421
+The AUROC of Nodule is 0.7425301083622805
+The AUROC of Pneumonia is 0.7353146370268778
+The AUROC of Pneumothorax is 0.8610205068733741
+The AUROC of Consolidation is 0.7615373867935343
+The AUROC of Edema is 0.9043021254055487
+The AUROC of Emphysema is 0.8499150561189037
+The AUROC of Fibrosis is 0.7541812897638767
+The AUROC of Pleural_Thickening is 0.7720912074312519
+The AUROC of Hernia is 0.858045402872989
+Epoch: 10 	Learning Rate for first group: 0.0001000000
+
+Started epoch 11
+Trained 100 batches 	Training Loss: 0.063266
+Trained 200 batches 	Training Loss: 0.153768
+Trained 300 batches 	Training Loss: 0.182648
+Trained 400 batches 	Training Loss: 0.112583
+Trained 500 batches 	Training Loss: 0.110898
+Trained 600 batches 	Training Loss: 0.117255
+Trained 700 batches 	Training Loss: 0.121807
+Trained 800 batches 	Training Loss: 0.112576
+Trained 900 batches 	Training Loss: 0.275106
+Trained 1000 batches 	Training Loss: 0.136506
+Trained 1100 batches 	Training Loss: 0.124895
+Trained 1200 batches 	Training Loss: 0.080474
+Trained 1300 batches 	Training Loss: 0.162581
+Trained 1400 batches 	Training Loss: 0.144476
+Trained 1500 batches 	Training Loss: 0.141477
+Trained 1600 batches 	Training Loss: 0.089093
+Trained 1700 batches 	Training Loss: 0.136297
+Trained 1800 batches 	Training Loss: 0.228662
+Trained 1900 batches 	Training Loss: 0.162639
+Trained 2000 batches 	Training Loss: 0.121105
+Trained 2100 batches 	Training Loss: 0.155014
+Trained 2200 batches 	Training Loss: 0.098597
+Trained 2300 batches 	Training Loss: 0.063186
+Trained 2400 batches 	Training Loss: 0.105675
+Trained 2500 batches 	Training Loss: 0.108900
+Trained 2600 batches 	Training Loss: 0.095602
+Trained 2700 batches 	Training Loss: 0.113708
+Trained 2800 batches 	Training Loss: 0.070191
+Trained 2900 batches 	Training Loss: 0.151228
+Trained 3000 batches 	Training Loss: 0.116076
+Trained 3100 batches 	Training Loss: 0.192227
+Trained 3200 batches 	Training Loss: 0.104768
+Trained 3300 batches 	Training Loss: 0.171092
+Trained 3400 batches 	Training Loss: 0.147045
+Trained 3500 batches 	Training Loss: 0.161710
+Trained 3600 batches 	Training Loss: 0.163892
+Trained 3700 batches 	Training Loss: 0.105132
+Trained 3800 batches 	Training Loss: 0.089246
+Trained 3900 batches 	Training Loss: 0.193464
+Trained 4000 batches 	Training Loss: 0.213858
+Trained 4100 batches 	Training Loss: 0.160081
+Trained 4200 batches 	Training Loss: 0.130251
+Trained 4300 batches 	Training Loss: 0.190851
+Trained 4400 batches 	Training Loss: 0.129314
+Trained 4500 batches 	Training Loss: 0.177154
+Trained 4600 batches 	Training Loss: 0.090091
+Trained 4700 batches 	Training Loss: 0.121543
+Trained 4800 batches 	Training Loss: 0.093272
+Trained 4900 batches 	Training Loss: 0.142803
+Epoch: 11 
+Training Loss: 0.141940
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.138783
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1387828
+The average AUROC is 0.810
+The AUROC of Atelectasis is 0.7841228629877635
+The AUROC of Cardiomegaly is 0.9073873245395416
+The AUROC of Effusion is 0.8859962321038772
+The AUROC of Infiltration is 0.7009616310271377
+The AUROC of Mass is 0.8142860548019217
+The AUROC of Nodule is 0.7397668666399846
+The AUROC of Pneumonia is 0.7373760643465341
+The AUROC of Pneumothorax is 0.8600756868312631
+The AUROC of Consolidation is 0.7619364356044684
+The AUROC of Edema is 0.903658213599947
+The AUROC of Emphysema is 0.8550871374059286
+The AUROC of Fibrosis is 0.7538603636090654
+The AUROC of Pleural_Thickening is 0.7690751205891841
+The AUROC of Hernia is 0.867268363820088
+Epoch: 11 	Learning Rate for first group: 0.0001000000
+
+Started epoch 12
+Trained 100 batches 	Training Loss: 0.070111
+Trained 200 batches 	Training Loss: 0.170930
+Trained 300 batches 	Training Loss: 0.114502
+Trained 400 batches 	Training Loss: 0.179265
+Trained 500 batches 	Training Loss: 0.160046
+Trained 600 batches 	Training Loss: 0.116778
+Trained 700 batches 	Training Loss: 0.145214
+Trained 800 batches 	Training Loss: 0.145330
+Trained 900 batches 	Training Loss: 0.096784
+Trained 1000 batches 	Training Loss: 0.146814
+Trained 1100 batches 	Training Loss: 0.180257
+Trained 1200 batches 	Training Loss: 0.151559
+Trained 1300 batches 	Training Loss: 0.112651
+Trained 1400 batches 	Training Loss: 0.147330
+Trained 1500 batches 	Training Loss: 0.204446
+Trained 1600 batches 	Training Loss: 0.114321
+Trained 1700 batches 	Training Loss: 0.086092
+Trained 1800 batches 	Training Loss: 0.128427
+Trained 1900 batches 	Training Loss: 0.173463
+Trained 2000 batches 	Training Loss: 0.197972
+Trained 2100 batches 	Training Loss: 0.198135
+Trained 2200 batches 	Training Loss: 0.122729
+Trained 2300 batches 	Training Loss: 0.109499
+Trained 2400 batches 	Training Loss: 0.250143
+Trained 2500 batches 	Training Loss: 0.159305
+Trained 2600 batches 	Training Loss: 0.108739
+Trained 2700 batches 	Training Loss: 0.108835
+Trained 2800 batches 	Training Loss: 0.109283
+Trained 2900 batches 	Training Loss: 0.087780
+Trained 3000 batches 	Training Loss: 0.138023
+Trained 3100 batches 	Training Loss: 0.142130
+Trained 3200 batches 	Training Loss: 0.142605
+Trained 3300 batches 	Training Loss: 0.141152
+Trained 3400 batches 	Training Loss: 0.193313
+Trained 3500 batches 	Training Loss: 0.166973
+Trained 3600 batches 	Training Loss: 0.198384
+Trained 3700 batches 	Training Loss: 0.158123
+Trained 3800 batches 	Training Loss: 0.177117
+Trained 3900 batches 	Training Loss: 0.140953
+Trained 4000 batches 	Training Loss: 0.157076
+Trained 4100 batches 	Training Loss: 0.110344
+Trained 4200 batches 	Training Loss: 0.102928
+Trained 4300 batches 	Training Loss: 0.118371
+Trained 4400 batches 	Training Loss: 0.172815
+Trained 4500 batches 	Training Loss: 0.132093
+Trained 4600 batches 	Training Loss: 0.104586
+Trained 4700 batches 	Training Loss: 0.082368
+Trained 4800 batches 	Training Loss: 0.102426
+Trained 4900 batches 	Training Loss: 0.128205
+Epoch: 12 
+Training Loss: 0.141135
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.139701
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1397012
+The average AUROC is 0.807
+The AUROC of Atelectasis is 0.782973135518157
+The AUROC of Cardiomegaly is 0.9030745509036243
+The AUROC of Effusion is 0.8850279455371097
+The AUROC of Infiltration is 0.6988879360424909
+The AUROC of Mass is 0.8119569002960977
+The AUROC of Nodule is 0.7415052005190887
+The AUROC of Pneumonia is 0.7326799626645333
+The AUROC of Pneumothorax is 0.8561069206980675
+The AUROC of Consolidation is 0.7594939782439782
+The AUROC of Edema is 0.9016495067205191
+The AUROC of Emphysema is 0.8529083342166319
+The AUROC of Fibrosis is 0.7504213328757611
+The AUROC of Pleural_Thickening is 0.7656015536949115
+The AUROC of Hernia is 0.8601100049375912
+Epoch: 12 	Learning Rate for first group: 0.0001000000
+
+Started epoch 13
+Trained 100 batches 	Training Loss: 0.123072
+Trained 200 batches 	Training Loss: 0.126909
+Trained 300 batches 	Training Loss: 0.129339
+Trained 400 batches 	Training Loss: 0.133545
+Trained 500 batches 	Training Loss: 0.144666
+Trained 600 batches 	Training Loss: 0.153666
+Trained 700 batches 	Training Loss: 0.121795
+Trained 800 batches 	Training Loss: 0.124995
+Trained 900 batches 	Training Loss: 0.146264
+Trained 1000 batches 	Training Loss: 0.064684
+Trained 1100 batches 	Training Loss: 0.105253
+Trained 1200 batches 	Training Loss: 0.185873
+Trained 1300 batches 	Training Loss: 0.196459
+Trained 1400 batches 	Training Loss: 0.109373
+Trained 1500 batches 	Training Loss: 0.079635
+Trained 1600 batches 	Training Loss: 0.117410
+Trained 1700 batches 	Training Loss: 0.135226
+Trained 1800 batches 	Training Loss: 0.138806
+Trained 1900 batches 	Training Loss: 0.137335
+Trained 2000 batches 	Training Loss: 0.122664
+Trained 2100 batches 	Training Loss: 0.140253
+Trained 2200 batches 	Training Loss: 0.157370
+Trained 2300 batches 	Training Loss: 0.084952
+Trained 2400 batches 	Training Loss: 0.133356
+Trained 2500 batches 	Training Loss: 0.104913
+Trained 2600 batches 	Training Loss: 0.126594
+Trained 2700 batches 	Training Loss: 0.125499
+Trained 2800 batches 	Training Loss: 0.124749
+Trained 2900 batches 	Training Loss: 0.130675
+Trained 3000 batches 	Training Loss: 0.133490
+Trained 3100 batches 	Training Loss: 0.147268
+Trained 3200 batches 	Training Loss: 0.201839
+Trained 3300 batches 	Training Loss: 0.159094
+Trained 3400 batches 	Training Loss: 0.216968
+Trained 3500 batches 	Training Loss: 0.212944
+Trained 3600 batches 	Training Loss: 0.117639
+Trained 3700 batches 	Training Loss: 0.118868
+Trained 3800 batches 	Training Loss: 0.148404
+Trained 3900 batches 	Training Loss: 0.121617
+Trained 4000 batches 	Training Loss: 0.125996
+Trained 4100 batches 	Training Loss: 0.191688
+Trained 4200 batches 	Training Loss: 0.157395
+Trained 4300 batches 	Training Loss: 0.143825
+Trained 4400 batches 	Training Loss: 0.165127
+Trained 4500 batches 	Training Loss: 0.146301
+Trained 4600 batches 	Training Loss: 0.150479
+Trained 4700 batches 	Training Loss: 0.124043
+Trained 4800 batches 	Training Loss: 0.101302
+Trained 4900 batches 	Training Loss: 0.162753
+Epoch: 13 
+Training Loss: 0.140478
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.139892
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1398922
+The average AUROC is 0.808
+The AUROC of Atelectasis is 0.7834430602083501
+The AUROC of Cardiomegaly is 0.9049940898891102
+The AUROC of Effusion is 0.8859836109435056
+The AUROC of Infiltration is 0.6983592353868711
+The AUROC of Mass is 0.811255224086149
+The AUROC of Nodule is 0.7432747111159623
+The AUROC of Pneumonia is 0.7373671352648724
+The AUROC of Pneumothorax is 0.8580194161428122
+The AUROC of Consolidation is 0.7616740187180762
+The AUROC of Edema is 0.9007399192213468
+The AUROC of Emphysema is 0.8497556943315786
+The AUROC of Fibrosis is 0.7453240496215645
+The AUROC of Pleural_Thickening is 0.7706258717999017
+The AUROC of Hernia is 0.8596392113633493
+Epoch: 13 	Learning Rate for first group: 0.0001000000
+
+Started epoch 14
+Trained 100 batches 	Training Loss: 0.124080
+Trained 200 batches 	Training Loss: 0.145595
+Trained 300 batches 	Training Loss: 0.125589
+Trained 400 batches 	Training Loss: 0.183688
+Trained 500 batches 	Training Loss: 0.138823
+Trained 600 batches 	Training Loss: 0.124438
+Trained 700 batches 	Training Loss: 0.210205
+Trained 800 batches 	Training Loss: 0.145622
+Trained 900 batches 	Training Loss: 0.149387
+Trained 1000 batches 	Training Loss: 0.111342
+Trained 1100 batches 	Training Loss: 0.126598
+Trained 1200 batches 	Training Loss: 0.203810
+Trained 1300 batches 	Training Loss: 0.136955
+Trained 1400 batches 	Training Loss: 0.084025
+Trained 1500 batches 	Training Loss: 0.151736
+Trained 1600 batches 	Training Loss: 0.191940
+Trained 1700 batches 	Training Loss: 0.147775
+Trained 1800 batches 	Training Loss: 0.129943
+Trained 1900 batches 	Training Loss: 0.167277
+Trained 2000 batches 	Training Loss: 0.175575
+Trained 2100 batches 	Training Loss: 0.137084
+Trained 2200 batches 	Training Loss: 0.162503
+Trained 2300 batches 	Training Loss: 0.115252
+Trained 2400 batches 	Training Loss: 0.252521
+Trained 2500 batches 	Training Loss: 0.135827
+Trained 2600 batches 	Training Loss: 0.171394
+Trained 2700 batches 	Training Loss: 0.128520
+Trained 2800 batches 	Training Loss: 0.151992
+Trained 2900 batches 	Training Loss: 0.158636
+Trained 3000 batches 	Training Loss: 0.141625
+Trained 3100 batches 	Training Loss: 0.117892
+Trained 3200 batches 	Training Loss: 0.163940
+Trained 3300 batches 	Training Loss: 0.148324
+Trained 3400 batches 	Training Loss: 0.104561
+Trained 3500 batches 	Training Loss: 0.156017
+Trained 3600 batches 	Training Loss: 0.159115
+Trained 3700 batches 	Training Loss: 0.111922
+Trained 3800 batches 	Training Loss: 0.144636
+Trained 3900 batches 	Training Loss: 0.112803
+Trained 4000 batches 	Training Loss: 0.147457
+Trained 4100 batches 	Training Loss: 0.170171
+Trained 4200 batches 	Training Loss: 0.169359
+Trained 4300 batches 	Training Loss: 0.201102
+Trained 4400 batches 	Training Loss: 0.083865
+Trained 4500 batches 	Training Loss: 0.145484
+Trained 4600 batches 	Training Loss: 0.136274
+Trained 4700 batches 	Training Loss: 0.130053
+Trained 4800 batches 	Training Loss: 0.117265
+Trained 4900 batches 	Training Loss: 0.120767
+Epoch: 14 
+Training Loss: 0.139348
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.139746
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1397457
+The average AUROC is 0.809
+The AUROC of Atelectasis is 0.7849503625571611
+The AUROC of Cardiomegaly is 0.9051910320025391
+The AUROC of Effusion is 0.8868053149108677
+The AUROC of Infiltration is 0.6987397991645687
+The AUROC of Mass is 0.8133105941024107
+The AUROC of Nodule is 0.7433473378864184
+The AUROC of Pneumonia is 0.7363557679486447
+The AUROC of Pneumothorax is 0.861904115673115
+The AUROC of Consolidation is 0.7622684123708714
+The AUROC of Edema is 0.9018142090975303
+The AUROC of Emphysema is 0.8533915721537174
+The AUROC of Fibrosis is 0.7496652662453784
+The AUROC of Pleural_Thickening is 0.7706467431208488
+The AUROC of Hernia is 0.8531215910526255
+Epoch: 14 	Learning Rate for first group: 0.0000100000
+
+Started epoch 15
+Trained 100 batches 	Training Loss: 0.185413
+Trained 200 batches 	Training Loss: 0.151837
+Trained 300 batches 	Training Loss: 0.133162
+Trained 400 batches 	Training Loss: 0.142551
+Trained 500 batches 	Training Loss: 0.161971
+Trained 600 batches 	Training Loss: 0.108781
+Trained 700 batches 	Training Loss: 0.115778
+Trained 800 batches 	Training Loss: 0.125864
+Trained 900 batches 	Training Loss: 0.087359
+Trained 1000 batches 	Training Loss: 0.097403
+Trained 1100 batches 	Training Loss: 0.146822
+Trained 1200 batches 	Training Loss: 0.166552
+Trained 1300 batches 	Training Loss: 0.146168
+Trained 1400 batches 	Training Loss: 0.199192
+Trained 1500 batches 	Training Loss: 0.108717
+Trained 1600 batches 	Training Loss: 0.182656
+Trained 1700 batches 	Training Loss: 0.114257
+Trained 1800 batches 	Training Loss: 0.176833
+Trained 1900 batches 	Training Loss: 0.134716
+Trained 2000 batches 	Training Loss: 0.162281
+Trained 2100 batches 	Training Loss: 0.151513
+Trained 2200 batches 	Training Loss: 0.113687
+Trained 2300 batches 	Training Loss: 0.149767
+Trained 2400 batches 	Training Loss: 0.111340
+Trained 2500 batches 	Training Loss: 0.097462
+Trained 2600 batches 	Training Loss: 0.115146
+Trained 2700 batches 	Training Loss: 0.108537
+Trained 2800 batches 	Training Loss: 0.092753
+Trained 2900 batches 	Training Loss: 0.114010
+Trained 3000 batches 	Training Loss: 0.173897
+Trained 3100 batches 	Training Loss: 0.155065
+Trained 3200 batches 	Training Loss: 0.177450
+Trained 3300 batches 	Training Loss: 0.108343
+Trained 3400 batches 	Training Loss: 0.144223
+Trained 3500 batches 	Training Loss: 0.183188
+Trained 3600 batches 	Training Loss: 0.195090
+Trained 3700 batches 	Training Loss: 0.080196
+Trained 3800 batches 	Training Loss: 0.118255
+Trained 3900 batches 	Training Loss: 0.104044
+Trained 4000 batches 	Training Loss: 0.101348
+Trained 4100 batches 	Training Loss: 0.125242
+Trained 4200 batches 	Training Loss: 0.143420
+Trained 4300 batches 	Training Loss: 0.199564
+Trained 4400 batches 	Training Loss: 0.072737
+Trained 4500 batches 	Training Loss: 0.101325
+Trained 4600 batches 	Training Loss: 0.111985
+Trained 4700 batches 	Training Loss: 0.132288
+Trained 4800 batches 	Training Loss: 0.089074
+Trained 4900 batches 	Training Loss: 0.124362
+Epoch: 15 
+Training Loss: 0.138946
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.139524
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1395241
+The average AUROC is 0.808
+The AUROC of Atelectasis is 0.7845051548253856
+The AUROC of Cardiomegaly is 0.9047934528016955
+The AUROC of Effusion is 0.8869917907101617
+The AUROC of Infiltration is 0.6988272981271957
+The AUROC of Mass is 0.813245044732479
+The AUROC of Nodule is 0.7433562557118671
+The AUROC of Pneumonia is 0.7363021934586738
+The AUROC of Pneumothorax is 0.8609097888639194
+The AUROC of Consolidation is 0.7604362708102463
+The AUROC of Edema is 0.9017608256637756
+The AUROC of Emphysema is 0.8544806057072867
+The AUROC of Fibrosis is 0.7489354742709453
+The AUROC of Pleural_Thickening is 0.7666453610292143
+The AUROC of Hernia is 0.8572025675473951
+Epoch: 15 	Learning Rate for first group: 0.0000100000
+
+Started epoch 16
+Trained 100 batches 	Training Loss: 0.126451
+Trained 200 batches 	Training Loss: 0.119536
+Trained 300 batches 	Training Loss: 0.111967
+Trained 400 batches 	Training Loss: 0.094755
+Trained 500 batches 	Training Loss: 0.111113
+Trained 600 batches 	Training Loss: 0.060477
+Trained 700 batches 	Training Loss: 0.204268
+Trained 800 batches 	Training Loss: 0.179562
+Trained 900 batches 	Training Loss: 0.110188
+Trained 1000 batches 	Training Loss: 0.145270
+Trained 1100 batches 	Training Loss: 0.150500
+Trained 1200 batches 	Training Loss: 0.133825
+Trained 1300 batches 	Training Loss: 0.150143
+Trained 1400 batches 	Training Loss: 0.125377
+Trained 1500 batches 	Training Loss: 0.115192
+Trained 1600 batches 	Training Loss: 0.152303
+Trained 1700 batches 	Training Loss: 0.135109
+Trained 1800 batches 	Training Loss: 0.208861
+Trained 1900 batches 	Training Loss: 0.193830
+Trained 2000 batches 	Training Loss: 0.069532
+Trained 2100 batches 	Training Loss: 0.148237
+Trained 2200 batches 	Training Loss: 0.173089
+Trained 2300 batches 	Training Loss: 0.103674
+Trained 2400 batches 	Training Loss: 0.145536
+Trained 2500 batches 	Training Loss: 0.119223
+Trained 2600 batches 	Training Loss: 0.167947
+Trained 2700 batches 	Training Loss: 0.130048
+Trained 2800 batches 	Training Loss: 0.113562
+Trained 2900 batches 	Training Loss: 0.116345
+Trained 3000 batches 	Training Loss: 0.138244
+Trained 3100 batches 	Training Loss: 0.133131
+Trained 3200 batches 	Training Loss: 0.141792
+Trained 3300 batches 	Training Loss: 0.179092
+Trained 3400 batches 	Training Loss: 0.099460
+Trained 3500 batches 	Training Loss: 0.109400
+Trained 3600 batches 	Training Loss: 0.199204
+Trained 3700 batches 	Training Loss: 0.138084
+Trained 3800 batches 	Training Loss: 0.163610
+Trained 3900 batches 	Training Loss: 0.079207
+Trained 4000 batches 	Training Loss: 0.082518
+Trained 4100 batches 	Training Loss: 0.160155
+Trained 4200 batches 	Training Loss: 0.166683
+Trained 4300 batches 	Training Loss: 0.106797
+Trained 4400 batches 	Training Loss: 0.178745
+Trained 4500 batches 	Training Loss: 0.135623
+Trained 4600 batches 	Training Loss: 0.128382
+Trained 4700 batches 	Training Loss: 0.167859
+Trained 4800 batches 	Training Loss: 0.181873
+Trained 4900 batches 	Training Loss: 0.131173
+Epoch: 16 
+Training Loss: 0.138789
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.139222
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1392220
+The average AUROC is 0.808
+The AUROC of Atelectasis is 0.7839692894384351
+The AUROC of Cardiomegaly is 0.9060541779255603
+The AUROC of Effusion is 0.886807566053507
+The AUROC of Infiltration is 0.6986690918144347
+The AUROC of Mass is 0.8128855991344833
+The AUROC of Nodule is 0.7418881676151666
+The AUROC of Pneumonia is 0.7336437082118978
+The AUROC of Pneumothorax is 0.8586361945397673
+The AUROC of Consolidation is 0.7599469633281107
+The AUROC of Edema is 0.9012340263523804
+The AUROC of Emphysema is 0.85262071011318
+The AUROC of Fibrosis is 0.7464329473461256
+The AUROC of Pleural_Thickening is 0.7641316336115613
+The AUROC of Hernia is 0.8616004684970203
+Epoch: 16 	Learning Rate for first group: 0.0000010000
+
+Started epoch 17
+Trained 100 batches 	Training Loss: 0.147628
+Trained 200 batches 	Training Loss: 0.155334
+Trained 300 batches 	Training Loss: 0.082568
+Trained 400 batches 	Training Loss: 0.152229
+Trained 500 batches 	Training Loss: 0.124070
+Trained 600 batches 	Training Loss: 0.171858
+Trained 700 batches 	Training Loss: 0.172734
+Trained 800 batches 	Training Loss: 0.117299
+Trained 900 batches 	Training Loss: 0.072941
+Trained 1000 batches 	Training Loss: 0.172540
+Trained 1100 batches 	Training Loss: 0.181972
+Trained 1200 batches 	Training Loss: 0.150012
+Trained 1300 batches 	Training Loss: 0.176978
+Trained 1400 batches 	Training Loss: 0.191314
+Trained 1500 batches 	Training Loss: 0.181704
+Trained 1600 batches 	Training Loss: 0.120053
+Trained 1700 batches 	Training Loss: 0.156916
+Trained 1800 batches 	Training Loss: 0.082520
+Trained 1900 batches 	Training Loss: 0.156135
+Trained 2000 batches 	Training Loss: 0.095887
+Trained 2100 batches 	Training Loss: 0.170033
+Trained 2200 batches 	Training Loss: 0.110415
+Trained 2300 batches 	Training Loss: 0.140913
+Trained 2400 batches 	Training Loss: 0.101747
+Trained 2500 batches 	Training Loss: 0.147125
+Trained 2600 batches 	Training Loss: 0.143209
+Trained 2700 batches 	Training Loss: 0.192035
+Trained 2800 batches 	Training Loss: 0.186232
+Trained 2900 batches 	Training Loss: 0.137474
+Trained 3000 batches 	Training Loss: 0.119343
+Trained 3100 batches 	Training Loss: 0.176540
+Trained 3200 batches 	Training Loss: 0.167912
+Trained 3300 batches 	Training Loss: 0.134391
+Trained 3400 batches 	Training Loss: 0.127460
+Trained 3500 batches 	Training Loss: 0.074030
+Trained 3600 batches 	Training Loss: 0.125109
+Trained 3700 batches 	Training Loss: 0.131474
+Trained 3800 batches 	Training Loss: 0.129394
+Trained 3900 batches 	Training Loss: 0.159729
+Trained 4000 batches 	Training Loss: 0.099060
+Trained 4100 batches 	Training Loss: 0.094913
+Trained 4200 batches 	Training Loss: 0.102711
+Trained 4300 batches 	Training Loss: 0.115374
+Trained 4400 batches 	Training Loss: 0.168024
+Trained 4500 batches 	Training Loss: 0.107483
+Trained 4600 batches 	Training Loss: 0.149758
+Trained 4700 batches 	Training Loss: 0.254507
+Trained 4800 batches 	Training Loss: 0.203525
+Trained 4900 batches 	Training Loss: 0.109812
+Epoch: 17 
+Training Loss: 0.138812
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.139432
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1394319
+The average AUROC is 0.809
+The AUROC of Atelectasis is 0.7843583654761821
+The AUROC of Cardiomegaly is 0.9049224073937907
+The AUROC of Effusion is 0.8866135618427632
+The AUROC of Infiltration is 0.69939110348834
+The AUROC of Mass is 0.8142887860256688
+The AUROC of Nodule is 0.7438067129109422
+The AUROC of Pneumonia is 0.7367986503990703
+The AUROC of Pneumothorax is 0.8617933976636603
+The AUROC of Consolidation is 0.7621195402957698
+The AUROC of Edema is 0.9016039859630537
+The AUROC of Emphysema is 0.854487966528872
+The AUROC of Fibrosis is 0.7505055190182931
+The AUROC of Pleural_Thickening is 0.7683172382875093
+The AUROC of Hernia is 0.8567524429593395
+Epoch: 17 	Learning Rate for first group: 0.0000010000
+
+Started epoch 18
+Trained 100 batches 	Training Loss: 0.056532
+Trained 200 batches 	Training Loss: 0.103093
+Trained 300 batches 	Training Loss: 0.125582
+Trained 400 batches 	Training Loss: 0.114995
+Trained 500 batches 	Training Loss: 0.159511
+Trained 600 batches 	Training Loss: 0.075398
+Trained 700 batches 	Training Loss: 0.147175
+Trained 800 batches 	Training Loss: 0.121695
+Trained 900 batches 	Training Loss: 0.092247
+Trained 1000 batches 	Training Loss: 0.173076
+Trained 1100 batches 	Training Loss: 0.102469
+Trained 1200 batches 	Training Loss: 0.215945
+Trained 1300 batches 	Training Loss: 0.228273
+Trained 1400 batches 	Training Loss: 0.115555
+Trained 1500 batches 	Training Loss: 0.098010
+Trained 1600 batches 	Training Loss: 0.091587
+Trained 1700 batches 	Training Loss: 0.167491
+Trained 1800 batches 	Training Loss: 0.131221
+Trained 1900 batches 	Training Loss: 0.125858
+Trained 2000 batches 	Training Loss: 0.155149
+Trained 2100 batches 	Training Loss: 0.108266
+Trained 2200 batches 	Training Loss: 0.122828
+Trained 2300 batches 	Training Loss: 0.117246
+Trained 2400 batches 	Training Loss: 0.067811
+Trained 2500 batches 	Training Loss: 0.130238
+Trained 2600 batches 	Training Loss: 0.103715
+Trained 2700 batches 	Training Loss: 0.116970
+Trained 2800 batches 	Training Loss: 0.098386
+Trained 2900 batches 	Training Loss: 0.132688
+Trained 3000 batches 	Training Loss: 0.145558
+Trained 3100 batches 	Training Loss: 0.139094
+Trained 3200 batches 	Training Loss: 0.151824
+Trained 3300 batches 	Training Loss: 0.144770
+Trained 3400 batches 	Training Loss: 0.071744
+Trained 3500 batches 	Training Loss: 0.130164
+Trained 3600 batches 	Training Loss: 0.231675
+Trained 3700 batches 	Training Loss: 0.127900
+Trained 3800 batches 	Training Loss: 0.109604
+Trained 3900 batches 	Training Loss: 0.107308
+Trained 4000 batches 	Training Loss: 0.141442
+Trained 4100 batches 	Training Loss: 0.091127
+Trained 4200 batches 	Training Loss: 0.104155
+Trained 4300 batches 	Training Loss: 0.180323
+Trained 4400 batches 	Training Loss: 0.135937
+Trained 4500 batches 	Training Loss: 0.175635
+Trained 4600 batches 	Training Loss: 0.131881
+Trained 4700 batches 	Training Loss: 0.206901
+Trained 4800 batches 	Training Loss: 0.102658
+Trained 4900 batches 	Training Loss: 0.202075
+Epoch: 18 
+Training Loss: 0.138665
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.139521
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1395208
+The average AUROC is 0.808
+The AUROC of Atelectasis is 0.7845872998218045
+The AUROC of Cardiomegaly is 0.9054300968194033
+The AUROC of Effusion is 0.8866560014171128
+The AUROC of Infiltration is 0.6982476140418822
+The AUROC of Mass is 0.8142021317449639
+The AUROC of Nodule is 0.7439309917263983
+The AUROC of Pneumonia is 0.7333282139931806
+The AUROC of Pneumothorax is 0.8605906837438124
+The AUROC of Consolidation is 0.7615105181703542
+The AUROC of Edema is 0.9017455141362644
+The AUROC of Emphysema is 0.8537813276566678
+The AUROC of Fibrosis is 0.7475541780724592
+The AUROC of Pleural_Thickening is 0.7673630690541527
+The AUROC of Hernia is 0.852999873689529
+Epoch: 18 	Learning Rate for first group: 0.0000001000
+
+Started epoch 19
+Trained 100 batches 	Training Loss: 0.183835
+Trained 200 batches 	Training Loss: 0.117946
+Trained 300 batches 	Training Loss: 0.174993
+Trained 400 batches 	Training Loss: 0.135037
+Trained 500 batches 	Training Loss: 0.087052
+Trained 600 batches 	Training Loss: 0.137429
+Trained 700 batches 	Training Loss: 0.160539
+Trained 800 batches 	Training Loss: 0.144949
+Trained 900 batches 	Training Loss: 0.081950
+Trained 1000 batches 	Training Loss: 0.136505
+Trained 1100 batches 	Training Loss: 0.160731
+Trained 1200 batches 	Training Loss: 0.081481
+Trained 1300 batches 	Training Loss: 0.125173
+Trained 1400 batches 	Training Loss: 0.173818
+Trained 1500 batches 	Training Loss: 0.191289
+Trained 1600 batches 	Training Loss: 0.076214
+Trained 1700 batches 	Training Loss: 0.167271
+Trained 1800 batches 	Training Loss: 0.063813
+Trained 1900 batches 	Training Loss: 0.135071
+Trained 2000 batches 	Training Loss: 0.129150
+Trained 2100 batches 	Training Loss: 0.108886
+Trained 2200 batches 	Training Loss: 0.139283
+Trained 2300 batches 	Training Loss: 0.117716
+Trained 2400 batches 	Training Loss: 0.160783
+Trained 2500 batches 	Training Loss: 0.172264
+Trained 2600 batches 	Training Loss: 0.112432
+Trained 2700 batches 	Training Loss: 0.152523
+Trained 2800 batches 	Training Loss: 0.100763
+Trained 2900 batches 	Training Loss: 0.080721
+Trained 3000 batches 	Training Loss: 0.168843
+Trained 3100 batches 	Training Loss: 0.155382
+Trained 3200 batches 	Training Loss: 0.099714
+Trained 3300 batches 	Training Loss: 0.144694
+Trained 3400 batches 	Training Loss: 0.183271
+Trained 3500 batches 	Training Loss: 0.129992
+Trained 3600 batches 	Training Loss: 0.089918
+Trained 3700 batches 	Training Loss: 0.096065
+Trained 3800 batches 	Training Loss: 0.139390
+Trained 3900 batches 	Training Loss: 0.160267
+Trained 4000 batches 	Training Loss: 0.082746
+Trained 4100 batches 	Training Loss: 0.200639
+Trained 4200 batches 	Training Loss: 0.159166
+Trained 4300 batches 	Training Loss: 0.163178
+Trained 4400 batches 	Training Loss: 0.085056
+Trained 4500 batches 	Training Loss: 0.091495
+Trained 4600 batches 	Training Loss: 0.148396
+Trained 4700 batches 	Training Loss: 0.211532
+Trained 4800 batches 	Training Loss: 0.115267
+Trained 4900 batches 	Training Loss: 0.199414
+Epoch: 19 
+Training Loss: 0.138813
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.139875
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1398751
+The average AUROC is 0.809
+The AUROC of Atelectasis is 0.7846665496500174
+The AUROC of Cardiomegaly is 0.9063627082533527
+The AUROC of Effusion is 0.8869442214829125
+The AUROC of Infiltration is 0.6987676837533543
+The AUROC of Mass is 0.8146456659286293
+The AUROC of Nodule is 0.7430413494596153
+The AUROC of Pneumonia is 0.7343348191325219
+The AUROC of Pneumothorax is 0.8616923279378865
+The AUROC of Consolidation is 0.7613851312621804
+The AUROC of Edema is 0.9012857544858638
+The AUROC of Emphysema is 0.8537161843856363
+The AUROC of Fibrosis is 0.7486083816152478
+The AUROC of Pleural_Thickening is 0.7668736184814221
+The AUROC of Hernia is 0.8605164949992536
+Epoch: 19 	Learning Rate for first group: 0.0000001000
+
+Started epoch 20
+Trained 100 batches 	Training Loss: 0.122034
+Trained 200 batches 	Training Loss: 0.152085
+Trained 300 batches 	Training Loss: 0.139129
+Trained 400 batches 	Training Loss: 0.136462
+Trained 500 batches 	Training Loss: 0.127830
+Trained 600 batches 	Training Loss: 0.191120
+Trained 700 batches 	Training Loss: 0.134248
+Trained 800 batches 	Training Loss: 0.138146
+Trained 900 batches 	Training Loss: 0.194282
+Trained 1000 batches 	Training Loss: 0.067159
+Trained 1100 batches 	Training Loss: 0.189991
+Trained 1200 batches 	Training Loss: 0.226902
+Trained 1300 batches 	Training Loss: 0.141933
+Trained 1400 batches 	Training Loss: 0.139802
+Trained 1500 batches 	Training Loss: 0.109942
+Trained 1600 batches 	Training Loss: 0.137423
+Trained 1700 batches 	Training Loss: 0.125777
+Trained 1800 batches 	Training Loss: 0.145017
+Trained 1900 batches 	Training Loss: 0.123773
+Trained 2000 batches 	Training Loss: 0.100952
+Trained 2100 batches 	Training Loss: 0.195956
+Trained 2200 batches 	Training Loss: 0.134885
+Trained 2300 batches 	Training Loss: 0.153182
+Trained 2400 batches 	Training Loss: 0.156005
+Trained 2500 batches 	Training Loss: 0.110664
+Trained 2600 batches 	Training Loss: 0.153051
+Trained 2700 batches 	Training Loss: 0.111232
+Trained 2800 batches 	Training Loss: 0.222695
+Trained 2900 batches 	Training Loss: 0.145068
+Trained 3000 batches 	Training Loss: 0.128813
+Trained 3100 batches 	Training Loss: 0.148801
+Trained 3200 batches 	Training Loss: 0.134230
+Trained 3300 batches 	Training Loss: 0.125584
+Trained 3400 batches 	Training Loss: 0.124409
+Trained 3500 batches 	Training Loss: 0.165935
+Trained 3600 batches 	Training Loss: 0.147839
+Trained 3700 batches 	Training Loss: 0.119629
+Trained 3800 batches 	Training Loss: 0.090078
+Trained 3900 batches 	Training Loss: 0.173698
+Trained 4000 batches 	Training Loss: 0.084729
+Trained 4100 batches 	Training Loss: 0.095520
+Trained 4200 batches 	Training Loss: 0.090212
+Trained 4300 batches 	Training Loss: 0.135662
+Trained 4400 batches 	Training Loss: 0.096427
+Trained 4500 batches 	Training Loss: 0.159651
+Trained 4600 batches 	Training Loss: 0.154711
+Trained 4700 batches 	Training Loss: 0.096538
+Trained 4800 batches 	Training Loss: 0.104143
+Trained 4900 batches 	Training Loss: 0.082564
+Epoch: 20 
+Training Loss: 0.138705
+AUROCs on validation dataset:
+Evaluating test data...	 test_loader: 701
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+Testing Loss: 0.139519
+Evaluating time lapse: 1.0 min
+The total val loss is 0.1395193
+The average AUROC is 0.808
+The AUROC of Atelectasis is 0.7842599297571697
+The AUROC of Cardiomegaly is 0.9049124309640297
+The AUROC of Effusion is 0.8872218870110913
+The AUROC of Infiltration is 0.6971786494785471
+The AUROC of Mass is 0.8141824338282422
+The AUROC of Nodule is 0.7425841860558027
+The AUROC of Pneumonia is 0.7339592024306152
+The AUROC of Pneumothorax is 0.861762238452428
+The AUROC of Consolidation is 0.7614724045308061
+The AUROC of Edema is 0.9019578063960803
+The AUROC of Emphysema is 0.8548817704836944
+The AUROC of Fibrosis is 0.7487751452479067
+The AUROC of Pleural_Thickening is 0.765762974662699
+The AUROC of Hernia is 0.8546947305567996
+Epoch: 20 	Learning Rate for first group: 0.0000000100
+
+
+######################### Last Epoch (20th) on Test Set#######################
+Started training, total epoch : 0
+Training data size: 4907
+Training time lapse: 0.0 min
+Evaluating test data...	 test_loader: 1402
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+batch: 800
+batch: 900
+batch: 1000
+batch: 1100
+batch: 1200
+batch: 1300
+batch: 1400
+Testing Loss: 0.134849
+Evaluating time lapse: 2.0 min
+The total val loss is 0.1348489
+The average AUROC is 0.816
+The AUROC of Atelectasis is 0.7966816148012552
+The AUROC of Cardiomegaly is 0.9048197273435061
+The AUROC of Effusion is 0.8740549315433843
+The AUROC of Infiltration is 0.7034780329148727
+The AUROC of Mass is 0.842885625946739
+The AUROC of Nodule is 0.7406086606007813
+The AUROC of Pneumonia is 0.7247070359881614
+The AUROC of Pneumothorax is 0.8521564295430754
+The AUROC of Consolidation is 0.8064769147279072
+The AUROC of Edema is 0.8757628223959862
+The AUROC of Emphysema is 0.910280324300288
+The AUROC of Fibrosis is 0.7660941428680466
+The AUROC of Pleural_Thickening is 0.7822235730386881
+The AUROC of Hernia is 0.849449848444217
+
+######################### Best Epoch (11th) on Test Set#######################
+Evaluating test data...	 test_loader: 1402
+batch: 0
+batch: 100
+batch: 200
+batch: 300
+batch: 400
+batch: 500
+batch: 600
+batch: 700
+batch: 800
+batch: 900
+batch: 1000
+batch: 1100
+batch: 1200
+batch: 1300
+batch: 1400
+Testing Loss: 0.134673
+Evaluating time lapse: 2.0 min
+The total val loss is 0.1346727
+The average AUROC is 0.816
+The AUROC of Atelectasis is 0.7974746408461948
+The AUROC of Cardiomegaly is 0.9046680284828276
+The AUROC of Effusion is 0.8745987468530553
+The AUROC of Infiltration is 0.7045724381268709
+The AUROC of Mass is 0.8415808139077349
+The AUROC of Nodule is 0.7388869125322238
+The AUROC of Pneumonia is 0.7231105730818148
+The AUROC of Pneumothorax is 0.85178132439981
+The AUROC of Consolidation is 0.8075507167027984
+The AUROC of Edema is 0.8752206652504803
+The AUROC of Emphysema is 0.9087366219852607
+The AUROC of Fibrosis is 0.7673971043306969
+The AUROC of Pleural_Thickening is 0.7806638070662251
+The AUROC of Hernia is 0.8469185011823791
