@@ -297,7 +297,7 @@ cudnn.benchmark = True
 # initialize and load the model
 model = DenseNet121(N_LABEL).cuda()
 # load trained model if needed
-model.load_state_dict(torch.load("20trained.pth"))
+# model.load_state_dict(torch.load("trained.pth"))
 
 
 train_dataset = XrayDataSet(DATA_PATH, "final_train.txt", train_sampling=False)
@@ -311,7 +311,7 @@ test_loader = DataLoader(dataset=test_dataset, batch_size=BATCH_SIZE, shuffle=Fa
 print("Batch size for train/val/test:", len(train_loader), len(val_loader), len(test_loader))
 logfile = "runlog.txt"
 
-train_model(model, train_loader, val_loader, N_EPOCH, logfile)
+#train_model(model, train_loader, val_loader, N_EPOCH, logfile)
 
 """No need to use GPU for calculating AUC"""
 gc.collect()
