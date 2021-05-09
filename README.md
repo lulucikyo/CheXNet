@@ -76,6 +76,6 @@ DATA_PATH = './images_converted256/'
 python replication_chexnet_cuda_local.py
 ```
 ## Contributor
-Xi Li, Yu Liu, Liping Xie, Yekai Yu
+[Xi Li](https://github.com/lulucikyo), [Yu Liu](https://github.com/lytinahome), [Liping Xie](https://github.com/lipingxie), [Yekai Yu](https://github.com/Yekai-Yu)
 
 
