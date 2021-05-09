@@ -20,15 +20,20 @@ final_train.txt - train set: filename, label vector
 
 final_val.txt - validation set: filename, label vector
 
-***replication_chexnet_cuda_local\*.py - the main program***
+***chexnet_cuda_replication.py - the main program, default to replicate CheXNet***
 
-## Experiment designs
+## Experiment design
+The primary goal of this project is to replicate CheXNet.
+
+The options marked *default* were aligned with the original paper.
+
+Other options were the experiments we did, to investigate the effects of these hyperparameters/factors.
 
 Model Component | Variants
 ---|---
 preprocess step | option 1(default): resize to 224×224 with normalized based on ImageNet
 data augmentation | option 1: raw (224×224) only<br>option 2(default): raw (224×224) with random horizontal flip<br>option 3: raw (256×256) with (horizontally flip + randomly crop) (limit crop size to (224×224))
-backbone | option 1(default): DenseNet121<br>option 2: MobileNetV2<br>option 3:MobileNetV3-Large<br>option 4: DenseNet169<br>option 5: ResNet18<br>
+backbone | option 1(default): DenseNet121<br>option 2: MobileNetV2<br>option 3: MobileNetV3-Large<br>option 4: DenseNet169<br>option 5: ResNet18<br>
 batch size | option 1(default): 16<br>option 2: 32<br>option 3: 64<br>
 Initial Weights | option 1(default): ImageNet
 optimizer | option 1(default): Adam (1 = 0.9 and 2 = 0.999)
@@ -60,6 +65,7 @@ Average AUROC |	0.738 |	0.803 |	0.8414 |	0.8446
 - PyTorch 1.8.1
 - Numpy
 - sklearn
+- cuda
 
 ## Usage
 1. Download the dataset (`/images`), dataset partition list (`train_val_list.txt`, `test_list.txt`) and labels (`Data_Entry_2017_v2020.csv`) from [ChestXray-NIHCC](https://nihcc.app.box.com/v/ChestXray-NIHCC) (find the [README](https://nihcc.app.box.com/v/ChestXray-NIHCC/file/220660789610) file in it helpful)
@@ -71,9 +77,15 @@ Average AUROC |	0.738 |	0.803 |	0.8414 |	0.8446
 ```
 DATA_PATH = './images_converted256/'
 ```
-7. Run
+7. Specify interested model (for the primary goal of this project)
+8. (Optional) Load saved model
 ```
-python replication_chexnet_cuda_local.py
+model = DenseNet121(N_LABEL).cuda()
+# model.load_state_dict(torch.load("trained.pth")
+```
+9. Run
+```
+python chexnet_cuda_replication.py
 ```
 ## Contributor
 [Xi Li](https://github.com/lulucikyo), [Yu Liu](https://github.com/lytinahome), [Liping Xie](https://github.com/lipingxie), [Yekai Yu](https://github.com/Yekai-Yu)
