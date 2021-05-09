@@ -79,16 +79,15 @@ def collate_fn(data):
     return image_tensors.cuda(), label_tensors.cuda()
 
 class XrayDataSet(Dataset):
-    def __init__(self, data_path, image_list, train_sampling=False):
+    def __init__(self, data_path, image_list):
         self.image_path = []
         self.y=[]
         f = open(image_list, "r")
         for idx, line in enumerate(f):
-            if (not train_sampling) or idx % 10 == 0:
-                l = line.strip("\n").split(" ")
-                self.image_path.append(data_path+l[0])
-                label = [int(x) for x in l[1:]]
-                self.y.append(label)
+            l = line.strip("\n").split(" ")
+            self.image_path.append(data_path+l[0])
+            label = [int(x) for x in l[1:]]
+            self.y.append(label)
         f.close()
     def __len__(self):
         return(len(self.image_path))
@@ -164,8 +163,22 @@ class MobileNet_V3_large(nn.Module):
         return x
 
 def train_model(model, train_loader, val_loader, n_epochs, logfile):
-    """
-    Optimizer: using Adam with standard parameters (B1 = 0.9 and B2 = 0.999), the same as CheXNet paper
+    """ train the model
+    model : 
+        the model to be evaluated
+    train_loader : Dataloader
+        data loader for train set
+    val_loader : Dataloader
+        data loader for validation set
+    n_epochs : int
+        number of epochs to train
+    logfile: string
+        name of the file to record training data
+
+    CheXNet paper setting :
+        Optimizer : using Adam with standard parameters (B1 = 0.9 and B2 = 0.999)
+        Initial Learning Rate: 0.001
+        Scheduler patience: 1
     """
     t1 = time.time()
     criterion = nn.BCELoss()
@@ -313,7 +326,6 @@ cudnn.benchmark = True
 
 
 """ Initialized the Model
-
 If there is a trained model, it can be loaded.
 """
 model = DenseNet121(N_LABEL).cuda()
@@ -321,7 +333,7 @@ model = DenseNet121(N_LABEL).cuda()
 
 
 """ Initialize the Dataset"""
-train_dataset = XrayDataSet(DATA_PATH, "final_train.txt", train_sampling=False)
+train_dataset = XrayDataSet(DATA_PATH, "final_train.txt")
 val_dataset = XrayDataSet(DATA_PATH, "final_val.txt")
 test_dataset = XrayDataSet(DATA_PATH, "final_test.txt")
 
