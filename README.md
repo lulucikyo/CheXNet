@@ -27,7 +27,7 @@ final_val.txt - validation set: filename, label vector
 Model Component | Variants
 ---|---
 preprocess step | option 1(default): resize to 224×224 with normalized based on ImageNet
-data augmentation | option 1: raw (224×224) only<br>option 2(default): raw (224×224) with random horizontal flip<br>option 3: raw (256×256) with (horizontally flip + randomly crop) (limit crop size to (224×224)))
+data augmentation | option 1: raw (224×224) only<br>option 2(default): raw (224×224) with random horizontal flip<br>option 3: raw (256×256) with (horizontally flip + randomly crop) (limit crop size to (224×224))
 backbone | option 1(default): DenseNet121<br>option 2: MobileNetV2<br>option 3:MobileNetV3-Large<br>option 4: DenseNet169<br>option 5: ResNet18<br>
 batch size | option 1(default): 16<br>option 2: 32<br>option 3: 64<br>
 Initial Weights | option 1(default): ImageNet
