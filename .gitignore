@@ -6,7 +6,6 @@
 
 *.zip
 *.xlsx
-*.pth
 runlog*.txt
 test.py
 
