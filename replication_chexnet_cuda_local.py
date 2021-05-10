@@ -42,7 +42,7 @@ def collate_fn_train(data):
     trans = transforms.Compose([
                 transforms.Resize((224, 224)),
                 transforms.RandomHorizontalFlip(),
-                #transforms.RandomCrop(224, padding=(14, 14)),
+                transforms.RandomCrop(224, padding=(14, 14)),
                 transforms.ToTensor(),
                 transforms.Normalize(mean = [0.485, 0.456, 0.406],
                                      std = [0.229, 0.224, 0.225])
@@ -295,9 +295,9 @@ print(torch.cuda.get_device_name(0))
 cudnn.benchmark = True
 
 # initialize and load the model
-model = DenseNet121(N_LABEL).cuda()
+model = MobileNet_V3_large(N_LABEL).cuda()
 # load trained model if needed
-# model.load_state_dict(torch.load("trained.pth"))
+model.load_state_dict(torch.load("4trained.pth"))
 
 
 train_dataset = XrayDataSet(DATA_PATH, "final_train.txt", train_sampling=False)
@@ -319,4 +319,4 @@ torch.cuda.empty_cache()
 # switch to evaluate mode
 model.eval()
 with torch.no_grad():
-    eval_model(model, test_loader, logfile, "test (last epoch)")
+    eval_model(model, test_loader, logfile, "test (best epoch)")
