@@ -13,6 +13,12 @@ The ChestX-ray 14 dataset contains 112,120 chest X-ray images of 30,805 unique p
   - data_split.py - partition dataset into train, validation, test
   - data_unzip.py - automate dataset tarball unzip
   - <span>sample.py</span> - take sample data for small scale test
+  
+/TrainedModel:
+  - BestModel_AUROC_0.8446.pth - the model state dict for the best model
+  - BestModel_runlog.txt - the log for the best model progress
+  - ReplicationModel_AUROC_0.8159.pth - the model state dict for our replication of CheXNet
+  - ReplicationModel_runlog.txt - the log for the replication progress
 
 final_test.txt - test set: filename, label vector
 
@@ -78,12 +84,18 @@ Average AUROC |	0.738 |	0.803 |	0.8414 |	0.8446
 DATA_PATH = './images_converted256/'
 ```
 7. Specify interested model (for the primary goal of this project)
-8. (Optional) Load saved model
 ```
 model = DenseNet121(N_LABEL).cuda()
-# model.load_state_dict(torch.load("trained.pth")
 ```
-9. Run
+8. (Optional) Load saved model
+```
+model.load_state_dict(torch.load("ReplicationModel_AUROC_0.8159.pth")
+```
+9. (Optional) Comment out the trainning step to verify the model against the test set
+```
+# train_model(model, train_loader, val_loader, N_EPOCH, logfile)
+```
+10. Run
 ```
 python chexnet_cuda_replication.py
 ```
