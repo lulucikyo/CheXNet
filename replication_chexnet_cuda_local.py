@@ -42,7 +42,7 @@ def collate_fn_train(data):
     trans = transforms.Compose([
                 transforms.Resize((224, 224)),
                 transforms.RandomHorizontalFlip(),
-                #transforms.RandomCrop(224, padding=(14, 14)),
+                transforms.RandomCrop(224, padding=(14, 14)),
                 transforms.ToTensor(),
                 transforms.Normalize(mean = [0.485, 0.456, 0.406],
                                      std = [0.229, 0.224, 0.225])
@@ -59,7 +59,8 @@ def collate_fn(data):
     image_path, label = zip(*data)
     image_tensors = torch.Tensor()
     trans = transforms.Compose([
-                transforms.Resize((224, 224)),
+                #transforms.Resize((224, 224)),
+                transforms.CenterCrop(224),
                 transforms.ToTensor(),
                 transforms.Normalize(mean = [0.485, 0.456, 0.406],
                                      std = [0.229, 0.224, 0.225])
@@ -297,7 +298,7 @@ cudnn.benchmark = True
 # initialize and load the model
 model = DenseNet121(N_LABEL).cuda()
 # load trained model if needed
-model.load_state_dict(torch.load("20trained.pth"))
+model.load_state_dict(torch.load("BestModel_batchsize_16_AUROC_0845.pth"))
 
 
 train_dataset = XrayDataSet(DATA_PATH, "final_train.txt", train_sampling=False)
@@ -311,7 +312,7 @@ test_loader = DataLoader(dataset=test_dataset, batch_size=BATCH_SIZE, shuffle=Fa
 print("Batch size for train/val/test:", len(train_loader), len(val_loader), len(test_loader))
 logfile = "runlog.txt"
 
-train_model(model, train_loader, val_loader, N_EPOCH, logfile)
+#train_model(model, train_loader, val_loader, N_EPOCH, logfile)
 
 """No need to use GPU for calculating AUC"""
 gc.collect()
