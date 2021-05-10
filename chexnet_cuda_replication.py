@@ -37,14 +37,15 @@ def collate_fn_train(data):
     """
     Collate function for train data set. The default transforms were set as the same as CheXNet paper.
     The input was scaled to 224x224 with random horizontal flip. 
-    Other agumentation methods were commented out
+    Other agumentation methods were commented out.
     """
     image_path, label = zip(*data)
     image_tensors = torch.Tensor()
     trans = transforms.Compose([
                 transforms.Resize((224, 224)),
                 transforms.RandomHorizontalFlip(),
-                #transforms.RandomCrop(224, padding=(14, 14)),
+                # Add the following transform to train the best performance model in our case
+                # transforms.RandomCrop(224, padding=(14, 14)),
                 transforms.ToTensor(),
                 transforms.Normalize(mean = [0.485, 0.456, 0.406],
                                      std = [0.229, 0.224, 0.225])
@@ -60,12 +61,14 @@ def collate_fn_train(data):
 def collate_fn(data):
     """
     Collate function for validation/test dataset.
-    No agumentation methods should be used on validation/test dataset.
     """
     image_path, label = zip(*data)
     image_tensors = torch.Tensor()
     trans = transforms.Compose([
+                # Default (Replication) setting: using resized 224 image as input
                 transforms.Resize((224, 224)),
+                # Best performance setting: using resized 224 image as input
+                # transforms.CenterCrop(224),
                 transforms.ToTensor(),
                 transforms.Normalize(mean = [0.485, 0.456, 0.406],
                                      std = [0.229, 0.224, 0.225])
@@ -177,7 +180,7 @@ def train_model(model, train_loader, val_loader, n_epochs, logfile):
 
     CheXNet paper setting :
         Optimizer : using Adam with standard parameters (B1 = 0.9 and B2 = 0.999)
-        Initial Learning Rate: 0.001
+        Initial Learning Rate: 0.001. To train the best performance model in our case, use 0.0001.
         Scheduler patience: 1
     """
     t1 = time.time()
